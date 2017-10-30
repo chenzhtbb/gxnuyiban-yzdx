@@ -1,0 +1,101 @@
+<template>
+  <div ref="wrapper">
+    <slot></slot>
+  </div>
+</template>
+
+<script type="text/ecmascript-6">
+  import BScroll from 'better-scroll'
+  import Loading from 'base/loading/loading'
+
+  export default {
+    props: {
+      probeType: {
+        type: Number,
+        default: 1
+      },
+      click: {
+        type: Boolean,
+        default: true
+      },
+      data: {
+        type: Array,
+        default: []
+      },
+      isScroll: {
+        type: Boolean,
+        default: false
+      },
+      pullUpLoad: {
+        type: Boolean,
+        default: false
+      }
+    },
+    data () {
+      return {
+        isPullUpLoad: false
+      }
+    },
+    components: {
+      Loading
+    },
+    mounted () {
+      setTimeout(() => {
+        this._initScroll()
+      }, 20)
+    },
+    methods: {
+      _initScroll () {
+        if (!this.$refs.wrapper) {
+          return
+        }
+        let sHeight = this.$refs.wrapper.children[0].clientHeight
+        let wHeight = window.screen.height
+        if (this.isScroll && sHeight + 48 > wHeight) {
+          let height = sHeight + 48
+          this.$refs.wrapper.children[0].style.height = height + 'px'
+        }
+        this.scroll = new BScroll(this.$refs.wrapper, {
+          probeType: this.probeType,
+          click: this.click,
+          pullUpLoad: this.pullUpLoad
+        })
+        this.refresh()
+        if (this.pullUpLoad) {
+          this._initPullUpLoad()
+        }
+      },
+      _initPullUpLoad () {
+        this.scroll.on('pullingUp', () => {
+          this.isPullUpLoad = true
+          this.$emit('pullingUp')
+        })
+      },
+      enable () {
+        this.scroll && this.scroll.enable()
+      },
+      disable () {
+        this.scroll && this.scroll.disable()
+      },
+      refresh () {
+        this.scroll && this.scroll.refresh()
+      },
+      finishPullUp () {
+        this.isPullUpLoad = false
+        this.scroll && this.scroll.finishPullUp()
+      }
+    },
+    watch: {
+      data () {
+        setTimeout(() => {
+          this.refresh()
+          this.finishPullUp()
+        }, 20)
+      }
+    }
+  }
+</script>
+
+<style scoped lang="stylus" ref="stylesheet/stylus">
+
+</style>
