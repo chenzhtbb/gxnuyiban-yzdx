@@ -1,24 +1,36 @@
 <template>
   <transition name="slide">
     <div class="bind-dorm">
-      <div class="input-box-wrapper">
-        <div style="position: relative; height:180px;"></div>
-        <div class="confirm-box">
-          <i class="iconfont icon-renyuan" style="font-size: 24px;"></i>
-          <input type="button" class="box" @click="showConfirm" v-model="bind.campus">
+      <div class="box box-info">
+        <div class="box-header with-border">
+          <h3 class="box-title">绑定宿舍号</h3>
         </div>
-        <div style="position: relative; height:10px;"></div>
-        <div class="input-box">
-          <i class="iconfont icon-renyuan icon-input"></i>
-          <input class="box" placeholder="请输入宿舍号" v-model="bind.room">
-          <i class="icon-dismiss"></i>
-        </div>
-        <div style="position: relative; height:30px;"></div>
-        <div class="bind" v-if="!bind.dorm" @click="_bindDorm()">绑定</div>
-        <div class="bind" style="background: #FF6666;" v-else @click="_unbindConfirm()">解绑</div>
-        <select-box ref="select"></select-box>
-        <confirm-box ref="confirm" :text="text"></confirm-box>
+        <form class="form-horizontal">
+          <div class="box-body">
+            <div class="form-group col-sm-10">
+              <label>选择校区</label>
+              <select class="form-control" v-model="bind.campus">
+                <option>雁山校区</option>
+                <option>育才校区</option>
+                <option>王城校区</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-2 control-label">宿舍号</label>
+
+              <div class="col-sm-10">
+                <input class="form-control" placeholder="请输入宿舍号" v-model="bind.room">
+              </div>
+            </div>
+
+          </div>
+          <div class="box-footer col-sm-10">
+            <button class="btn btn-info btn-block" @click="_bindDorm()" v-if="!bind.dorm">绑定</button>
+            <button class="btn btn-danger btn-block" @click="_unbindConfirm()" v-else>解绑</button>
+          </div>
+        </form>
       </div>
+      <confirm-box ref="confirm" :text="text"></confirm-box>
     </div>
   </transition>
 </template>
@@ -26,14 +38,12 @@
 <script type="text/ecmascript-6">
   import { mapGetters, mapMutations } from 'vuex'
   import InputBox from 'base/input-box/input-box'
-  import SelectBox from 'base/select-box/select-box'
   import ConfirmBox from 'base/confirm-box/confirm-box'
   import { bindDorm } from 'api/dorm'
 
   export default {
     components: {
       InputBox,
-      SelectBox,
       ConfirmBox
     },
     data () {
@@ -45,9 +55,6 @@
     mounted () {
       setTimeout(() => {
         this._GetDorm()
-        this.$refs.select.$on('select', (campus) => {
-          this.bind.campus = campus
-        })
         this.$refs.confirm.$on('confirm', () => {
           this._unbindorm()
         })
@@ -64,9 +71,6 @@
       }),
       _GetDorm () {
         this.bind = this.binddorm
-        if (!this.bind.dorm) {
-          this.bind.campus = '请选择校区'
-        }
       },
       _bindDorm () {
         console.log(this.bind)
@@ -87,7 +91,7 @@
         bindDorm(2).then((res) => {
           if (res.code === 1) {
             this.bind.dorm = 0
-            this.bind.campus = '请选择校区'
+            this.bind.campus = ''
             this.bind.room = ''
             this.setBinddorm(this.bind)
           } else {
@@ -108,79 +112,15 @@
 
 <style scoped lang="stylus" ref="stylesheet/stylus">
 
-  input[type="button"]
-    background-color #FFFFFF
-    padding 0
-
   .bind-dorm
     position fixed
     top 0
+    left 50%
     bottom 0
-    left 0
-    right 0
-    z-index 100
-    background #EEEEEE
-    .input-box-wrapper
-      position absolute
-      right 20px
-      left 20px
-      .confirm-box
-        display flex
-        align-items center
-        box-sizing border-box
-        width 100%
-        padding 6px 6px
-        height 40px
-        border-radius 6px
-        background #FFFFFF
-        .box
-          text-align left
-          width 100%
-          margin 0 5px
-          line-height 18px
-          border 0
-          outline none
-          color #AAAAAA
-          font 16px Arial
-      .bind
-        height 40px
-        line-height 40px
-        border-radius 6px
-        margin auto auto
-        border none
-        color white
-        text-align center
-        text-decoration none
-        font-size 20px
-        overflow hidden
-        background #00CCFF
-        width 100%
-        cursor pointer
-        display: inline-block
-        align-items center
-
-  .input-box
-    display flex
-    align-items center
-    box-sizing border-box
     width 100%
-    padding 6px 6px
-    height 40px
-    border-radius 6px
-    background #FFFFFF
-    .icon-input
-      font-size 24px
-    .box
-      flex 1
-      margin 0 5px
-      line-height 18px
-      border 0
-      outline none
-      font-size 16px
-      &::placeholder
-        color #AAAAAA
-    .icon-dismiss
-      font-size 16px
+    z-index 100
+    transform translate(-50%, 0%)
+
 
   .slide-enter-active, .slide-leave-active
     transition all 0.3s

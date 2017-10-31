@@ -1,6 +1,7 @@
 <template>
   <div class="news-hyap">
-    <pdf-news></pdf-news>
+    <iframe src="http://yiban.gxnu.edu.cn/gxnunews/index.php/Home/Index/index2"></iframe>
+    <!--<pdf-news></pdf-news>-->
     <!--<news-view :items="items"></news-view>-->
   </div>
 </template>
@@ -41,5 +42,14 @@
 </script>
 
 <style scoped lang="stylus" ref="stylesheet/stylus">
-
+  iframe
+    border 0
+    position fixed
+    top 0
+    bottom 0
+    left 0
+    right 0
+    padding-bottom 20px
+    width 100%
+    height 100%
 </style>

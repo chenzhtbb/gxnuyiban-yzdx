@@ -1,55 +1,31 @@
 <template>
   <div class="me">
     <div class="top">
-      <div class="background-img">
-        <div></div>
+      <div class="box box-widget widget-user">
+        <div class="widget-user-header bg-black bg-img">
+          <h3 class="username">{{user.yb_username}}</h3>
+          <h5 class="desc">{{user.yb_schoolname}}</h5>
+        </div>
+        <div class="widget-user-image">
+          <img class="img-circle" :src="imgurl" alt="User Avatar">
+        </div>
+        <div class="box-footer no-padding">
+          <ul class="nav nav-stacked">
+            <li>
+              <router-link tag="a" to="/app/binddean">
+                绑定教务处
+                <!--<span class="pull-right badge bg-blue"></span>-->
+              </router-link>
+            </li>
+            <li>
+              <router-link tag="a" to="/app/binddorm">
+                绑定宿舍号
+                <!--<span class="pull-right badge bg-blue"></span>-->
+              </router-link>
+            </li>
+          </ul>
+        </div>
       </div>
-      <div class="photo">
-        <img :src="imgurl"/>
-      </div>
-      <div class="text">
-        <p class="name">{{user.yb_username}}</p>
-        <p class="xy">{{user.yb_schoolname}}</p>
-      </div>
-    </div>
-    <div class="recommend-list">
-      <!--<h1 class="list-title">我的</h1>-->
-      <ul>
-        <li class="item" @click="toBindDean">
-          <div class="icon">
-            <i class="iconfont icon-educational-administration"></i>
-          </div>
-          <div class="text">
-            <p class="name">绑定教务处</p>
-          </div>
-          <div class="ii">
-            <i class="iconfont icon-jiantouyou"></i>
-          </div>
-        </li>
-        <li class="item" @click="toBindDorm">
-          <div class="icon">
-            <i class="iconfont icon-wodesushebangding"></i>
-          </div>
-          <div class="text">
-            <p class="name">绑定宿舍号</p>
-          </div>
-          <div class="ii">
-            <i class="iconfont icon-jiantouyou"></i>
-          </div>
-        </li>
-        <div style="position: relative; height:10px; background: #EEEEEE;"></div>
-        <li class="item" @click="toSettings">
-          <div class="icon">
-            <i class="iconfont icon-tripshezhishi"></i>
-          </div>
-          <div class="text">
-            <p class="name">设置</p>
-          </div>
-          <div class="ii">
-            <i class="iconfont icon-jiantouyou"></i>
-          </div>
-        </li>
-      </ul>
     </div>
     <router-view></router-view>
   </div>
@@ -108,85 +84,25 @@
 
 <style scoped lang="stylus" ref="stylesheet/stylus">
   @import '~common/stylus/mixin'
-  .me
-    .top
-      .background-img
-        position relative
-        left 0
-        top 0
-        width 100%
-        z-index -1
-        opacity 0.2
-        div
-          position relative
-          width 100%
-          padding-top 70%
-          transform-origin top
-          background-size cover
-          bg-img('bg')
-      .photo
-        z-index 1
-        position absolute
-        top 100px
-        left 50%
-        transform translate(-50%, -50%)
-        img
-          border-radius 50%
-          width 120px
-      .text
-        z-index 1
-        position absolute
-        top 180px
-        left 50%
-        transform translate(-50%, -50%)
-        text-align center
-        .name
-          top 20px
-          position relative
-          font-size 16px
-        .xy
-          position relative
-          top 10px
-          font-size 16px
-    .recommend-list
-      ul
-        position absolute
-        left 0
-        right 0
-        height 40px
-        padding-left 0
-        margin 0
-        li
-          height 40px
-          position relative
-          background #FFFFFF
-          .ii
-            .iconfont
-              padding-right 5px
-              font-size 10px
-              color #CCCCCC
-      .list-title
-        height 14px
-        line-height 14px
-        text-align center
-        font-size 14px
-        color $color-theme
-      .item
-        display flex
-        align-items center
-        box-sizing border-box
-        padding-left 20px
-        border-bottom 1px solid #EEEEEE
-        .icon
-          padding-right 20px
-          .i
-            border-radius 50%
-        .text
-          display flex
-          flex-direction column
-          justify-content center
-          flex 1
-          line-height 12px
-          overflow hidden
-          font-size 12px
+
+  .bg-img
+    position relative
+    width 100%
+    padding-top 200px
+    transform-origin top
+    background-size cover
+    bg-img('bg')
+
+  .username
+    position absolute
+    top 150px
+    left 50%
+    transform translate(-50%, -50%)
+
+  .desc
+    position absolute
+    top 180px
+    left 50%
+    transform translate(-50%, -50%)
+
 </style>

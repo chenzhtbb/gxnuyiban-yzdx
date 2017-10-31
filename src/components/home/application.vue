@@ -26,7 +26,7 @@
     left 0
     right 0
     z-index 100
-    background #EEEEEE
+    background #FFFFFF
     iframe
       z-index -1
       width 0

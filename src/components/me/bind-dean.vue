@@ -1,24 +1,34 @@
 <template>
   <transition name="slide">
     <div class="bind-dean">
-      <div class="input-box-wrapper">
-        <div style="position: relative; height:180px;"></div>
-        <div class="input-box">
-          <i class="iconfont icon-renyuan icon-input"></i>
-          <input class="box" placeholder="请输入教务处账号" v-model="bind.username">
-          <i class="icon-dismiss"></i>
+      <div class="box box-info">
+        <div class="box-header with-border">
+          <h3 class="box-title">绑定教务处</h3>
         </div>
-        <div style="position: relative; height:10px;"></div>
-        <div class="input-box">
-          <i class="iconfont icon-renyuan icon-input"></i>
-          <input class="box" placeholder="请输入教务处密码" type="password" v-model="bind.password">
-          <i class="icon-dismiss"></i>
-        </div>
-        <div style="position: relative; height:30px;"></div>
-        <div class="bind" @click="_bindDean()" v-if="!bind.dean">绑定</div>
-        <div class="bind" style="background: #FF6666;" @click="_unbindConfirm()" v-else>解绑</div>
-        <confirm-box ref="confirm" :text="text"></confirm-box>
+        <form class="form-horizontal">
+          <div class="box-body">
+            <div class="form-group">
+              <label class="col-sm-2 control-label">教务处账号</label>
+              <div class="col-sm-10">
+                <input class="form-control" placeholder="请输入教务处账号" v-model="bind.username">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-2 control-label">教务处密码</label>
+
+              <div class="col-sm-10">
+                <input type="password" class="form-control" placeholder="请输入教务处密码" v-model="bind.password">
+              </div>
+            </div>
+
+          </div>
+          <div class="box-footer col-sm-10">
+            <button class="btn btn-info btn-block" @click="_bindDean()" v-if="!bind.dean">绑定</button>
+            <button class="btn btn-danger btn-block" @click="_unbindConfirm()" v-else>解绑</button>
+          </div>
+        </form>
       </div>
+      <confirm-box ref="confirm" :text="text"></confirm-box>
     </div>
   </transition>
 </template>
@@ -94,63 +104,15 @@
 </script>
 
 <style scoped lang="stylus" ref="stylesheet/stylus">
-  input[disabled]
-    background #FFFFFF
-    opacity 1
-
-  .input-box
-    display flex
-    align-items center
-    box-sizing border-box
-    width 100%
-    padding 6px 6px
-    height 40px
-    border-radius 6px
-    background #FFFFFF
-    .icon-input
-      font-size 24px
-    .box
-      outline none
-      -webkit-appearance none
-      border-radius 0
-      flex 1
-      margin 0 5px
-      line-height 18px
-      border 0
-      font-size 16px
-      &::placeholder
-        color #AAAAAA
-    .icon-dismiss
-      font-size 16px
 
   .bind-dean
     position fixed
     top 0
+    left 50%
     bottom 0
-    left 0
-    right 0
+    width 100%
     z-index 100
-    background #EEEEEE
-    .input-box-wrapper
-      position absolute
-      right 20px
-      left 20px
-      .bind
-        height 40px
-        line-height 40px
-        border-radius 6px
-        margin auto auto
-        border none
-        color white
-        text-align center
-        text-decoration none
-        font-size 20px
-        overflow hidden
-        background #00CCFF
-        width 100%
-        cursor pointer
-        display: inline-block
-        align-items center
+    transform translate(-50%, 0%)
 
   .slide-enter-active, .slide-leave-active
     transition all 0.3s

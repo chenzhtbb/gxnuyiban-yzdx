@@ -1,9 +1,9 @@
 <template>
   <transition name="slide">
     <div class="news-tab">
-      <!--<keep-alive>-->
+      <keep-alive>
         <router-view></router-view>
-      <!--</keep-alive>-->
+      </keep-alive>
       <div class="news-tab-bar">
         <div class="operators">
           <router-link to="/app/newstab/gwgg" tag="div" class="icon i-left" replace>

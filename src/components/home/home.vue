@@ -4,13 +4,15 @@
       <div>
         <slider class="slider-news" ref="slider">
           <div class="news" v-for="news in sliderNews">
-            <div class="title">
-              {{news.title}}
-            </div>
-            <div class="bottom">
-              <div class="type">{{news.author}}</div>
-              <!--<div class="time">一周前</div>-->
-            </div>
+            <a :href="news.link">
+              <div class="title">
+                {{news.title}}
+              </div>
+              <div class="bottom">
+                <div class="type">{{news.author}}</div>
+                <!--<div class="time">一周前</div>-->
+              </div>
+            </a>
           </div>
         </slider>
         <div class="slider-icon">
@@ -87,6 +89,11 @@
 
 <style scoped lang="stylus" ref="stylesheet/stylus">
   @import "~common/stylus/mixin"
+  a, a:hover {
+    text-decoration: none;
+    color: #333;
+  }
+
   .home
     position fixed
     width 100%
