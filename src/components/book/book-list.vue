@@ -2,18 +2,15 @@
   <toggle>
     <div class="book-list">
       <scroll :data="items" style="height: 100%;">
-        <div class="list">
-          <ul>
+        <div class="box-footer no-padding">
+          <ul class="nav nav-stacked">
             <li class="item" v-for="item in items" @click="tel(item.tel)">
-              <div class="text">
-                <p class="name">{{item.name}}</p>
-              </div>
-              <div class="item-left">
-                <span>{{item.tel | areaCode}}</span>
-              </div>
+              <a>
+                {{item.name}}
+                <span class="pull-right tel">{{item.tel | areaCode}}</span>
+              </a>
             </li>
           </ul>
-          <div style="position: relative; height: 20px;"></div>
         </div>
       </scroll>
     </div>
@@ -71,7 +68,7 @@
     },
     watch: {
       // 如果路由有变化，会再次执行该方法
-      '$route': 'getNewsPage'
+      '$route': 'getBookList'
     }
   }
 </script>
@@ -86,32 +83,11 @@
     right 0
     z-index 100
     background #FFFFFF
-    .list
-      ul
-        position relative
-        left 0
-        padding 0 5px
-        margin-top 0
-        li
-          position relative
-          background #FFFFFF
-          .item-left
-            padding-right 10px
-            color #0099FF
-      .item
-        display flex
-        align-items center
-        box-sizing border-box
-        padding-left 20px
-        border-bottom 1px solid #EEEEEE
-        .icon
-          padding-right 20px
-        .text
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          flex: 1;
-          line-height: 14px;
-          overflow: hidden;
-          font-size: 14px;
+
+  .item
+    border-bottom 1px solid #eeeeee
+
+  .tel
+    padding-right 10px
+    color #0099FF
 </style>
