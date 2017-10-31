@@ -10,7 +10,7 @@
  函数作用：判断访问终端
  参数说明：无
 */
-var browser = {
+export const browser = {
   versions: function() {
     var u = navigator.userAgent,
       app = navigator.appVersion;

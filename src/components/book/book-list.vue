@@ -13,6 +13,7 @@
           </ul>
         </div>
       </scroll>
+      <div id="yibanhtml5"></div>
     </div>
   </toggle>
 </template>
@@ -21,7 +22,7 @@
   import Toggle from 'base/toggle/toggle'
   import Scroll from 'base/scroll/scroll'
   import { getBookList } from 'api/book'
-  import { phoneFun } from 'common/js/ybh5'
+  import { phoneFun, browser } from 'common/js/ybh5'
 
   export default {
     filters: {
@@ -53,11 +54,11 @@
         if (telephone.length === 7) {
           num = '0773' + telephone
         }
-        phoneFun(num)
-//        this.$router.push({
-//          path: `/book/booklist/tel`,
-//          query: {num: num}
-//        })
+        if (browser.versions.ios) {
+          window.location.href = `tel:${num}`
+        } else if (browser.versions.android) {
+          phoneFun(num)
+        }
       },
       getBookList () {
         let page = this.$route.query.id
