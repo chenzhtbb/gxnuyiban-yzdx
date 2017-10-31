@@ -52,10 +52,12 @@
     right 0
     bottom 0
     width 100%
+    height 48px
     background #EEEEEE
     .operators
       display flex
       align-items center
+      height 48px
       .icon
         flex 1
         &.router-link-active

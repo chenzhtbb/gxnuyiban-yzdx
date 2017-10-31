@@ -4,7 +4,7 @@
       <div class="box box-widget widget-user">
         <div class="widget-user-header bg-black bg-img">
           <h3 class="username">{{user.yb_username}}</h3>
-          <h5 class="desc">{{user.yb_schoolname}}</h5>
+          <!--<h5 class="desc">{{user.yb_schoolname}}</h5>-->
         </div>
         <div class="widget-user-image">
           <img class="img-circle" :src="imgurl" alt="User Avatar">

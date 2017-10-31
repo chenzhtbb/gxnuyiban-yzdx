@@ -38,7 +38,7 @@
     display block
     text-align center
     color #666
-    font-size 0.8rem
+    font-size 14px
     padding 5px 0
     a
       float left
@@ -46,10 +46,10 @@
       width 20%
     .icon
       display inline-block
-      font-size 2rem
+      font-size 28px
       line-height 1
       background-color #35b3ed
-      padding 0.23rem
+      padding 5px
       border-radius 50%
       color #fff
       text-align center
