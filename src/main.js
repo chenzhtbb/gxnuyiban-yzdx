@@ -19,7 +19,14 @@ const vueImgConfig = {
 Vue.use(VueImg, vueImgConfig)
 
 Vue.config.productionTip = false
+
 import 'common/stylus/index.styl'
+
+// import vConsole from 'vconsole'
+import VConsole from 'vconsole/dist/vconsole.min'
+/* eslint-disable no-unused-vars */
+const vConsole = new VConsole()
+console.log('test')
 
 fastclick.attach(document.body)
 
