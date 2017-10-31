@@ -20,9 +20,7 @@
     },
     mounted () {
       setTimeout(() => {
-        getNewsList(1, this.page).then((res) => {
-          this.items = this.items.concat(res)
-        })
+        this._getNews()
         this.$refs.news.$on('pullingUp', () => {
           this._getNews()
         })
@@ -30,10 +28,10 @@
     },
     methods: {
       _getNews () {
-        this.page++
         getNewsList(1, this.page).then((res) => {
           this.items = this.items.concat(res)
         })
+        this.page++
       }
     }
   }

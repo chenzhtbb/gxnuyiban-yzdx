@@ -31,4 +31,6 @@
       z-index -1
       width 0
       height 0
+      border 0
+      display none
 </style>

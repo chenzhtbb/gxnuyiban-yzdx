@@ -1,7 +1,7 @@
 <template>
   <transition name="slide">
     <div class="class-table">
-      <scroll style="height: 100%;" :data="classtable">
+      <scroll style="height: 100%; width: 100%;" :data="classtable" :freeScroll="isfreeScroll">
         <div>
           <div v-html="classtable"></div>
         </div>
@@ -23,7 +23,8 @@
     },
     data () {
       return {
-        classtable: `<div>课程表加载中</div>`
+        classtable: `<div>课程表加载中</div>`,
+        isfreeScroll: true
       }
     },
     methods: {

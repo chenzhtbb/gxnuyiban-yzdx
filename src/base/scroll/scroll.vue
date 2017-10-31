@@ -29,6 +29,10 @@
       pullUpLoad: {
         type: Boolean,
         default: false
+      },
+      freeScroll: {
+        type: Boolean,
+        default: false
       }
     },
     data () {
@@ -58,7 +62,8 @@
         this.scroll = new BScroll(this.$refs.wrapper, {
           probeType: this.probeType,
           click: this.click,
-          pullUpLoad: this.pullUpLoad
+          pullUpLoad: this.pullUpLoad,
+          freeScroll: this.freeScroll
         })
         this.refresh()
         if (this.pullUpLoad) {

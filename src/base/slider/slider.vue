@@ -53,22 +53,22 @@
       })
     },
     activated () {
-      if (!this.slider) {
-        return
-      }
-      this.slider.enable()
-      let pageIndex = this.slider.getCurrentPage().pageX
-      if (pageIndex > this.dots.length) {
-        pageIndex = pageIndex % this.dots.length
-      }
-      this.slider.goToPage(pageIndex, 0, 0)
-      if (this.loop) {
-        pageIndex -= 1
-      }
-      this.currentPageIndex = pageIndex
-      if (this.autoPlay) {
-        this._play()
-      }
+//      if (!this.slider) {
+//        return
+//      }
+//      this.slider.enable()
+//      let pageIndex = this.slider.getCurrentPage().pageX
+//      if (pageIndex > this.dots.length) {
+//        pageIndex = pageIndex % this.dots.length
+//      }
+//      this.slider.goToPage(pageIndex, 0, 0)
+//      if (this.loop) {
+//        pageIndex -= 1
+//      }
+//      this.currentPageIndex = pageIndex
+//      if (this.autoPlay) {
+//        this._play()
+//      }
     },
     methods: {
       initS () {

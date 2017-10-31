@@ -1,25 +1,25 @@
 <template>
   <div class="grid-center">
-    <a @click="goto('/')">
+    <div @click="goto('/')">
       <span class="iconfont icon-xiaoqihezuojidi icon bg-CC66FF"></span>
       <span class="grid-center">研修基地</span>
-    </a>
-    <a @click="goto('/')">
+    </div>
+    <div @click="goto('/')">
       <span class="iconfont icon-yibanlogo icon"></span>
       <span class="grid-center">易班在线</span>
-    </a>
-    <a @click="goto('/')">
+    </div>
+    <div @click="goto('/')">
       <span class="iconfont icon-icon_shengyuandizhuxuedaikuan icon bg-FF6666"></span>
       <span class="grid-center">资助育人</span>
-    </a>
-    <a @click="goto('/')">
+    </div>
+    <div @click="goto('/')">
       <span class="iconfont icon-zonghe icon bg-66CCFF"></span>
       <span class="grid-center">综合服务</span>
-    </a>
-    <a @click="goto('/')">
+    </div>
+    <div @click="goto('/')">
       <span class="iconfont icon-jingqingqidai icon bg-FF9900"></span>
       <span class="grid-center">敬请期待</span>
-    </a>
+    </div>
   </div>
 </template>
 
@@ -40,7 +40,7 @@
     color #666
     font-size 14px
     padding 5px 0
-    a
+    div
       float left
       text-decoration none
       width 20%

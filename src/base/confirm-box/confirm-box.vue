@@ -1,6 +1,7 @@
 <template>
   <transition name="confirm-fade">
     <div class="confirm" v-show="showFlag">
+      <div class="bg-filter"></div>
       <div class="confirm-wrapper">
         <div class="confirm-content">
           <p class="text">{{text}}</p>
@@ -55,22 +56,31 @@
 
   .confirm
     position fixed
+    top 0
     left 0
     right 0
-    top 0
     bottom 0
     z-index 998
-    background-color #888888
     &.confirm-fade-enter-active
       animation confirm-fadein 0.3s
       .confirm-content
         animation confirm-zoom 0.3s
+    .bg-filter
+      position absolute
+      width 100%
+      height 100%
+      -webkit-filter: blur(200px);
+      -moz-filter: blur(200px);
+      -o-filter: blur(200px);
+      -ms-filter: blur(200px);
+      filter: blur(200px);
+      background #eeeeee
     .confirm-wrapper
       position absolute
       top 50%
       left 50%
       transform translate(-50%, -50%)
-      z-index 999
+      z-index 9999
       .confirm-content
         width 270px
         border-radius 13px

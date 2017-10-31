@@ -33,7 +33,21 @@
 </template>
 
 <script type="text/ecmascript-6">
-
+  export default {
+    activated () {
+      setTimeout(() => {
+        this.refreshRouter()
+      }, 20)
+    },
+    methods: {
+      refreshRouter () {
+        this.$router.replace({
+          path: this.$route.path,
+          query: {refresh: 'refresh'}
+        })
+      }
+    }
+  }
 </script>
 
 <style scoped lang="stylus" ref="stylesheet/stylus">
@@ -46,10 +60,12 @@
     right 0
     z-index 100
     .news-tab-bar
+      height 48px
       .operators
         position fixed
         width 100%
         bottom 0
+        height 48px
         display flex
         align-items center
         background #EEEEEE

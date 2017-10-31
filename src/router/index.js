@@ -43,10 +43,6 @@ export default new Router({
       component: Book
     },
     {
-      path: '/home',
-      component: Home
-    },
-    {
       path: '/app',
       component: Application,
       children: [
@@ -105,7 +101,11 @@ export default new Router({
           component: NewsTab,
           children: [
             {
-              path: 'gwgg',
+              path: '/',
+              redirect: 'gwgg'
+            },
+            {
+              path: '/app/newstab/gwgg',
               component: NewsGwgg
             },
             {
@@ -153,6 +153,10 @@ export default new Router({
           ]
         }
       ]
+    },
+    {
+      path: '/home',
+      component: Home
     },
     {
       path: '/me',

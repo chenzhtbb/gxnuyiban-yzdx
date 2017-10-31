@@ -1,15 +1,15 @@
 <template>
   <toggle>
     <div class="lost-and-found">
-      <!--<div class="tab">-->
-      <!--<router-link tag="div" class="tab-item" to="/app/lostandfound/lost" replace>-->
-      <!--<span class="tab-link">寻物启事</span>-->
-      <!--</router-link>-->
-      <!--<router-link tag="div" class="tab-item" to="/app/lostandfound/found" replace>-->
-      <!--<span class="tab-link">失物招领</span>-->
-      <!--</router-link>-->
-      <!--</div>-->
-      <!--<router-view></router-view>-->
+      <div class="tab">
+        <router-link tag="div" class="tab-item" to="/app/lostandfound/lost" replace>
+          <span class="tab-link">寻物启事</span>
+        </router-link>
+        <router-link tag="div" class="tab-item" to="/app/lostandfound/found" replace>
+          <span class="tab-link">失物招领</span>
+        </router-link>
+      </div>
+      <router-view></router-view>
       <!--<iframe src="http://www.gxnuyiban.com/lostandfound/"></iframe>-->
     </div>
   </toggle>
@@ -23,7 +23,7 @@
       Toggle
     },
     mounted () {
-      window.location.href = 'http://www.gxnuyiban.com/lostandfound/'
+//      window.location.href = 'http://www.gxnuyiban.com/lostandfound/'
     }
   }
 </script>

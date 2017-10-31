@@ -5,7 +5,7 @@
         <div class="box-header with-border">
           <h3 class="box-title">绑定教务处</h3>
         </div>
-        <form class="form-horizontal">
+        <div class="form-horizontal">
           <div class="box-body">
             <div class="form-group">
               <label class="col-sm-2 control-label">教务处账号</label>
@@ -26,7 +26,7 @@
             <button class="btn btn-info btn-block" @click="_bindDean()" v-if="!bind.dean">绑定</button>
             <button class="btn btn-danger btn-block" @click="_unbindConfirm()" v-else>解绑</button>
           </div>
-        </form>
+        </div>
       </div>
       <confirm-box ref="confirm" :text="text"></confirm-box>
     </div>

@@ -5,7 +5,7 @@
         <div class="box-header with-border">
           <h3 class="box-title">绑定宿舍号</h3>
         </div>
-        <form class="form-horizontal">
+        <div class="form-horizontal">
           <div class="box-body">
             <div class="form-group col-sm-10">
               <label>选择校区</label>
@@ -28,7 +28,7 @@
             <button class="btn btn-info btn-block" @click="_bindDorm()" v-if="!bind.dorm">绑定</button>
             <button class="btn btn-danger btn-block" @click="_unbindConfirm()" v-else>解绑</button>
           </div>
-        </form>
+        </div>
       </div>
       <confirm-box ref="confirm" :text="text"></confirm-box>
     </div>
@@ -98,12 +98,6 @@
             alert('error')
           }
         })
-      },
-      showConfirm () {
-        if (this.dorm === 1) {
-          return
-        }
-        this.$refs.select.show()
       }
     }
   }

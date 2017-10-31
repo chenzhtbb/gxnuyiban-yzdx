@@ -1,25 +1,25 @@
 <template>
   <div class="grid-center">
-    <div @click="goto('/app/newstab/gwgg')">
+    <router-link to="/app/newstab/gwgg" tag="div">
       <span class="iconfont icon-gongwen icon bg-FF9900"></span>
       <span class="grid-center">公文公告</span>
-    </div>
-    <div @click="goto('/app/newstab/hyap')">
+    </router-link>
+    <router-link to="/app/newstab/hyap" tag="div">
       <span class="iconfont icon-iconhuiyianpai01 icon"></span>
       <span class="grid-center">会议安排</span>
-    </div>
-    <div @click="goto('/app/newstab/jwtz')">
+    </router-link>
+    <router-link to="/app/newstab/jwtz" tag="div">
       <span class="iconfont icon-jiaowuguanli icon bg-FF6666"></span>
       <span class="grid-center">教务通知</span>
-    </div>
-    <div @click="goto('/app/newstab/xyxw')">
+    </router-link>
+    <router-link to="/app/newstab/xyxw" tag="div">
       <span class="iconfont icon-xiaoyuanxinwen icon bg-CC66FF"></span>
       <span class="grid-center">校园新闻</span>
-    </div>
-    <div @click="goto('/app/newstab/jzbg')">
+    </router-link>
+    <router-link to="/app/newstab/jzbg" tag="div">
       <span class="iconfont icon-jiangzuo icon bg-66CCFF"></span>
       <span class="grid-center">讲座报告</span>
-    </div>
+    </router-link>
   </div>
 </template>
 

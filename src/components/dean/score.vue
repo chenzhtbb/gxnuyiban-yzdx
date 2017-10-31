@@ -16,15 +16,14 @@
               </thead>
               <tbody>
               <tr v-for="item in scores.data" style="height: 25px;">
-                <td style="width: 60%;">{{item.kcmc}}</td>
-                <td>{{item.kcfs}}</td>
-                <td>{{item.kcxf}}</td>
-                <td>{{item.kcxf}}</td>
+                <td class="col-xs-6">{{item.kcmc}}</td>
+                <td class="col-xs-2">{{item.kcfs}}</td>
+                <td class="col-xs-2">{{item.kcxf}}</td>
+                <td class="col-xs-2">{{item.kcxf}}</td>
               </tr>
               </tbody>
             </table>
           </div>
-          <div style="position: relative; height: 40px;"></div>
         </div>
         <div class="loading-container" v-show="!scoreList.length">
           <loading></loading>
@@ -58,6 +57,13 @@
 </script>
 
 <style scoped lang="stylus" ref="stylesheet/stylus">
+  th
+    text-align center
+
+  td
+    text-align center
+    vertical-align middle
+
   .score
     position fixed
     top 0
