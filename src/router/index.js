@@ -26,7 +26,6 @@ const BookList = () => import('components/book/book-list')
 const Lost = () => import('components/lost-found/lost')
 const Found = () => import('components/lost-found/found')
 const PutInfo = () => import('components/lost-found/put-info')
-const Tel = () => import('components/book/tel')
 const Application = () => import('components/home/application')
 Vue.use(Router)
 
@@ -144,13 +143,7 @@ export default new Router({
         },
         {
           path: 'booklist',
-          component: BookList,
-          children: [
-            {
-              path: 'tel',
-              component: Tel
-            }
-          ]
+          component: BookList
         }
       ]
     },

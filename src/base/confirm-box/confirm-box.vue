@@ -69,12 +69,6 @@
       position absolute
       width 100%
       height 100%
-      -webkit-filter: blur(200px);
-      -moz-filter: blur(200px);
-      -o-filter: blur(200px);
-      -ms-filter: blur(200px);
-      filter: blur(200px);
-      background #eeeeee
     .confirm-wrapper
       position absolute
       top 50%

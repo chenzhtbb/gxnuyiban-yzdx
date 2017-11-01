@@ -1,48 +1,50 @@
 <template>
   <div class="home">
-    <scroll class="home-scroll" :isScroll="isScroll" :data="items">
+    <scroll class="home-scroll" :isScroll="isScroll" :data="sliderNews">
       <div>
-        <slider class="slider-news" ref="slider">
-          <div class="news" v-for="news in sliderNews">
-            <a :href="news.link">
-              <div class="title">
-                {{news.title}}
-              </div>
-              <div class="bottom">
-                <div class="type">{{news.author}}</div>
-                <!--<div class="time">一周前</div>-->
-              </div>
-            </a>
-          </div>
-        </slider>
-        <div class="slider-icon">
-          <div style="padding-bottom: 2px;">
-            <p style="border-left: 5px solid #FF6699" text-left="">&nbsp;&nbsp;学工在线</p>
-          </div>
-          <slider dotPos="0">
-            <home-online></home-online>
-            <home-online2></home-online2>
+        <div v-if="sliderNews.length">
+          <slider class="slider-news" ref="slider">
+            <div class="news" v-for="news in sliderNews">
+              <a :href="news.link">
+                <div class="title">
+                  {{news.title}}
+                </div>
+                <div class="bottom">
+                  <div class="type">{{news.author}}</div>
+                  <!--<div class="time">一周前</div>-->
+                </div>
+              </a>
+            </div>
           </slider>
-          <div style="padding-bottom: 2px;">
-            <p style="border-left: 5px solid #00CCFF" text-left="">&nbsp;&nbsp;教务服务</p>
+          <div class="slider-icon">
+            <div style="padding-bottom: 2px;">
+              <p style="border-left: 5px solid #FF6699" text-left="">&nbsp;&nbsp;学工在线</p>
+            </div>
+            <slider dotPos="0">
+              <home-online></home-online>
+              <home-online2></home-online2>
+            </slider>
+            <div style="padding-bottom: 2px;">
+              <p style="border-left: 5px solid #00CCFF" text-left="">&nbsp;&nbsp;教务服务</p>
+            </div>
+            <slider :showDot="hideDot" :autoPlay="hideDot">
+              <home-dean></home-dean>
+            </slider>
+            <div style="padding-bottom: 2px;">
+              <p style="border-left: 5px solid #FF0033" text-left="">&nbsp;&nbsp;生活服务</p>
+            </div>
+            <slider :showDot="hideDot" :autoPlay="hideDot">
+              <home-life></home-life>
+            </slider>
+            <div style="padding-bottom: 2px;">
+              <p style="border-left: 5px solid #CC00FF" text-left="">&nbsp;&nbsp;办公服务</p>
+            </div>
+            <slider :showDot="hideDot" :autoPlay="hideDot">
+              <home-office></home-office>
+            </slider>
           </div>
-          <slider :showDot="hideDot" :autoPlay="hideDot">
-            <home-dean></home-dean>
-          </slider>
-          <div style="padding-bottom: 2px;">
-            <p style="border-left: 5px solid #FF0033" text-left="">&nbsp;&nbsp;生活服务</p>
-          </div>
-          <slider :showDot="hideDot" :autoPlay="hideDot">
-            <home-life></home-life>
-          </slider>
-          <div style="padding-bottom: 2px;">
-            <p style="border-left: 5px solid #CC00FF" text-left="">&nbsp;&nbsp;办公服务</p>
-          </div>
-          <slider :showDot="hideDot" :autoPlay="hideDot">
-            <home-office></home-office>
-          </slider>
+          <div style="height: 48px;"></div>
         </div>
-        <div style="height: 48px;"></div>
       </div>
     </scroll>
   </div>
@@ -61,11 +63,15 @@
   export default {
     data () {
       return {
-        items: [],
         hideDot: false,
         isScroll: true,
         sliderNews: []
       }
+    },
+    activated () {
+      setTimeout(() => {
+        this.$refs.slider && this.$refs.slider.refresh()
+      }, 20)
     },
     components: {
       Slider,
@@ -80,8 +86,8 @@
       setTimeout(() => {
         getSliderNews().then((res) => {
           this.sliderNews = res
-          this.$refs.slider && this.$refs.slider.initS()
         })
+        this.$refs.slider && this.$refs.slider.refresh()
       }, 20)
     }
   }
@@ -103,7 +109,7 @@
     .home-scroll
       height 100%
       .slider-news
-        margin 8px
+        margin 9px
         height 50px
         border-bottom 1px solid #666666
         .news

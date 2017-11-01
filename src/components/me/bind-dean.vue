@@ -112,6 +112,7 @@
     bottom 0
     width 100%
     z-index 100
+    background #eeeeee
     transform translate(-50%, 0%)
 
   .slide-enter-active, .slide-leave-active

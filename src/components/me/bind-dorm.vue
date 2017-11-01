@@ -114,7 +114,7 @@
     width 100%
     z-index 100
     transform translate(-50%, 0%)
-
+    background #eeeeee
 
   .slide-enter-active, .slide-leave-active
     transition all 0.3s

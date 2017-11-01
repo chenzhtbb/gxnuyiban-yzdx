@@ -53,22 +53,22 @@
       })
     },
     activated () {
-//      if (!this.slider) {
-//        return
-//      }
-//      this.slider.enable()
-//      let pageIndex = this.slider.getCurrentPage().pageX
+      if (!this.slider) {
+        return
+      }
+      this.slider.enable()
+      let pageIndex = this.slider.getCurrentPage().pageX
 //      if (pageIndex > this.dots.length) {
 //        pageIndex = pageIndex % this.dots.length
 //      }
-//      this.slider.goToPage(pageIndex, 0, 0)
-//      if (this.loop) {
-//        pageIndex -= 1
-//      }
-//      this.currentPageIndex = pageIndex
-//      if (this.autoPlay) {
-//        this._play()
-//      }
+      this.slider.goToPage(pageIndex, 0, 0)
+      if (this.loop) {
+        pageIndex -= 1
+      }
+      this.currentPageIndex = pageIndex
+      if (this.autoPlay) {
+        this._play()
+      }
     },
     methods: {
       initS () {
@@ -113,7 +113,7 @@
           scrollX: true,
           scrollY: false,
           momentum: false,
-          click: true,
+          click: false,
           snap: {
             loop: this.loop,
             threshold: 0.3,
@@ -182,6 +182,7 @@
       position: relative
       right: 0
       left: 0
+      width 100%
       bottom: 12px
       transform: translateZ(1px)
       text-align: center
