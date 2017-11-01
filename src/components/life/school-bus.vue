@@ -3,7 +3,7 @@
     <div class="school-bus">
       <scroll style="height: 100%;">
         <div>
-          <div><b><span>一、教职工班车时刻表</span></b></div>
+          <div style="text-align: center"><b><span>一、教职工班车时刻表</span></b></div>
           <table cellspacing="0" cellpadding="0" border="1"
                  style="border-top: medium none; border-right: medium none; border-collapse: collapse; border-bottom: medium none; border-left: medium none">
             <tbody>
@@ -41,7 +41,7 @@
                   style="border-top: #ece9d8; border-right: windowtext 1pt solid; width: 63.8pt; border-bottom: windowtext 1pt solid; padding-bottom: 0cm; padding-top: 0cm; padding-left: 5.4pt; border-left: windowtext 1pt solid; padding-right: 5.4pt; background-color: transparent">
                 <div style="text-align: center; line-height: 150%" align="center"><span
                   style="font-size: 9pt; color: black; line-height: 150%">7</span><span
-                  style="font-size: 9pt; color: black; line-height: 150%">：</span>
+                  style="font-size: 9pt; color: black; line-height: 150%">:</span>
                   <span style="font-size: 9pt; color: black; line-height: 150%">10</span>
                 </div>
               </td>
@@ -326,7 +326,7 @@
                   style="border-top: #ece9d8; border-right: windowtext 1pt solid; width: 63.8pt; border-bottom: windowtext 1pt solid; padding-bottom: 0cm; padding-top: 0cm; padding-left: 5.4pt; border-left: windowtext 1pt solid; padding-right: 5.4pt; background-color: transparent">
                 <div style="text-align: center; line-height: 150%" align="center"><span
                   style="font-size: 9pt; color: black; line-height: 150%">21</span><span
-                  style="font-size: 9pt; color: black; line-height: 150%">：</span>
+                  style="font-size: 9pt; color: black; line-height: 150%">:</span>
                   <span style="font-size: 9pt; color: black; line-height: 150%">00</span>
                 </div>
               </td>
@@ -401,7 +401,7 @@
                   style="border-top: #ece9d8; border-right: windowtext 1pt solid; width: 86.05pt; border-bottom: windowtext 1pt solid; padding-bottom: 0cm; padding-top: 0cm; padding-left: 5.4pt; border-left: windowtext 1pt solid; padding-right: 5.4pt; background-color: transparent">
                 <div style="text-align: center; line-height: 150%" align="center"><span
                   style="font-size: 9pt; color: black; line-height: 150%">11</span><span
-                  style="font-size: 9pt; color: black; line-height: 150%">：</span>
+                  style="font-size: 9pt; color: black; line-height: 150%">:</span>
                   <span style="font-size: 9pt; color: black; line-height: 150%">50</span>
                 </div>
               </td>
@@ -417,7 +417,7 @@
                   style="border-top: #ece9d8; border-right: windowtext 1pt solid; width: 86pt; border-bottom: windowtext 1pt solid; padding-bottom: 0cm; padding-top: 0cm; padding-left: 5.4pt; border-left: #ece9d8; padding-right: 5.4pt; background-color: transparent">
                 <div style="text-align: center; line-height: 150%" align="center"><span
                   style="font-size: 9pt; color: black; line-height: 150%">11</span><span
-                  style="font-size: 9pt; color: black; line-height: 150%">：</span>
+                  style="font-size: 9pt; color: black; line-height: 150%">:</span>
                   <span style="font-size: 9pt; color: black; line-height: 150%">50</span>
                 </div>
               </td>
@@ -435,7 +435,7 @@
                   style="border-top: #ece9d8; border-right: windowtext 1pt solid; width: 86.05pt; border-bottom: windowtext 1pt solid; padding-bottom: 0cm; padding-top: 0cm; padding-left: 5.4pt; border-left: windowtext 1pt solid; padding-right: 5.4pt; background-color: transparent">
                 <div style="text-align: center; line-height: 150%" align="center"><span
                   style="font-size: 9pt; color: black; line-height: 150%">12</span><span
-                  style="font-size: 9pt; color: black; line-height: 150%">：</span>
+                  style="font-size: 9pt; color: black; line-height: 150%">:</span>
                   <span style="font-size: 9pt; color: black; line-height: 150%">05</span>
                 </div>
               </td>
@@ -451,7 +451,7 @@
                   style="border-top: #ece9d8; border-right: windowtext 1pt solid; width: 86pt; border-bottom: windowtext 1pt solid; padding-bottom: 0cm; padding-top: 0cm; padding-left: 5.4pt; border-left: #ece9d8; padding-right: 5.4pt; background-color: transparent">
                 <div style="text-align: center; line-height: 150%" align="center"><span
                   style="font-size: 9pt; color: black; line-height: 150%">12</span><span
-                  style="font-size: 9pt; color: black; line-height: 150%">：</span>
+                  style="font-size: 9pt; color: black; line-height: 150%">:</span>
                   <span style="font-size: 9pt; color: black; line-height: 150%">05</span>
                 </div>
               </td>
@@ -469,7 +469,7 @@
                   style="border-top: #ece9d8; border-right: windowtext 1pt solid; width: 86.05pt; border-bottom: windowtext 1pt solid; padding-bottom: 0cm; padding-top: 0cm; padding-left: 5.4pt; border-left: windowtext 1pt solid; padding-right: 5.4pt; background-color: transparent">
                 <div style="text-align: center; line-height: 150%" align="center"><span
                   style="font-size: 9pt; color: black; line-height: 150%">13</span><span
-                  style="font-size: 9pt; color: black; line-height: 150%">：</span>
+                  style="font-size: 9pt; color: black; line-height: 150%">:</span>
                   <span style="font-size: 9pt; color: black; line-height: 150%">45</span>
                 </div>
               </td>
@@ -485,7 +485,7 @@
                   style="border-top: #ece9d8; border-right: windowtext 1pt solid; width: 86pt; border-bottom: windowtext 1pt solid; padding-bottom: 0cm; padding-top: 0cm; padding-left: 5.4pt; border-left: #ece9d8; padding-right: 5.4pt; background-color: transparent">
                 <div style="text-align: center; line-height: 150%" align="center"><span
                   style="font-size: 9pt; color: black; line-height: 150%">14</span><span
-                  style="font-size: 9pt; color: black; line-height: 150%">：</span>
+                  style="font-size: 9pt; color: black; line-height: 150%">:</span>
                   <span style="font-size: 9pt; color: black; line-height: 150%">00</span>
                 </div>
               </td>
@@ -503,7 +503,7 @@
                   style="border-top: #ece9d8; border-right: windowtext 1pt solid; width: 86.05pt; border-bottom: windowtext 1pt solid; padding-bottom: 0cm; padding-top: 0cm; padding-left: 5.4pt; border-left: windowtext 1pt solid; padding-right: 5.4pt; background-color: transparent">
                 <div style="text-align: center; line-height: 150%" align="center"><span
                   style="font-size: 9pt; color: black; line-height: 150%">17</span><span
-                  style="font-size: 9pt; color: black; line-height: 150%">：</span>
+                  style="font-size: 9pt; color: black; line-height: 150%">:</span>
                   <span style="font-size: 9pt; color: black; line-height: 150%">30</span>
                 </div>
               </td>
@@ -519,7 +519,7 @@
                   style="border-top: #ece9d8; border-right: windowtext 1pt solid; width: 86pt; border-bottom: windowtext 1pt solid; padding-bottom: 0cm; padding-top: 0cm; padding-left: 5.4pt; border-left: #ece9d8; padding-right: 5.4pt; background-color: transparent">
                 <div style="text-align: center; line-height: 150%" align="center"><span
                   style="font-size: 9pt; color: black; line-height: 150%">17</span><span
-                  style="font-size: 9pt; color: black; line-height: 150%">：</span>
+                  style="font-size: 9pt; color: black; line-height: 150%">:</span>
                   <span style="font-size: 9pt; color: black; line-height: 150%">50</span>
                 </div>
               </td>
@@ -535,7 +535,7 @@
             </tbody>
           </table>
           <p>&nbsp;</p>
-          <div align="left"><b><span style="font-size: 9pt; color: black">二、教职工双休日、法定节假日育才校区往返雁山校区（寒暑假除外）</span></b>
+          <div style="text-align: center"><b><span style="font-size: 9pt; color: black">二、教职工双休日、法定节假日育才校区往返雁山校区（寒暑假除外）</span></b>
           </div>
           <table cellspacing="0" cellpadding="0" border="1"
                  style="border-top: medium none; border-right: medium none; border-collapse: collapse; border-bottom: medium none; border-left: medium none">
@@ -724,7 +724,7 @@
           </table>
           <p>&nbsp;</p>
           <div style="text-align: left; line-height: 150%" align="left"><b>&nbsp;</b></div>
-          <div align="left"><b><span style="font-size: 9pt; color: black">三、学生专线班车时刻表（星期一至星期五）</span></b></div>
+          <div style="text-align: center"><b><span style="font-size: 9pt; color: black">三、学生专线班车时刻表（星期一至星期五）</span></b></div>
           <table cellspacing="0" cellpadding="0" border="1"
                  style="border-top: medium none; border-right: medium none; border-collapse: collapse; border-bottom: medium none; border-left: medium none">
             <tbody>
@@ -783,7 +783,7 @@
                   style="border-top: #ece9d8; border-right: windowtext 1pt solid; width: 93.75pt; border-bottom: windowtext 1pt solid; padding-bottom: 0cm; padding-top: 0cm; padding-left: 5.4pt; border-left: windowtext 1pt solid; padding-right: 5.4pt; background-color: transparent">
                 <div style="text-align: center; line-height: 150%" align="center"><span
                   style="font-size: 9pt; color: black; line-height: 150%">12</span><span
-                  style="font-size: 9pt; color: black; line-height: 150%">：</span>
+                  style="font-size: 9pt; color: black; line-height: 150%">:</span>
                   <span style="font-size: 9pt; color: black; line-height: 150%">50</span>
                 </div>
               </td>
@@ -799,7 +799,7 @@
                   style="border-top: #ece9d8; border-right: windowtext 1pt solid; width: 93pt; border-bottom: windowtext 1pt solid; padding-bottom: 0cm; padding-top: 0cm; padding-left: 5.4pt; border-left: #ece9d8; padding-right: 5.4pt; background-color: transparent">
                 <div style="text-align: center; line-height: 150%" align="center"><span
                   style="font-size: 9pt; color: black; line-height: 150%">13</span><span
-                  style="font-size: 9pt; color: black; line-height: 150%">：</span>
+                  style="font-size: 9pt; color: black; line-height: 150%">:</span>
                   <span style="font-size: 9pt; color: black; line-height: 150%">40</span>
                 </div>
               </td>
@@ -817,7 +817,7 @@
                   style="border-top: #ece9d8; border-right: windowtext 1pt solid; width: 93.75pt; border-bottom: windowtext 1pt solid; padding-bottom: 0cm; padding-top: 0cm; padding-left: 5.4pt; border-left: windowtext 1pt solid; padding-right: 5.4pt; background-color: transparent">
                 <div style="text-align: center; line-height: 150%" align="center"><span
                   style="font-size: 9pt; color: black; line-height: 150%">17</span><span
-                  style="font-size: 9pt; color: black; line-height: 150%">：25</span></div>
+                  style="font-size: 9pt; color: black; line-height: 150%">:25</span></div>
               </td>
               <td valign="top" width="169"
                   style="border-top: #ece9d8; border-right: windowtext 1pt solid; width: 126.75pt; border-bottom: windowtext 1pt solid; padding-bottom: 0cm; padding-top: 0cm; padding-left: 5.4pt; border-left: #ece9d8; padding-right: 5.4pt; background-color: transparent">
@@ -831,7 +831,7 @@
                   style="border-top: #ece9d8; border-right: windowtext 1pt solid; width: 93pt; border-bottom: windowtext 1pt solid; padding-bottom: 0cm; padding-top: 0cm; padding-left: 5.4pt; border-left: #ece9d8; padding-right: 5.4pt; background-color: transparent">
                 <div style="text-align: center; line-height: 150%" align="center"><span
                   style="font-size: 9pt; color: black; line-height: 150%">18</span><span
-                  style="font-size: 9pt; color: black; line-height: 150%">：</span>
+                  style="font-size: 9pt; color: black; line-height: 150%">:</span>
                   <span style="font-size: 9pt; color: black; line-height: 150%">10</span>
                 </div>
               </td>
@@ -848,7 +848,7 @@
           </table>
           <p>&nbsp;</p>
           <div style="text-align: left; line-height: 150%" align="left"><b>&nbsp;</b></div>
-          <div align="left"><b><span style="font-size: 9pt; color: black">四、学生专线班车双休日、法定节假日时刻表（国庆节、寒暑假除外）</span></b>
+          <div style="text-align: center"><b><span style="font-size: 9pt; color: black">四、学生专线班车双休日、法定节假日时刻表（国庆节、寒暑假除外）</span></b>
           </div>
           <table cellspacing="0" cellpadding="0" border="1"
                  style="border-top: medium none; border-right: medium none; border-collapse: collapse; border-bottom: medium none; border-left: medium none">
@@ -972,7 +972,7 @@
                   style="border-top: #ece9d8; border-right: windowtext 1pt solid; width: 93.75pt; border-bottom: windowtext 1pt solid; padding-bottom: 0cm; padding-top: 0cm; padding-left: 5.4pt; border-left: windowtext 1pt solid; padding-right: 5.4pt; background-color: transparent">
                 <div style="text-align: center; line-height: 150%" align="center"><span
                   style="font-size: 9pt; color: black; line-height: 150%">17</span><span
-                  style="font-size: 9pt; color: black; line-height: 150%">：</span>
+                  style="font-size: 9pt; color: black; line-height: 150%">:</span>
                   <span style="font-size: 9pt; color: black; line-height: 150%">25</span>
                 </div>
               </td>
@@ -988,7 +988,7 @@
                   style="border-top: #ece9d8; border-right: windowtext 1pt solid; width: 93pt; border-bottom: windowtext 1pt solid; padding-bottom: 0cm; padding-top: 0cm; padding-left: 5.4pt; border-left: #ece9d8; padding-right: 5.4pt; background-color: transparent">
                 <div style="text-align: center; line-height: 150%" align="center"><span
                   style="font-size: 9pt; color: black; line-height: 150%">18</span><span
-                  style="font-size: 9pt; color: black; line-height: 150%">：</span>
+                  style="font-size: 9pt; color: black; line-height: 150%">:</span>
                   <span style="font-size: 9pt; color: black; line-height: 150%">10</span>
                 </div>
               </td>
@@ -1073,4 +1073,6 @@
     right 0
     z-index 100
     background #EEEEEE
+    padding 5px 10px
+
 </style>
