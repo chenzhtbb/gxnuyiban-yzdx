@@ -1,9 +1,35 @@
 <template>
   <transition name="slide">
     <div class="class-table">
-      <scroll style="height: 100%; width: 100%;" :data="classtable" :freeScroll="isfreeScroll">
+      <scroll style="height: 100%; width: 100%;" :data="items" :freeScroll="isfreeScroll">
         <div>
-          <div v-html="classtable"></div>
+          <table class="table">
+            <thead>
+            <tr>
+              <th>节次</th>
+              <th>周一</th>
+              <th>周二</th>
+              <th>周三</th>
+              <th>周四</th>
+              <th>周五</th>
+              <th>周六</th>
+              <th>周日</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr v-for="item in items">
+              <th>{{item.num}}</th>
+              <td v-for="class_ in item.class" :rowspan="class_.num" :class="class_.color">
+                <div v-if="class_.isclass!='0'">
+                  <p>{{class_.name}}</p>
+                  <p>{{class_.room}}</p>
+                  <p>第{{class_.start}}~{{class_.end}}节</p>
+                  <p>{{class_.teacher}}</p>
+                </div>
+              </td>
+            </tr>
+            </tbody>
+          </table>
         </div>
       </scroll>
     </div>
@@ -23,14 +49,14 @@
     },
     data () {
       return {
-        classtable: `<div>课程表加载中</div>`,
+        items: [],
         isfreeScroll: true
       }
     },
     methods: {
       _getTimetable () {
         getTimetable().then((res) => {
-          this.classtable = res
+          this.items = res
         })
       }
     }
@@ -52,4 +78,13 @@
 
   .slide-enter, .slide-leave-to
     transform translate3d(100%, 0, 0)
+
+  th
+    text-align center
+    vertical-align middle
+
+  td
+    text-align center
+    vertical-align middle
+    padding 0
 </style>

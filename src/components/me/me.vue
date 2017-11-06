@@ -7,7 +7,7 @@
           <!--<h5 class="desc">{{user.yb_schoolname}}</h5>-->
         </div>
         <div class="widget-user-image">
-          <img class="img-circle" :src="imgurl" alt="User Avatar">
+          <img class="img-circle" :src="imgurl" alt="User Avatar" style="height: 90px;">
         </div>
         <div class="box-footer no-padding">
           <ul class="nav nav-stacked">
@@ -104,5 +104,6 @@
     top 180px
     left 50%
     transform translate(-50%, -50%)
+
 
 </style>

@@ -8,7 +8,7 @@
       <span class="iconfont icon-yibanlogo icon bg-00c0ef"></span>
       <span class="grid-center">易班在线</span>
     </div>
-    <div @click="goto('/')">
+    <div @click="gotozz">
       <span class="iconfont icon-icon_shengyuandizhuxuedaikuan icon bg-00a65a"></span>
       <span class="grid-center">资助育人</span>
     </div>
@@ -28,6 +28,9 @@
     methods: {
       goto (path) {
         this.$router.push(path)
+      },
+      gotozz () {
+        window.location.href = 'https://oauth.yiban.cn/code/html?client_id=321a8e203164b766&redirect_uri=http://116.1.2.242:3489/AdminLTE_Mod/Yb/Yb.aspx&state=yb_oauth#'
       }
     }
   }

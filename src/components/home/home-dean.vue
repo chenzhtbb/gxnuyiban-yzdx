@@ -1,36 +1,29 @@
 <template>
   <div class="grid-center">
-    <div @click="goto('/app/score')">
+    <router-link tag="div" to="/app/score">
       <span class="iconfont icon-chengjichaxun icon bg-00c0ef"></span>
       <span class="grid-center">成绩</span>
-    </div>
-    <div @click="goto('/app/classtable')">
+    </router-link>
+    <router-link tag="div" to="/app/classtable">
       <span class="iconfont icon-kebiaochaxun icon bg-00a65a"></span>
       <span class="grid-center">课表</span>
-    </div>
-    <div @click="goto('/app/library')">
+    </router-link>
+    <router-link tag="div" to="/app/library">
       <span class="iconfont icon-tushuguan icon bg-ff851b"></span>
       <span class="grid-center">图书馆</span>
-    </div>
-    <div @click="goto('/app/selcourse')">
+    </router-link>
+    <router-link tag="div" to="/app/selcourse">
       <span class="iconfont icon-xuankebaoming icon bg-00a65a"></span>
       <span class="grid-center">选课</span>
-    </div>
-    <div @click="goto('/app/appraise')">
+    </router-link>
+    <router-link tag="div" to="/app/appraise">
       <span class="iconfont icon-pingjiaopingxue icon bg-D81B60"></span>
       <span class="grid-center">评教</span>
-    </div>
+    </router-link>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
-  export default {
-    methods: {
-      goto (path) {
-        this.$router.push(path)
-      }
-    }
-  }
 </script>
 
 <style scoped lang="stylus" ref="stylesheet/stylus">
