@@ -1,7 +1,8 @@
 const state = {
   uinfo: {},
   binddean: {},
-  binddorm: {}
+  binddorm: {},
+  helpflag: false
 }
 
 export default state

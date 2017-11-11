@@ -16,7 +16,7 @@
               <th>周日</th>
             </tr>
             </thead>
-            <tbody>
+            <tbody ref="tbody">
             <tr v-for="item in items">
               <th>{{item.num}}</th>
               <td v-for="class_ in item.class" :rowspan="class_.num" :class="class_.color">
@@ -58,6 +58,13 @@
         getTimetable().then((res) => {
           this.items = res
         })
+        setTimeout(() => {
+          this.children = this.$refs.tbody.children
+          console.log(this.children.length)
+          for (let i = 0; i < this.items.length; i++) {
+            console.log(this.children[i].length)
+          }
+        }, 200)
       }
     }
   }

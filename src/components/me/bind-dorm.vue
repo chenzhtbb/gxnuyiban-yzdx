@@ -22,7 +22,7 @@
                 <input class="form-control" placeholder="请输入宿舍号" v-model="bind.room">
               </div>
             </div>
-
+            <span class="users-list-date">注：楼栋-楼层-房间号，例：46-7-722</span>
           </div>
           <div class="box-footer col-sm-10">
             <button class="btn btn-info btn-block" @click="_bindDorm()" v-if="!bind.dorm">绑定</button>

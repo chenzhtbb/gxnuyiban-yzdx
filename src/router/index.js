@@ -27,11 +27,13 @@ const Lost = () => import('components/lost-found/lost')
 const Found = () => import('components/lost-found/found')
 const PutInfo = () => import('components/lost-found/put-info')
 const Application = () => import('components/home/application')
+const HelpPeople = () => import('components/online/help-people')
+const WorkService = () => import('components/online/work-service')
 Vue.use(Router)
 
 export default new Router({
   base: '/yzdx/',
-  mode: 'history',
+  // mode: 'history',
   routes: [
     {
       path: '/',
@@ -45,6 +47,14 @@ export default new Router({
       path: '/app',
       component: Application,
       children: [
+        {
+          path: 'helppeople',
+          component: HelpPeople
+        },
+        {
+          path: 'workservice',
+          component: WorkService
+        },
         {
           path: 'lostandfound',
           component: LostAndFound,

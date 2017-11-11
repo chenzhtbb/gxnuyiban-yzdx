@@ -12,12 +12,12 @@
       <span class="iconfont icon-tushuguan icon bg-ff851b"></span>
       <span class="grid-center">图书馆</span>
     </router-link>
-    <router-link tag="div" to="/app/selcourse">
-      <span class="iconfont icon-xuankebaoming icon bg-00a65a"></span>
+    <router-link tag="div" to="/">
+      <span class="iconfont icon-jingqingqidai icon bg-00a65a"></span>
       <span class="grid-center">选课</span>
     </router-link>
-    <router-link tag="div" to="/app/appraise">
-      <span class="iconfont icon-pingjiaopingxue icon bg-D81B60"></span>
+    <router-link tag="div" to="/">
+      <span class="iconfont icon-jingqingqidai icon bg-D81B60"></span>
       <span class="grid-center">评教</span>
     </router-link>
   </div>

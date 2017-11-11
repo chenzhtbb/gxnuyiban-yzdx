@@ -20,7 +20,7 @@
                 <input type="password" class="form-control" placeholder="请输入教务处密码" v-model="bind.password">
               </div>
             </div>
-
+            <span class="users-list-date">注：修改教务处密码后需要重新绑定哦~</span>
           </div>
           <div class="box-footer col-sm-10">
             <button class="btn btn-info btn-block" @click="_bindDean()" v-if="!bind.dean">绑定</button>

@@ -1,36 +1,30 @@
 <template>
   <div class="grid-center">
-    <div @click="goto('/')">
-      <span class="iconfont icon-fuwuguanli icon bg-00a65a"></span>
-      <span class="grid-center">服务管理</span>
-    </div>
-    <div @click="goto('/')">
-      <span class="iconfont icon-jiuyeshuai icon bg-00c0ef"></span>
-      <span class="grid-center">就业服务</span>
-    </div>
-    <div @click="goto('/')">
-      <span class="iconfont icon-zhuyizhishi icon bg-D81B60"></span>
-      <span class="grid-center">思政教育</span>
-    </div>
-    <div @click="goto('/')">
-      <span class="iconfont icon-xinli icon bg-ff851b"></span>
-      <span class="grid-center">心理健康</span>
-    </div>
-    <div @click="goto('/')">
+    <router-link tag="div" to="/">
       <span class="iconfont icon-tongzhi icon bg-D81B60"></span>
       <span class="grid-center">学工通知</span>
-    </div>
+    </router-link>
+    <router-link tag="div" to="/app/helppeople">
+      <span class="iconfont icon-icon_shengyuandizhuxuedaikuan icon bg-00a65a"></span>
+      <span class="grid-center">资助育人</span>
+    </router-link>
+    <router-link tag="div" to="/">
+      <span class="iconfont icon-yibanlogo icon bg-00c0ef"></span>
+      <span class="grid-center">易班在线</span>
+    </router-link>
+    <router-link tag="div" to="/">
+      <span class="iconfont icon-zhuyizhishi icon bg-ff851b"></span>
+      <span class="grid-center">办事指南</span>
+    </router-link>
+    <router-link tag="div" to="/app/workservice">
+      <span class="iconfont icon-jiuyeshuai icon bg-00c0ef"></span>
+      <span class="grid-center">就业服务</span>
+    </router-link>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
-  export default {
-    methods: {
-      goto (path) {
-        this.$router.push(path)
-      }
-    }
-  }
+
 </script>
 
 <style scoped lang="stylus" ref="stylesheet/stylus">

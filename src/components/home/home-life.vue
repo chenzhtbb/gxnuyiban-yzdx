@@ -1,25 +1,25 @@
 <template>
   <div class="grid-center">
-    <div @click="goto('/app/electricity')">
-      <span class="iconfont icon-yongdianchaxun icon bg-00c0ef"></span>
-      <span class="grid-center">宿舍用电</span>
-    </div>
-    <div @click="goto('/app/schoolbus')">
+    <router-link tag="div" to="/app/schoolbus">
       <span class="iconfont icon-xiaochexinxi icon bg-ff851b"></span>
       <span class="grid-center">校车时刻</span>
-    </div>
-    <div @click="goto('/app/lostandfound')">
+    </router-link>
+    <router-link tag="div" to="/app/lostandfound">
       <span class="iconfont icon-xingzhuang9kaobei icon bg-00c0ef"></span>
       <span class="grid-center">失物招领</span>
-    </div>
-    <div @click="goto('/')">
-      <span class="iconfont icon-baoxiu icon bg-D81B60"></span>
+    </router-link>
+    <router-link tag="div" to="/">
+      <span class="iconfont icon-jingqingqidai icon bg-D81B60"></span>
       <span class="grid-center">网上报修</span>
-    </div>
-    <div @click="goto('/')">
-      <span class="iconfont icon-zifeibiaozhun icon bg-00a65a"></span>
+    </router-link>
+    <router-link tag="div" to="/">
+      <span class="iconfont icon-jingqingqidai icon bg-00a65a"></span>
       <span class="grid-center">资费查询</span>
-    </div>
+    </router-link>
+    <router-link tag="div" to="/">
+      <span class="iconfont icon-jingqingqidai icon bg-00c0ef"></span>
+      <span class="grid-center">宿舍用电</span>
+    </router-link>
   </div>
 </template>
 

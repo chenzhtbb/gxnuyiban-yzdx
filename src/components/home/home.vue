@@ -20,9 +20,9 @@
             <div style="padding-bottom: 2px;">
               <p style="border-left: 5px solid #FF6699" text-left="">&nbsp;&nbsp;学工在线</p>
             </div>
-            <slider dotPos="0">
+            <slider :showDot="hideDot" :autoPlay="hideDot">
               <home-online></home-online>
-              <home-online2></home-online2>
+              <!--<home-online2></home-online2>-->
             </slider>
             <div style="padding-bottom: 2px;">
               <p style="border-left: 5px solid #00CCFF" text-left="">&nbsp;&nbsp;教务服务</p>
@@ -69,9 +69,9 @@
       }
     },
     activated () {
-      setTimeout(() => {
-        this.$refs.slider && this.$refs.slider.refresh()
-      }, 20)
+//      setTimeout(() => {
+//        this.$refs.slider && this.$refs.slider.refresh()
+//      }, 20)
     },
     components: {
       Slider,
