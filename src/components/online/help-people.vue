@@ -22,7 +22,7 @@
     },
     data () {
       return {
-        title: '正在前往资助管理系统...'
+        title: '小易正在带路前往资助管理系统...'
       }
     },
     activated () {

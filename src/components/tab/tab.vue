@@ -14,14 +14,32 @@
         <p class="">我的</p>
       </router-link>
     </div>
+    <confirm-box
+      ref="confirm"
+      :text="title"
+      :confirmBtnText="confirmBtnText"
+      :cancelBtnText="cancelBtnText"
+      @confirm="gotoBind"
+    ></confirm-box>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
   import { mapMutations } from 'vuex'
   import { getUser } from 'api/user'
+  import ConfirmBox from 'base/confirm-box/confirm-box'
 
   export default {
+    components: {
+      ConfirmBox
+    },
+    data () {
+      return {
+        title: '',
+        confirmBtnText: '立即前往',
+        cancelBtnText: '稍后再说'
+      }
+    },
     mounted () {
       setTimeout(() => {
         this._getUserInfo()
@@ -30,11 +48,27 @@
     methods: {
       _getUserInfo () {
         getUser().then((res) => {
-          this.setUinfo(res.yb)
-          this.setBinddean(res.dean)
-          this.setBinddorm(res.dorm)
-          console.log(res)
+          this.userInfo = res
+          this.setUinfo(this.userInfo.yb)
+          this.setBinddean(this.userInfo.dean)
+          if (this.userInfo.dean.dean === 0) {
+            this.title = '您还没有绑定教务处账户，是否马上绑定？'
+            this.$refs.confirm.show()
+          }
+          this.setBinddorm(this.userInfo.dorm)
+          if (this.userInfo.dean.dean === 1 && this.userInfo.dorm.dorm === 0) {
+            this.title = '您还没有绑定宿舍号，是否马上绑定？'
+            this.$refs.confirm.show()
+          }
+          console.log(this.userInfo)
         })
+      },
+      gotoBind () {
+        if (this.userInfo.dean.dean === 0) {
+          this.$router.push('/app/binddean')
+        } else {
+          this.$router.push('/app/binddorm')
+        }
       },
       ...mapMutations({
         setUinfo: 'SET_UINFO',

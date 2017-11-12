@@ -153,6 +153,30 @@ apiRoutes.get('/getBookList', function (req, res) {
   })
 })
 
+apiRoutes.get('/getXgbList', function (req, res) {
+  var url = 'http://localhost/api/public/index/api/getXgbList'
+
+  axios.get(url, {
+    params: req.query
+  }).then((response) => {
+    res.json(response.data)
+  }).catch((e) => {
+    console.log(e)
+  })
+})
+
+apiRoutes.get('/getXgbNotice', function (req, res) {
+  var url = 'http://localhost/api/public/index/api/getXgbNotice'
+
+  axios.get(url, {
+    params: req.query
+  }).then((response) => {
+    res.json(response.data)
+  }).catch((e) => {
+    console.log(e)
+  })
+})
+
 app.use('/index/api', apiRoutes)
 
 var compiler = webpack(webpackConfig)

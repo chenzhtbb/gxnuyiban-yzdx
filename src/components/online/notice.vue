@@ -1,0 +1,76 @@
+<template>
+  <toggle>
+    <div class="notice">
+      <scroll style="height: 100%;" :data="item">
+        <div style="margin: 8px;">
+          <div class="top">
+            <div class="title">
+              <h3>{{item.title}}</h3>
+            </div>
+            <div class="publish">
+              <span>{{item.author}}</span>
+            </div>
+            <div class="time">
+              <span>{{item.time}}</span>
+            </div>
+          </div>
+          <div class="content">
+            <div class="text" v-html="item.content"></div>
+          </div>
+        </div>
+      </scroll>
+    </div>
+  </toggle>
+</template>
+
+<script type="text/ecmascript-6">
+  import Toggle from 'base/toggle/toggle'
+  import Scroll from 'base/scroll/scroll'
+
+  export default {
+    components: {
+      Toggle,
+      Scroll
+    }
+  }
+</script>
+
+<style scoped lang="stylus" ref="stylesheet/stylus">
+  @import "~common/stylus/mixin"
+
+  img
+    width 100% !important
+
+  .notice
+    background #FFFFFF
+    position fixed
+    top 0
+    bottom 0
+    left 0
+    right 0
+    z-index 900
+    .top
+      position relative
+      top 0
+      left 0
+      right 0
+      padding-bottom 8px
+      border-bottom 1px solid #EEEEEE
+      .title
+        h3
+          text-align center
+      .publish
+        float left
+      .time
+        text-align right
+    .content
+      padding 8px 0
+    .attachment
+      ul
+        padding 0
+        li
+          font-size 16px
+          padding 6px 0
+          color royalblue
+          no-wrap()
+</style>

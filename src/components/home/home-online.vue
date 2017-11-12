@@ -1,6 +1,6 @@
 <template>
   <div class="grid-center">
-    <router-link tag="div" to="/">
+    <router-link tag="div" :to="{path: '/app/xgbnotice', query:{notice: '9a9870f3ebbd8fde2da5d1dd615b5f54'}}">
       <span class="iconfont icon-tongzhi icon bg-D81B60"></span>
       <span class="grid-center">学工通知</span>
     </router-link>
@@ -8,11 +8,11 @@
       <span class="iconfont icon-icon_shengyuandizhuxuedaikuan icon bg-00a65a"></span>
       <span class="grid-center">资助育人</span>
     </router-link>
-    <router-link tag="div" to="/">
+    <router-link tag="div" :to="{path: '/app/xgbnotice', query:{notice: '55938ef9fe8c8e8a617a093c90cf19ee'}}">
       <span class="iconfont icon-yibanlogo icon bg-00c0ef"></span>
       <span class="grid-center">易班在线</span>
     </router-link>
-    <router-link tag="div" to="/">
+    <router-link tag="div" :to="{path: '/app/xgbnotice', query:{notice: 'e42c9b4c2866afef633ee98f7c49c155'}}">
       <span class="iconfont icon-zhuyizhishi icon bg-ff851b"></span>
       <span class="grid-center">办事指南</span>
     </router-link>

@@ -1,6 +1,11 @@
 <template>
   <div class="news-view">
-    <scroll ref="wrapper" :data="items" style="height: 100%;" :pullUpLoad="pullUpLoad">
+    <scroll
+      ref="wrapper"
+      :data="items"
+      style="height: 100%;"
+      :pullUpLoad="pullUpLoad"
+    >
       <div>
         <div class="news-list">
           <div v-for="item in items" class="news-item">

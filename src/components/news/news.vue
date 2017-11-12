@@ -50,7 +50,7 @@
         item: []
       }
     },
-    mounted () {
+    activated () {
       setTimeout(() => {
         if (this.item.length) {
           return
@@ -65,10 +65,6 @@
           this.item = res
         })
       }
-    },
-    watch: {
-      // 如果路由有变化，会再次执行该方法
-      '$route': 'getNewsPage'
     }
   }
 </script>

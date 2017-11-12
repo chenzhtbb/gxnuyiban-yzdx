@@ -12,6 +12,9 @@ const mutations = {
   },
   [types.SET_HELPFLAG] (state, helpflag) {
     state.helpflag = helpflag
+  },
+  [types.SET_LOSTFLAG] (state, lostflag) {
+    state.lostflag = lostflag
   }
 }
 

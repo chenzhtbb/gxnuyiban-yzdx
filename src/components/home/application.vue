@@ -1,7 +1,9 @@
 <template>
   <toggle>
     <div class="application">
-      <router-view></router-view>
+      <keep-alive>
+        <router-view></router-view>
+      </keep-alive>
       <iframe></iframe>
     </div>
   </toggle>
