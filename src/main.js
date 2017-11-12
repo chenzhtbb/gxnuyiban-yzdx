@@ -9,8 +9,9 @@ import VueLazyload from 'vue-lazyload'
 import VueImg from 'v-img'
 
 Vue.use(VueLazyload, {
-  loading: require('common/image/bg.jpg'),
-  error: require('common/image/bg.jpg')
+  loading: require('common/image/1c264fdfff5081e1f279a3fb643b00f3.png'),
+  error: require('common/image/c07bf04c4452b9f354c5b9c201ffade4.png'),
+  attempt: 3
 })
 const vueImgConfig = {
   altAsTitle: false,
