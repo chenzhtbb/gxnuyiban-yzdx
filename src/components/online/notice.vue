@@ -1,6 +1,7 @@
 <template>
   <toggle>
     <div class="notice">
+      <iframe class="hide"></iframe>
       <div class="link" v-if="item.link">
         <iframe :src="item.link"></iframe>
       </div>
@@ -69,6 +70,13 @@
 
 <style scoped lang="stylus" ref="stylesheet/stylus">
   @import "~common/stylus/mixin"
+
+  .hide
+    z-index -1
+    width 0
+    height 0
+    border 0
+    display none
 
   img
     width 100% !important
