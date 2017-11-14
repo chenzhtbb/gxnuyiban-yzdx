@@ -177,6 +177,18 @@ apiRoutes.get('/getXgbNotice', function (req, res) {
   })
 })
 
+apiRoutes.get('/oauth', function (req, res) {
+  var url = 'http://localhost/api/public/index/api/oauth'
+
+  axios.get(url, {
+    params: req.query
+  }).then((response) => {
+    res.json(response.data)
+  }).catch((e) => {
+    console.log(e)
+  })
+})
+
 app.use('/index/api', apiRoutes)
 
 var compiler = webpack(webpackConfig)

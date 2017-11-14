@@ -73,6 +73,9 @@
     right 0
     z-index 100
     background #EEEEEE
+    background-image url('~common/image/1c264fdfff5081e1f279a3fb643b00f3.png')
+    background-repeat repeat-y
+    background-size 100%
     .table-responsive
       height 100%
       .title

@@ -1,9 +1,12 @@
 <template>
   <transition name="slide">
     <div class="class-table">
-      <scroll style="height: 100%; width: 100%;" :data="items" :freeScroll="isfreeScroll">
+      <!--<table class="table table-head">-->
+      <!---->
+      <!--</table>-->
+      <scroll style="height: 100%; width: 100%;" :data="items">
         <div>
-          <table class="table">
+          <table class="table table-class" frame="void" rules="none">
             <thead>
             <tr>
               <th>节次</th>
@@ -16,15 +19,25 @@
               <th>周日</th>
             </tr>
             </thead>
-            <tbody ref="tbody">
+            <tbody>
             <tr v-for="item in items">
               <th>{{item.num}}</th>
-              <td v-for="class_ in item.class" :rowspan="class_.num" :class="class_.color">
+              <td v-for="class_ in item.class" :rowspan="class_.num" :class="class_.length > 1? 'danger':class_.color">
                 <div v-if="class_.isclass!='0'">
-                  <p>{{class_.name}}</p>
-                  <p>{{class_.room}}</p>
-                  <p>第{{class_.start}}~{{class_.end}}节</p>
-                  <p>{{class_.teacher}}</p>
+                  <div v-if="!class_.length">
+                    <p>{{class_.name}}</p>
+                    <p>{{class_.room}}</p>
+                    <p>第{{class_.start}}~{{class_.end}}节</p>
+                    <p>{{class_.teacher}}</p>
+                  </div>
+                  <div v-else>
+                    <div v-for="cl in class_[0]">
+                      <p>{{cl.name}}</p>
+                      <p>{{cl.room}}</p>
+                      <p>第{{cl.start}}~{{cl.end}}节</p>
+                      <p>{{cl.teacher}}</p>
+                    </div>
+                  </div>
                 </div>
               </td>
             </tr>
@@ -49,8 +62,7 @@
     },
     data () {
       return {
-        items: [],
-        isfreeScroll: true
+        items: []
       }
     },
     methods: {
@@ -58,27 +70,28 @@
         getTimetable().then((res) => {
           this.items = res
         })
-        setTimeout(() => {
-          this.children = this.$refs.tbody.children
-          console.log(this.children.length)
-          for (let i = 0; i < this.items.length; i++) {
-            console.log(this.children[i].length)
-          }
-        }, 200)
       }
     }
   }
 </script>
 
 <style scoped lang="stylus" ref="stylesheet/stylus">
+
+  .table-class
+    width 100%
+
   .class-table
     position fixed
+    width 100%
     top 0
     bottom 0
     left 0
     right 0
     z-index 100
-    background #EEEEEE
+    background-color #EEEEEE
+    background-image url('~common/image/1c264fdfff5081e1f279a3fb643b00f3.png')
+    background-repeat repeat-y
+    background-size 100%
 
   .slide-enter-active, .slide-leave-active
     transition all 0.3s
@@ -94,4 +107,6 @@
     text-align center
     vertical-align middle
     padding 0
+  tr
+    border 0
 </style>
