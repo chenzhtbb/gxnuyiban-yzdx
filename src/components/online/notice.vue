@@ -15,7 +15,7 @@
               <span>{{item.author}}</span>
             </div>
             <div class="time">
-              <span>{{item.time}}</span>
+              <span>{{item.time | formatTime}}</span>
             </div>
           </div>
           <div class="content" v-if="!item.link">
@@ -37,6 +37,12 @@
   import { getXgbNotice } from 'api/xgb'
 
   export default {
+    filters: {
+      formatTime (val) {
+        val = val.replace(/T[^]*Z/g, '')
+        return val
+      }
+    },
     components: {
       Toggle,
       Scroll,
@@ -49,6 +55,7 @@
       }
     },
     activated () {
+      this.item = []
       setTimeout(() => {
         this.key = this.$route.query.page
         this.getXgbNotice()

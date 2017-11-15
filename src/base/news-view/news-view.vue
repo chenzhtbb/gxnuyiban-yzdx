@@ -21,9 +21,7 @@
             </router-link>
           </div>
         </div>
-        <keep-alive>
-          <router-view></router-view>
-        </keep-alive>
+        <router-view></router-view>
         <div style="position: relative; height: 70px;"></div>
       </div>
     </scroll>
@@ -40,7 +38,7 @@
   export default {
     filters: {
       top (value, top) {
-        if (top === 1) {
+        if (top === '1') {
           return '【置顶】' + value
         }
         return value

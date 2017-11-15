@@ -102,11 +102,13 @@
   th
     text-align center
     vertical-align middle
+    font-size 12px
 
   td
     text-align center
     vertical-align middle
     padding 0
+    font-size 12px
   tr
     border 0
 </style>

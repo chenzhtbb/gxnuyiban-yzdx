@@ -61,6 +61,7 @@
     right 0
     bottom 0
     z-index 998
+    background rgba(0, 0, 0, 0.46)
     &.confirm-fade-enter-active
       animation confirm-fadein 0.3s
       .confirm-content

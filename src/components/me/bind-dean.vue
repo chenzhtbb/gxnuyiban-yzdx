@@ -3,7 +3,7 @@
     <div class="bind-dean">
       <div class="box box-info">
         <div class="box-header with-border">
-          <h3 class="box-title">绑定教务处</h3>
+          <h3>绑定教务处</h3>
         </div>
         <div class="form-horizontal">
           <div class="box-body">

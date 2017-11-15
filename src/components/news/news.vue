@@ -1,6 +1,7 @@
 <template>
   <transition name="slide">
     <div class="news">
+      <iframe></iframe>
       <scroll style="height: 100%;" :data="item">
         <div style="margin: 8px;">
           <div class="top">
@@ -71,6 +72,13 @@
 
 <style scoped lang="stylus" ref="stylesheet/stylus">
   @import "~common/stylus/mixin"
+
+  iframe
+    z-index -1
+    width 0
+    height 0
+    border 0
+    display none
 
   img
     width 100% !important

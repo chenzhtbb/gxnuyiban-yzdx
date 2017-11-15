@@ -3,45 +3,22 @@
     <div class="book-list">
       <scroll :data="items" style="height: 100%;" ref="scroll">
         <div class="col-xs-12">
-          <div>
+          <div v-for="(item, index) in items">
             <div class="box box-warning">
-              <div class="box-header with-border" @click="onClickCollapse">
-                <h3 class="box-title">校园应急电话</h3>
+              <div class="box-header with-border" @click="onClickCollapse(index)">
+                <h3 class="box-title">{{item.department}}</h3>
                 <div class="box-tools pull-right">
-                  <button type="button" class="btn btn-box-tool"><i class="fa" :class="icon"></i>
+                  <button type="button" class="btn btn-box-tool"><i class="fa" :class="item.icon"></i>
                   </button>
                 </div>
               </div>
-              <div class="box-body" :style="hide">
+              <div class="box-body" :style="item.style">
                 <div class="box-footer no-padding">
                   <ul class="nav nav-stacked">
-                    <li class="item" v-for="item in items" @click="tel(item.tel)">
+                    <li class="item" v-for="i in item.list" @click="tel(i.tel)">
                       <a>
-                        {{item.name | wrap}}
-                        <span class="pull-right tel">{{item.tel | areaCode}}</span>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div>
-            <div class="box box-warning">
-              <div class="box-header with-border">
-                <h3 class="box-title">校园应急电话</h3>
-                <div class="box-tools pull-right">
-                  <button type="button" class="btn btn-box-tool"><i class="fa" :class="icon"></i>
-                  </button>
-                </div>
-              </div>
-              <div class="box-body">
-                <div class="box-footer no-padding">
-                  <ul class="nav nav-stacked">
-                    <li class="item" v-for="item in items" @click="tel(item.tel)">
-                      <a>
-                        {{item.name | wrap}}
-                        <span class="pull-right tel">{{item.tel | areaCode}}</span>
+                        {{i.name | wrap}}
+                        <span class="pull-right tel">{{i.tel | areaCode}}</span>
                       </a>
                     </li>
                   </ul>
@@ -83,9 +60,7 @@
     },
     data () {
       return {
-        items: [],
-        hide: '',
-        icon: 'fa-minus'
+        items: []
       }
     },
     activated () {
@@ -108,21 +83,23 @@
       getBookList () {
         let page = this.$route.query.id
         getBookList(page).then((res) => {
-          this.items = res.items
+          if (res.code === 1) {
+            this.items = res.items
+          }
         })
       },
-      onClickCollapse () {
-        this.hide = this.empty(this.hide) ? 'display: none;' : ''
+      onClickCollapse (index) {
+        this.items[index].style = this.empty(this.items[index].style, index) ? 'display: none;' : ''
         setTimeout(() => {
           this.$refs.scroll && this.$refs.scroll.refresh()
         }, 20)
       },
-      empty (val) {
+      empty (val, index) {
         if (!val) {
-          this.icon = 'fa-plus'
+          this.items[index].icon = 'fa-plus'
           return true
         } else {
-          this.icon = 'fa-minus'
+          this.items[index].icon = 'fa-minus'
           return false
         }
       }

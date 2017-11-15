@@ -4,7 +4,7 @@ import App from './App'
 import store from './store'
 import router from './router'
 import fastclick from 'fastclick'
-import './permission'
+// import './permission'
 
 import VueLazyload from 'vue-lazyload'
 import VueImg from 'v-img'

@@ -55,11 +55,11 @@
             this.title = '您还没有绑定教务处账户，是否马上绑定？'
             this.$refs.confirm.show()
           }
-          this.setBinddorm(this.userInfo.dorm)
-          if (this.userInfo.dean.dean === 1 && this.userInfo.dorm.dorm === 0) {
-            this.title = '您还没有绑定宿舍号，是否马上绑定？'
-            this.$refs.confirm.show()
-          }
+//          this.setBinddorm(this.userInfo.dorm)
+//          if (this.userInfo.dean.dean === 1 && this.userInfo.dorm.dorm === 0) {
+//            this.title = '您还没有绑定宿舍号，是否马上绑定？'
+//            this.$refs.confirm.show()
+//          }
           console.log(this.userInfo)
         })
       },
