@@ -189,6 +189,18 @@ apiRoutes.get('/oauth', function (req, res) {
   })
 })
 
+apiRoutes.get('/getSearchBookList', function (req, res) {
+  var url = 'http://localhost/api/public/index/api/getSearchBookList'
+
+  axios.get(url, {
+    params: req.query
+  }).then((response) => {
+    res.json(response.data)
+  }).catch((e) => {
+    console.log(e)
+  })
+})
+
 app.use('/index/api', apiRoutes)
 
 var compiler = webpack(webpackConfig)

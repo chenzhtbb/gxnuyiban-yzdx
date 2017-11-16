@@ -27,3 +27,20 @@ export function getBookList (type = 0) {
   })
 }
 
+export function getSearchBookList (key = '') {
+  if (!key) {
+    return
+  }
+  const url = prefix + '/getSearchBookList'
+
+  const data = Object.assign({}, {
+    key: key
+  })
+
+  return axios.get(url, {
+    params: data
+  }).then((res) => {
+    return Promise.resolve(res.data)
+  })
+}
+
