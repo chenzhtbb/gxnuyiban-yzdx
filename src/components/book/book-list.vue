@@ -85,6 +85,8 @@
         getBookList(page).then((res) => {
           if (res.code === 1) {
             this.items = res.items
+            this.items[0].style = ''
+            this.items[0].icon = 'fa-minus'
           }
         })
       },

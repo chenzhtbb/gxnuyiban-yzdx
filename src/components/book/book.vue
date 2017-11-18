@@ -12,7 +12,7 @@
         </li>
       </ul>
       <div class="list" v-else>
-        <search-list :searches="searches"></search-list>
+        <search-list :searches="searches" @select="tel"></search-list>
       </div>
     </div>
     <router-view></router-view>
@@ -23,7 +23,8 @@
   import { getBook, getSearchBookList } from 'api/book'
   import SearchBox from 'base/search-box/search-box'
   import SearchList from 'base/search-list/search-list'
-  import { checkRepeat } from 'common/js/util'
+//  import { checkRepeat } from 'common/js/util'
+  import { phoneFun, browser } from 'common/js/ybh5'
 
   export default {
     components: {
@@ -42,19 +43,31 @@
       }, 20)
     },
     methods: {
+      tel (telephone) {
+        let num = telephone
+        if (telephone.length === 7) {
+          num = '0773' + telephone
+        }
+        if (browser.versions.ios) {
+          window.location.href = `tel:${num}`
+        } else if (browser.versions.android) {
+          phoneFun(num)
+        }
+      },
       queryKey (val) {
         console.log(val)
         if (val === '') {
           this.searches = []
         } else {
           getSearchBookList(val).then((res) => {
-            for (let i = 0; i < res.length; i++) {
-              let item = checkRepeat(res[i], this.searches)
-              if (item) {
-                this.searches.push(item)
-              }
-            }
-            console.log(this.searches)
+            this.searches = res
+//            for (let i = 0; i < res.length; i++) {
+//              let item = checkRepeat(res[i], this.searches)
+//              if (item) {
+//                this.searches.push(item)
+//              }
+//            }
+//            console.log(this.searches)
           })
         }
       },

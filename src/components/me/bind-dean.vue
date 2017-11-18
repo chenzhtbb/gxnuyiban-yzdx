@@ -78,7 +78,7 @@
           if (res.code === 1) {
             this.bind.dean = 1
             this.setBinddean(this.bind)
-            this.$router.replace('/me')
+            this.$router.go(-1)
           } else {
             alert('error')
           }

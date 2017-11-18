@@ -1,6 +1,6 @@
 <template>
   <div class="search-list">
-    <scroll :data="searches" class="scroll">
+    <scroll :data="searches" class="scroll" ref="scroll" :isToTop="isToTop">
       <div>
         <transition-group name="list" tag="ul">
           <!--<li :key="{index: -1}" class="search-item" style="border: none;">-->
@@ -38,6 +38,11 @@
         return val
       }
     },
+    data () {
+      return {
+        isToTop: true
+      }
+    },
     components: {
       Scroll
     },
@@ -49,7 +54,7 @@
     },
     methods: {
       selectItem (item) {
-        this.$emit('select', item)
+        this.$emit('select', item.tel)
       }
     }
   }

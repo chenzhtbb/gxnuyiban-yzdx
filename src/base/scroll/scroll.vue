@@ -33,6 +33,10 @@
       freeScroll: {
         type: Boolean,
         default: false
+      },
+      isToTop: {
+        type: Boolean,
+        default: false
       }
     },
     data () {
@@ -85,6 +89,9 @@
       refresh () {
         this.scroll && this.scroll.refresh()
       },
+      scrollToTop () {
+        this.scroll && this.scroll.scrollTo(0, 0, 400)
+      },
       finishPullUp () {
         this.isPullUpLoad = false
         this.scroll && this.scroll.finishPullUp()
@@ -93,8 +100,15 @@
     watch: {
       data () {
         setTimeout(() => {
-          this.refresh()
-          this.finishPullUp()
+          if (this.isPullUpLoad) {
+            this.finishPullUp()
+          }
+          if (this.isToTop) {
+            this.scrollToTop()
+          }
+          setTimeout(() => {
+            this.refresh()
+          }, 20)
         }, 20)
       }
     }

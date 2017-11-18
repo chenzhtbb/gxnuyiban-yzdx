@@ -44,16 +44,6 @@
 
 <style scoped lang="stylus" rel="stylesheet/stylus">
 
-  .input-box
-    border 0
-    outline none
-    font-size 14px
-    width 100%
-    margin 0 5px
-    background-color #F4F4F4
-    &::placeholder
-      color: #333
-
   .search-box
     display flex
     align-items center
@@ -63,6 +53,17 @@
     height 24px
     border-radius 6px
     background-color #F4F4F4
+    .input-box
+      border 0
+      outline none
+      font-size 14px
+      line-height 24px
+      height 24px
+      width 100%
+      margin 0 5px
+      background-color #F4F4F4
+      &::placeholder
+        color: #333
     .icon-search
       font-size: 16px
       color: #333
