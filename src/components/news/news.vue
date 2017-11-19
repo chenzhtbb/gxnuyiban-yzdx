@@ -51,7 +51,7 @@
         item: []
       }
     },
-    mounted () {
+    activated () {
       setTimeout(() => {
         if (this.item.length) {
           return
@@ -59,7 +59,7 @@
         this.getNewsPage()
       }, 20)
     },
-    beforeDestroy () {
+    deactivated () {
       this.item.content = ''
     },
     methods: {
