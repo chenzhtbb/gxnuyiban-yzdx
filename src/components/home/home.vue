@@ -3,7 +3,7 @@
     <scroll class="home-scroll" :isScroll="isScroll" :data="sliderNews">
       <div>
         <div v-if="sliderNews.length">
-          <slider class="slider-news" ref="slider">
+          <slider class="slider-news" ref="news">
             <div class="news" v-for="news in sliderNews">
               <a :href="news.link">
                 <div class="title">
@@ -20,26 +20,26 @@
             <div style="padding-bottom: 2px;">
               <p style="border-left: 5px solid #FF6699" text-left="">&nbsp;&nbsp;学工在线</p>
             </div>
-            <slider :showDot="hideDot" :autoPlay="hideDot">
+            <slider :showDot="hideDot" :autoPlay="hideDot" ref="online">
               <home-online></home-online>
               <!--<home-online2></home-online2>-->
             </slider>
             <div style="padding-bottom: 2px;">
               <p style="border-left: 5px solid #00CCFF" text-left="">&nbsp;&nbsp;教务服务</p>
             </div>
-            <slider :showDot="hideDot" :autoPlay="hideDot">
+            <slider :showDot="hideDot" :autoPlay="hideDot" ref="dean">
               <home-dean></home-dean>
             </slider>
             <div style="padding-bottom: 2px;">
               <p style="border-left: 5px solid #FF0033" text-left="">&nbsp;&nbsp;生活服务</p>
             </div>
-            <slider :showDot="hideDot" :autoPlay="hideDot">
+            <slider :showDot="hideDot" :autoPlay="hideDot" ref="life">
               <home-life></home-life>
             </slider>
             <div style="padding-bottom: 2px;">
               <p style="border-left: 5px solid #CC00FF" text-left="">&nbsp;&nbsp;办公服务</p>
             </div>
-            <slider :showDot="hideDot" :autoPlay="hideDot">
+            <slider :showDot="hideDot" :autoPlay="hideDot" ref="office">
               <home-office></home-office>
             </slider>
           </div>
@@ -69,9 +69,13 @@
       }
     },
     activated () {
-//      setTimeout(() => {
-//        this.$refs.slider && this.$refs.slider.refresh()
-//      }, 20)
+      setTimeout(() => {
+        this.$refs.news && this.$refs.news.refresh()
+        this.$refs.online && this.$refs.online.refresh()
+        this.$refs.dean && this.$refs.dean.refresh()
+        this.$refs.life && this.$refs.life.refresh()
+        this.$refs.office && this.$refs.office.refresh()
+      }, 20)
     },
     components: {
       Slider,
