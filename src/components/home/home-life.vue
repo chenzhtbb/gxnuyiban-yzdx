@@ -8,9 +8,9 @@
       <span class="iconfont icon-xingzhuang9kaobei icon bg-00c0ef"></span>
       <span class="grid-center">失物招领</span>
     </router-link>
-    <router-link tag="div" to="/">
-      <span class="iconfont icon-jingqingqidai icon bg-D81B60"></span>
-      <span class="grid-center">网上报修</span>
+    <router-link tag="div" to="/app/secondhand">
+      <span class="iconfont icon-ershou icon bg-D81B60"></span>
+      <span class="grid-center">二手市场</span>
     </router-link>
     <router-link tag="div" to="/">
       <span class="iconfont icon-jingqingqidai icon bg-00a65a"></span>

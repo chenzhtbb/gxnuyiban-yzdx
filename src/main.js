@@ -1,36 +1,37 @@
 import 'babel-polyfill'
 import Vue from 'vue'
 import App from './App'
-import store from './store'
-import router from './router'
-import fastclick from 'fastclick'
-// import './permission'
+import store from './store'                   // vuex状态管理
+import router from './router'                 // 路由
+// import './permission'                      // 前端授权 加速访问
+import fastclick from 'fastclick'             // 取消移动端300ms点击延时
+import VueLazyload from 'vue-lazyload'        // 图片懒加载
+import VueImg from 'v-img'                    // 图片图库预览
+import iosAlertView from 'vue-ios-alertview'  // 苹果风格弹窗
 
-import VueLazyload from 'vue-lazyload'
-import VueImg from 'v-img'
-
-Vue.use(VueLazyload, {
-  loading: require('common/image/1c264fdfff5081e1f279a3fb643b00f3.png'),
-  error: require('common/image/c07bf04c4452b9f354c5b9c201ffade4.png'),
-  attempt: 3
-})
 const vueImgConfig = {
   altAsTitle: false,
   sourceButton: false
 }
+const vueLazyloadConfig = {
+  loading: require('common/image/1c264fdfff5081e1f279a3fb643b00f3.png'),  // 加载中图片
+  error: require('common/image/c07bf04c4452b9f354c5b9c201ffade4.png'),    // 加载错误拖
+  attempt: 3                                                              // 重试次数
+}
+
+Vue.use(VueLazyload, vueLazyloadConfig)
 Vue.use(VueImg, vueImgConfig)
+Vue.use(iosAlertView)
 
 Vue.config.productionTip = false
 
-import 'common/stylus/index.styl'
+import 'common/stylus/index.styl' // 应用全局样式
 
-// import vConsole from 'vconsole'
-// import VConsole from 'vconsole/dist/vconsole.min'
+// import VConsole from 'vconsole/dist/vconsole.min'  // 微信console控制台插件
 /* eslint-disable no-unused-vars */
-// const vConsole = new VConsole()
-console.log('test')
+// const vConsole = new VConsole()                    // 开启微信console控制台
 
-fastclick.attach(document.body)
+fastclick.attach(document.body)  // 注册fastclick
 
 /* eslint-disable no-new */
 new Vue({

@@ -51,7 +51,7 @@
         item: []
       }
     },
-    activated () {
+    mounted () {
       setTimeout(() => {
         if (this.item.length) {
           return
@@ -59,11 +59,28 @@
         this.getNewsPage()
       }, 20)
     },
+    beforeDestroy () {
+      this.item.content = ''
+    },
     methods: {
       getNewsPage () {
         let page = this.$route.query.page
         getNews(page).then((res) => {
           this.item = res
+          this.item.content += `<style scoped lang="stylus" ref="stylesheet/stylus">
+                                  p{
+                                    font-size: 20px ;
+                                    line-height: 30px ;
+                                  }
+                                  span{
+                                    font-size: 20px ;
+                                    line-height: 30px ;
+                                  }
+                                  img{
+                                    width: ${window.innerWidth}px !important;
+                                    height: ${window.innerWidth * 0.618}px !important;
+                                  }
+                                </style>`
         })
       }
     }

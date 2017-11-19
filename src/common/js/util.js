@@ -36,3 +36,11 @@ export function checkRepeat (item, arr) {
   }
   return item
 }
+
+export function empty (val) {
+  let isEmpty = false
+  if (!val) {
+    isEmpty = true
+  }
+  return isEmpty
+}

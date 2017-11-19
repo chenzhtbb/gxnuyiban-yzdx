@@ -21,6 +21,7 @@ const News = () => import('components/news/news')
 const Electricity = () => import('components/life/electricity')
 const SchoolBus = () => import('components/life/school-bus')
 const LostAndFound = () => import('components/life/lost-and-found')
+const SecondHand = () => import('components/life/second-hand')
 const Book = () => import('components/book/book')
 const BookList = () => import('components/book/book-list')
 const Lost = () => import('components/lost-found/lost')
@@ -49,6 +50,10 @@ export default new Router({
       path: '/app',
       component: Application,
       children: [
+        {
+          path: 'secondhand',
+          component: SecondHand
+        },
         {
           path: 'xgbnotice',
           component: XgbNotice

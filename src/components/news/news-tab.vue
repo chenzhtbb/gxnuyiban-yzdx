@@ -8,23 +8,23 @@
         <div class="operators">
           <router-link to="/app/newstab/gwgg" tag="div" class="icon i-left" replace>
             <p class="iconfont icon-gongwen"></p>
-            <p class="">公文公告</p>
+            <p class="text">公文公告</p>
           </router-link>
           <router-link to="/app/newstab/hyap" tag="div" class="icon i-left" replace>
             <p class="iconfont icon-iconhuiyianpai01"></p>
-            <p class="">会议安排</p>
+            <p class="text">会议安排</p>
           </router-link>
           <router-link to="/app/newstab/jwtz" tag="div" class="icon i-center" replace>
             <p class="iconfont icon-jiaowuguanli"></p>
-            <p class="">教务通知</p>
+            <p class="text">教务通知</p>
           </router-link>
           <router-link to="/app/newstab/xyxw" tag="div" class="icon i-right" replace>
             <p class="iconfont icon-xiaoyuanxinwen"></p>
-            <p class="">校园新闻</p>
+            <p class="text">校园新闻</p>
           </router-link>
           <router-link to="/app/newstab/jzbg" tag="div" class="icon i-right" replace>
             <p class="iconfont icon-jiangzuo"></p>
-            <p class="">讲座报告</p>
+            <p class="text">讲座报告</p>
           </router-link>
         </div>
       </div>
@@ -71,6 +71,8 @@
         background #EEEEEE
         .icon
           flex 1
+          .text
+            font-size 14px !important
           &.router-link-active
             color #0099FF
             border-bottom 1px solid #0099FF

@@ -9,11 +9,7 @@
           <div class="box-body">
             <div class="form-group col-sm-10">
               <label>选择校区</label>
-              <select class="form-control" v-model="bind.campus">
-                <option>雁山校区</option>
-                <option>育才校区</option>
-                <option>王城校区</option>
-              </select>
+              <button class="form-control" @click="selectCampus" >{{bind.campus}}</button>
             </div>
             <div class="form-group">
               <label class="col-sm-2 control-label">宿舍号</label>
@@ -40,6 +36,7 @@
   import InputBox from 'base/input-box/input-box'
   import ConfirmBox from 'base/confirm-box/confirm-box'
   import { bindDorm } from 'api/dorm'
+  import { empty } from 'common/js/util'
 
   export default {
     components: {
@@ -49,7 +46,7 @@
     data () {
       return {
         text: '确认解除宿舍绑定吗？',
-        bind: {campus: '', room: '', dorm: 0}
+        bind: {campus: '请选择校区', room: '', dorm: 0}
       }
     },
     mounted () {
@@ -69,11 +66,40 @@
       ...mapMutations({
         setBinddorm: 'SET_BINDDORM'
       }),
+      selectCampus () {
+        this.$iosAlertView({
+          title: '选择您所在的校区',
+          buttons: [
+            {
+              text: '雁山校区',
+              onClick: () => {
+                this.bind.campus = '雁山校区'
+              }
+            },
+            {
+              text: '育才校区',
+              onClick: () => {
+                this.bind.campus = '育才校区'
+              }
+            },
+            {
+              text: '王城校区',
+              onClick: () => {
+                this.bind.campus = '王城校区'
+              }
+            }
+          ]
+
+        })
+      },
       _GetDorm () {
-        this.bind = this.binddorm
+//        this.bind = this.binddorm
       },
       _bindDorm () {
-        console.log(this.bind)
+        if (this.bind.campus === '请选择校区' || empty(this.bind.campus) || empty(this.bind.room)) {
+          this.$iosAlert('校区或宿舍号为空')
+          return
+        }
         bindDorm(1, this.bind.campus, this.bind.room).then((res) => {
           if (res.code === 1) {
             this.bind.dorm = 1

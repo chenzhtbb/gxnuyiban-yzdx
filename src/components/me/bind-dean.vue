@@ -38,6 +38,7 @@
   import InputBox from 'base/input-box/input-box'
   import ConfirmBox from 'base/confirm-box/confirm-box'
   import { bindUser } from 'api/dean'
+  import { empty } from 'common/js/util'
 
   export default {
     components: {
@@ -47,7 +48,7 @@
     data () {
       return {
         text: '确认解除教务处绑定吗？',
-        bind: {username: '123', password: '', dean: 0}
+        bind: {username: '', password: '', dean: 0}
       }
     },
     mounted () {
@@ -74,13 +75,18 @@
         }
       },
       _bindDean () {
+        if (empty(this.bind.username) || empty(this.bind.password)) {
+          this.$iosAlert('教务处账号或密码为空')
+          return
+        }
         bindUser(1, this.bind.username, this.bind.password).then((res) => {
           if (res.code === 1) {
             this.bind.dean = 1
             this.setBinddean(this.bind)
             this.$router.go(-1)
           } else {
-            alert('error')
+            this.bind.username = this.bind.password = ''
+            this.$iosAlert('教务处账号或密码错误')
           }
         })
       },
