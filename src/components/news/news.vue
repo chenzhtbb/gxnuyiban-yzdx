@@ -2,7 +2,7 @@
   <transition name="slide">
     <div class="news">
       <iframe></iframe>
-      <scroll style="height: 100%;" :data="item">
+      <scroll style="height: 100%;" :data="item" :isToTop="isToTop">
         <div style="margin: 8px;">
           <div class="top">
             <div class="title">
@@ -48,7 +48,8 @@
     },
     data () {
       return {
-        item: []
+        item: [],
+        isToTop: true
       }
     },
     activated () {
