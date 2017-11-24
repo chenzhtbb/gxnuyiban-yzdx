@@ -1,13 +1,13 @@
 <template>
   <div class="grid-center">
-    <router-link tag="div" to="/app/score">
+    <div @click="gotoDean('/app/score')">
       <span class="iconfont icon-chengjichaxun icon bg-00c0ef"></span>
       <span class="grid-center">成绩</span>
-    </router-link>
-    <router-link tag="div" to="/app/classtable">
+    </div>
+    <div @click="gotoDean('/app/classtable')">
       <span class="iconfont icon-kebiaochaxun icon bg-00a65a"></span>
       <span class="grid-center">课表</span>
-    </router-link>
+    </div>
     <router-link tag="div" to="/app/library">
       <span class="iconfont icon-tushuguan icon bg-ff851b"></span>
       <span class="grid-center">图书馆</span>
@@ -24,6 +24,28 @@
 </template>
 
 <script type="text/ecmascript-6">
+  import { mapGetters } from 'vuex'
+
+  export default {
+    computed: {
+      ...mapGetters([
+        'binddean'
+      ])
+    },
+    methods: {
+      gotoDean (path) {
+        if (this.binddean.dean === 0) {
+          this.$iosConfirm('您还没有绑定教务处账户，是否马上绑定？').then((res) => {
+            this.$router.push('/app/binddean')
+          }).catch((err) => {
+            console.log(err)
+          })
+        } else {
+          this.$router.push(path)
+        }
+      }
+    }
+  }
 </script>
 
 <style scoped lang="stylus" ref="stylesheet/stylus">

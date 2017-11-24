@@ -48,7 +48,7 @@
         scoreList: []
       }
     },
-    mounted () {
+    activated () {
       getScore().then((res) => {
         this.scoreList = res.score
       })

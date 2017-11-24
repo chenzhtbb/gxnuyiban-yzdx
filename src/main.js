@@ -19,9 +19,15 @@ const vueLazyloadConfig = {
   attempt: 3                                                              // 重试次数
 }
 
+const iosAlertViewConfig = {
+  okText: '确认',
+  cancelText: '取消',
+  remindDuration: 400
+}
+
 Vue.use(VueLazyload, vueLazyloadConfig)
 Vue.use(VueImg, vueImgConfig)
-Vue.use(iosAlertView)
+Vue.use(iosAlertView, iosAlertViewConfig)
 
 Vue.config.productionTip = false
 

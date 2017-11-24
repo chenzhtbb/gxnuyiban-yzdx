@@ -14,25 +14,25 @@
         <p class="">我的</p>
       </router-link>
     </div>
-    <confirm-box
-      ref="confirm"
-      :text="title"
-      :confirmBtnText="confirmBtnText"
-      :cancelBtnText="cancelBtnText"
-      @confirm="gotoBind"
-    ></confirm-box>
+    <!--<confirm-box-->
+      <!--ref="confirm"-->
+      <!--:text="title"-->
+      <!--:confirmBtnText="confirmBtnText"-->
+      <!--:cancelBtnText="cancelBtnText"-->
+      <!--@confirm="gotoBind"-->
+    <!--&gt;</confirm-box>-->
   </div>
 </template>
 
 <script type="text/ecmascript-6">
   import { mapMutations } from 'vuex'
   import { getUser } from 'api/user'
-  import ConfirmBox from 'base/confirm-box/confirm-box'
+//  import ConfirmBox from 'base/confirm-box/confirm-box'
 
   export default {
-    components: {
-      ConfirmBox
-    },
+//    components: {
+//      ConfirmBox
+//    },
     data () {
       return {
         title: '',
@@ -51,10 +51,10 @@
           this.userInfo = res
           this.setUinfo(this.userInfo.yb)
           this.setBinddean(this.userInfo.dean)
-          if (this.userInfo.dean.dean === 0) {
-            this.title = '您还没有绑定教务处账户，是否马上绑定？'
-            this.$refs.confirm.show()
-          }
+//          if (this.userInfo.dean.dean === 0) {
+//            this.title = '您还没有绑定教务处账户，是否马上绑定？'
+//            this.$refs.confirm.show()
+//          }
 //          this.setBinddorm(this.userInfo.dorm)
 //          if (this.userInfo.dean.dean === 1 && this.userInfo.dorm.dorm === 0) {
 //            this.title = '您还没有绑定宿舍号，是否马上绑定？'

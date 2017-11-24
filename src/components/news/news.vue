@@ -40,6 +40,7 @@
   import Scroll from 'base/scroll/scroll'
   import Loading from 'base/loading/loading'
   import { getNews } from 'api/news'
+  import { downloadFun, browser } from 'common/js/ybh5.js'
 
   export default {
     components: {
@@ -49,7 +50,8 @@
     data () {
       return {
         item: [],
-        isToTop: true
+        isToTop: true,
+        downloadList: []
       }
     },
     activated () {
@@ -64,10 +66,36 @@
       this.item.content = ''
     },
     methods: {
+      aDownload (target) {
+        // http://www.gxnu.edu.cn/notice/download/
+        if (this.downloadList[target].search(/\dhttp:/i) < 0) {
+          if (browser.versions.ios) {
+            window.location.href = this.downloadList[target]
+          } else if (browser.versions.android) {
+            downloadFun(this.downloadList[target])
+          }
+        } else {
+          let link = this.downloadList[target].match(/\dhttp:.*$/i)[0]
+          link = link.match(/http:.*$/i)[0]
+          window.location.href = link
+        }
+      },
       getNewsPage () {
         let page = this.$route.query.page
         getNews(page).then((res) => {
           this.item = res
+          setTimeout(() => {
+            let alist = document.getElementsByTagName('a')
+            for (let i = 0; i < alist.length; i++) {
+              this.downloadList.push(alist[i].href)
+              alist[i].href = 'javascript:;'
+              alist[i].target = i
+              console.log(alist[i])
+              alist[i].onclick = (e) => {
+                this.aDownload(e.target.target) // 下载附件
+              }
+            }
+          }, 400)
           this.item.content += `<style scoped lang="stylus" ref="stylesheet/stylus">
                                   p{
                                     font-size: 20px ;

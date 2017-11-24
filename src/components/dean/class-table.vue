@@ -57,7 +57,7 @@
     components: {
       Scroll
     },
-    mounted () {
+    activated () {
       this._getTimetable()
     },
     data () {

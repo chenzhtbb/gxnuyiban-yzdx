@@ -140,7 +140,7 @@ function back_fun() {
  函数作用：下载
  参数说明：地址
  */
-function download_fun(vurl) {
+export function downloadFun(vurl) {
   if (browser.versions.android) {
     //android 调用方式
     window.local_obj.download(vurl);
