@@ -6,6 +6,7 @@ const Me = () => import('components/me/me')
 const BindDean = () => import('components/me/bind-dean')
 const Settings = () => import('components/me/settings')
 const BindDorm = () => import('components/me/bind-dorm')
+const Feedback = () => import('components/me/feedback')
 const Score = () => import('components/dean/score')
 const ClassTable = () => import('components/dean/class-table')
 const Selcourse = () => import('components/dean/selcourse')
@@ -50,6 +51,10 @@ export default new Router({
       path: '/app',
       component: Application,
       children: [
+        {
+          path: 'feedback',
+          component: Feedback
+        },
         {
           path: 'secondhand',
           component: SecondHand

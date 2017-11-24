@@ -8,7 +8,7 @@
               <div class="box-header with-border" @click="onClickCollapse(index)">
                 <h3 class="box-title">{{item.department}}</h3>
                 <div class="box-tools pull-right">
-                  <button type="button" class="btn btn-box-tool"><i class="fa" :class="item.icon"></i>
+                  <button type="button" class="btn btn-box-tool"><i class="iconfont" :class="item.icon"></i>
                   </button>
                 </div>
               </div>
@@ -98,7 +98,7 @@
       },
       empty (val, index) {
         if (!val) {
-          this.items[index].icon = 'fa-plus'
+          this.items[index].icon = 'icon-jia'
           return true
         } else {
           this.items[index].icon = 'fa-minus'

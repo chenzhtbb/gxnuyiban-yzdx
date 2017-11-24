@@ -201,6 +201,16 @@ apiRoutes.get('/getSearchBookList', function (req, res) {
   })
 })
 
+apiRoutes.post('/putFeedback', function (req, res) {
+  var url = 'http://localhost/api/public/index/api/putFeedback'
+
+  axios.post(url, req).then((response) => {
+    res.json(response.data)
+  }).catch((e) => {
+    console.log(e)
+  })
+})
+
 app.use('/index/api', apiRoutes)
 
 var compiler = webpack(webpackConfig)

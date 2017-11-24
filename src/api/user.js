@@ -13,3 +13,15 @@ export function getUser () {
   })
 }
 
+export function putFeedback (type = '', title = '', content = '') {
+  const url = prefix + '/putFeedback'
+
+  let formdara = new FormData()
+  formdara.append('type', type)
+  formdara.append('title', title)
+  formdara.append('content', content)
+
+  return axios.post(url, formdara).then((res) => {
+    return Promise.resolve(res.data)
+  })
+}

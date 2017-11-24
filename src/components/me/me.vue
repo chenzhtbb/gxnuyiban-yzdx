@@ -23,6 +23,12 @@
                 <!--<span class="pull-right badge bg-blue"></span>-->
               </router-link>
             </li>
+            <li>
+              <router-link tag="a" to="/app/feedback">
+                意见反馈
+                <!--<span class="pull-right badge bg-blue"></span>-->
+              </router-link>
+            </li>
           </ul>
         </div>
       </div>
