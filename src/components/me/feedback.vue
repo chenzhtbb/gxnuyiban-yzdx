@@ -6,7 +6,7 @@
           <h3 class="box-title">意见反馈</h3>
         </div>
         <div class="box-body">
-          <div class="form-group has-error">
+          <div class="form-group has-success">
             <div class="form-group">
               <label>反馈类别</label>
               <select class="form-control" v-model="type">
@@ -21,7 +21,7 @@
             <label class="control-label">反馈标题</label>
             <input class="form-control" placeholder="反馈标题 ..." v-model="title">
           </div>
-          <div class="form-group has-warning">
+          <div class="form-group has-success">
             <label class="control-label">反馈内容</label>
             <textarea rows="11" class="form-control" placeholder="反馈内容 ..." v-model="content"></textarea>
           </div>
