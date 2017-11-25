@@ -1,6 +1,6 @@
 <template>
   <div class="news-gwgg">
-    <div class="news-tab">
+    <div class="news-tab" v-if="startY">
       <div class="tab">
         <div class="tab-item tab-item-active" @click="_getNews(6)">
           <span class="tab-link">公文</span>
@@ -19,6 +19,7 @@
 <script type="text/ecmascript-6">
   import NewsView from 'base/news-view/news-view'
   import { getNewsList } from 'api/news'
+  import { mapGetters } from 'vuex'
 
   export default {
     components: {
@@ -28,19 +29,29 @@
       return {
         items: [],
         page: 0,
-        startY: 32
+        startY: 0
       }
+    },
+    computed: {
+      ...mapGetters([
+        'uinfo'
+      ])
     },
     mounted () {
       setTimeout(() => {
-        this._getNews()
+        let type = 1
+        if (this.uinfo.yb_type === 'tea') {
+          this.startY = 32
+          type = 6
+        }
+        this._getNews(type)
         this.$refs.news.$on('pullingUp', () => {
           this._getNews()
         })
       }, 20)
     },
     methods: {
-      _getNews (type = 1) {
+      _getNews (type) {
         getNewsList(type, this.page).then((res) => {
           this.items = this.items.concat(res)
         })
