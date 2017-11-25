@@ -20,7 +20,7 @@
   import NewsView from 'base/news-view/news-view'
   import { getNewsList } from 'api/news'
   import { mapGetters } from 'vuex'
-  import { addClass, moveClass } from 'common/js/dom'
+  import { addClass, moveClass, hasClass } from 'common/js/dom'
 
   export default {
     components: {
@@ -29,7 +29,11 @@
     data () {
       return {
         items: [],
+        cache1: [],
+        cache6: [],
         page: 0,
+        page1: 0,
+        page6: 0,
         startY: 0
       }
     },
@@ -40,32 +44,50 @@
     },
     mounted () {
       setTimeout(() => {
-        let type = 1
+        this.type = 1
         if (this.uinfo.yb_identity !== '学生') {
           this.startY = 32
-          type = 6
+          this.type = 6
+          this.page6 = 1
+        } else {
+          this.page1 = 1
         }
-        this._getNews(type)
+        this._getNews(this.type)
         this.$refs.news.$on('pullingUp', () => {
-          this._getNews()
+          this._getNews(this.type)
         })
       }, 20)
     },
     methods: {
       _getNews (type) {
+        if (type === 1) {
+          this.page = this.page1++
+        } else {
+          this.page = this.page6++
+        }
         getNewsList(type, this.page).then((res) => {
           this.items = this.items.concat(res)
         })
-        this.page++
       },
       active (type) {
         if (type === 1) {
+          if (hasClass(this.$refs.gg, 'tab-item-active')) {
+            return
+          }
           addClass(this.$refs.gg, 'tab-item-active')
           moveClass(this.$refs.gw, 'tab-item-active')
+          this.cache6 = this.items
+          this.items = this.cache1
         } else {
+          if (hasClass(this.$refs.gw, 'tab-item-active')) {
+            return
+          }
           addClass(this.$refs.gw, 'tab-item-active')
           moveClass(this.$refs.gg, 'tab-item-active')
+          this.cache1 = this.items
+          this.items = this.cache6
         }
+        this.type = type
         this._getNews(type)
       }
     }
