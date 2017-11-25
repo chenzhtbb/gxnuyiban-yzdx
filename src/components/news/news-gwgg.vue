@@ -2,10 +2,10 @@
   <div class="news-gwgg">
     <div class="news-tab" v-if="startY">
       <div class="tab">
-        <div class="tab-item tab-item-active" @click="_getNews(6)">
+        <div class="tab-item tab-item-active" @click="active(6)" ref="gw">
           <span class="tab-link">公文</span>
         </div>
-        <div class="tab-item" @click="_getNews(1)">
+        <div class="tab-item" @click="active(1)" ref="gg">
           <span class="tab-link">公告</span>
         </div>
       </div>
@@ -20,6 +20,7 @@
   import NewsView from 'base/news-view/news-view'
   import { getNewsList } from 'api/news'
   import { mapGetters } from 'vuex'
+  import { addClass, moveClass } from 'common/js/dom'
 
   export default {
     components: {
@@ -56,6 +57,16 @@
           this.items = this.items.concat(res)
         })
         this.page++
+      },
+      active (type) {
+        if (type === 1) {
+          addClass(this.$refs.gg, 'tab-item-active')
+          moveClass(this.$refs.gw, 'tab-item-active')
+        } else {
+          addClass(this.$refs.gw, 'tab-item-active')
+          moveClass(this.$refs.gg, 'tab-item-active')
+        }
+        this._getNews(type)
       }
     }
   }

@@ -72,6 +72,11 @@
         type: Number,
         default: 0
       }
+    },
+    watch: {
+      startY () {
+        this.styleY = `position: relative; height: ${this.startY}px`
+      }
     }
   }
 </script>
