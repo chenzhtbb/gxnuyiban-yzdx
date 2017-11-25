@@ -10,16 +10,17 @@
             <div class="form-group">
               <label class="col-sm-2 control-label">教务处账号</label>
               <div class="col-sm-10">
-                <input class="form-control" placeholder="请输入教务处账号" v-model="bind.username">
+                <input class="form-control" placeholder="请输入教务处账号(学号)" v-model="bind.username">
               </div>
             </div>
             <div class="form-group">
               <label class="col-sm-2 control-label">教务处密码</label>
 
               <div class="col-sm-10">
-                <input type="password" class="form-control" placeholder="请输入教务处密码" v-model="bind.password">
+                <input type="password" class="form-control" placeholder="请输入选课密码，默认身份证后6位" v-model="bind.password">
               </div>
             </div>
+            <span class="users-list-date">选课密码忘记了可以找辅导员帮忙重置哦~</span>
             <span class="users-list-date">注：修改教务处密码后需要重新绑定哦~</span>
           </div>
           <div class="box-footer col-sm-10">

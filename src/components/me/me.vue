@@ -7,7 +7,7 @@
           <!--<h5 class="desc">{{user.yb_schoolname}}</h5>-->
         </div>
         <div class="widget-user-image">
-          <img class="img-circle" v-lazy="imgurl" alt="User Photo" style="height: 90px;">
+          <!--<img class="img-circle" v-lazy="imgurl" alt="User Photo" style="height: 90px;">-->
         </div>
         <div class="box-footer no-padding">
           <ul class="nav nav-stacked">
