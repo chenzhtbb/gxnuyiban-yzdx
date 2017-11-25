@@ -62,7 +62,8 @@
     },
     computed: {
       ...mapGetters([
-        'binddean'
+        'binddean',
+        'uinfo'
       ])
     },
     methods: {
@@ -74,6 +75,7 @@
         if (this.bind.dean === 1) {
           this.bind.password = 'abcdefghijklmnopqrstuvwxzy'
         }
+        this.bind.username = this.uinfo.yb_studentid
       },
       _bindDean () {
         if (empty(this.bind.username) || empty(this.bind.password)) {
@@ -86,7 +88,7 @@
             this.setBinddean(this.bind)
             this.$router.go(-1)
           } else {
-            this.bind.username = this.bind.password = ''
+            this.bind.password = ''
             this.$iosAlert('教务处账号或密码错误')
           }
         })
@@ -98,7 +100,8 @@
         bindUser(2).then((res) => {
           if (res.code === 1) {
             this.bind.dean = 0
-            this.bind.username = this.bind.password = ''
+            this.bind.username = this.uinfo.yb_studentid
+            this.bind.password = ''
             this.setBinddean(this.bind)
           } else {
             alert('error')
