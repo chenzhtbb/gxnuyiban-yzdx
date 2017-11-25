@@ -40,10 +40,10 @@
     mounted () {
       setTimeout(() => {
         let type = 1
-        if (this.uinfo.yb_type === 'tea') {
-          this.startY = 32
-          type = 6
-        }
+//        if (this.uinfo.yb_type === 'tea') {
+//          this.startY = 32
+//          type = 6
+//        }
         this._getNews(type)
         this.$refs.news.$on('pullingUp', () => {
           this._getNews()

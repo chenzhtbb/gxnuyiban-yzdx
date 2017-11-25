@@ -18,7 +18,7 @@
               <tr v-for="item in scores.data" style="height: 25px;">
                 <td class="col-xs-6">{{item.kcmc}}</td>
                 <td class="col-xs-2">{{item.kcfs}}</td>
-                <td class="col-xs-2">{{item.kcxf}}</td>
+                <td class="col-xs-2">{{item.kcjd}}</td>
                 <td class="col-xs-2">{{item.kcxf}}</td>
               </tr>
               </tbody>
