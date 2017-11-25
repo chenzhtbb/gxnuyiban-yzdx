@@ -7,6 +7,7 @@
       :pullUpLoad="pullUpLoad"
     >
       <div>
+        <div v-if="startY" :style="styleY"></div>
         <div class="news-list">
           <div v-for="item in items" class="news-item">
             <router-link tag="div" class="news" :to="{path: 'news', query:{page:item.id}}">
@@ -50,11 +51,13 @@
     },
     data () {
       return {
-        pullUpLoad: true
+        pullUpLoad: true,
+        styleY: ''
       }
     },
     mounted () {
       setTimeout(() => {
+        this.styleY = `position: relative; height: ${this.startY}px`
         this.$refs.wrapper.$on('pullingUp', () => {
           this.$emit('pullingUp')
         })
@@ -64,6 +67,10 @@
       items: {
         type: Array,
         default: []
+      },
+      startY: {
+        type: Number,
+        default: 0
       }
     }
   }

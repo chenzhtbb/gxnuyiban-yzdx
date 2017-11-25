@@ -37,6 +37,10 @@
       isToTop: {
         type: Boolean,
         default: false
+      },
+      startY: {
+        type: Number,
+        default: 0
       }
     },
     data () {
@@ -68,6 +72,7 @@
           click: this.click,
           pullUpLoad: this.pullUpLoad,
           freeScroll: this.freeScroll
+//          startY: this.startY
         })
         this.refresh()
         if (this.pullUpLoad) {
