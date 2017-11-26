@@ -19,6 +19,7 @@ const NewsJwtz = () => import('components/news/news-jwtz')
 const NewsJzbg = () => import('components/news/news-jzbg')
 const NewsXyxw = () => import('components/news/news-xyxw')
 const News = () => import('components/news/news')
+const Gw = () => import('components/news/gw')
 const Electricity = () => import('components/life/electricity')
 const SchoolBus = () => import('components/life/school-bus')
 const LostAndFound = () => import('components/life/lost-and-found')
@@ -156,6 +157,10 @@ export default new Router({
             {
               path: 'news',
               component: News
+            },
+            {
+              path: 'newsgw',
+              component: Gw
             }
           ]
         },

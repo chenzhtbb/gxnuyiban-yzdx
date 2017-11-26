@@ -11,20 +11,26 @@
       </div>
     </div>
     <div class="news">
-      <news-view :items="items" ref="news" :startY="startY"></news-view>
+      <news-view :items="items" ref="news" :startY="startY" v-if="this.type === 1"></news-view>
+      <news-gw :items="items" v-else-if="this.uinfo.yb_userid === '5720091'"></news-gw>
+      <div v-else class="xiajia">
+        <p>因访问问题公文暂时下架</p>
+      </div>
     </div>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
   import NewsView from 'base/news-view/news-view'
+  import NewsGw from 'components/news/news-gw'
   import { getNewsList } from 'api/news'
   import { mapGetters } from 'vuex'
   import { addClass, moveClass, hasClass } from 'common/js/dom'
 
   export default {
     components: {
-      NewsView
+      NewsView,
+      NewsGw
     },
     data () {
       return {
@@ -34,7 +40,8 @@
         page: 0,
         page1: 0,
         page6: 0,
-        startY: 0
+        startY: 0,
+        type: 1
       }
     },
     computed: {
@@ -44,13 +51,9 @@
     },
     mounted () {
       setTimeout(() => {
-        this.type = 1
         if (this.uinfo.yb_identity !== '学生') {
           this.startY = 32
           this.type = 6
-          this.page6 = 1
-        } else {
-          this.page1 = 1
         }
         this._getNews(this.type)
         this.$refs.news.$on('pullingUp', () => {
@@ -61,9 +64,11 @@
     methods: {
       _getNews (type) {
         if (type === 1) {
-          this.page = this.page1++
+          this.page = this.page1
+          this.page1++
         } else {
-          this.page = this.page6++
+          this.page = this.page6
+          this.page6++
         }
         getNewsList(type, this.page).then((res) => {
           this.items = this.items.concat(res)
@@ -95,6 +100,15 @@
 </script>
 
 <style scoped lang="stylus" ref="stylesheet/stylus">
+  .xiajia
+    position fixed
+    text-align center
+    left 0
+    right 0
+    bottom 44px
+    top 32px
+    background-color #ffffff
+
   .news-gwgg
     .news
       position fixed

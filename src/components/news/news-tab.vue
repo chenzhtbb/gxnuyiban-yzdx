@@ -60,7 +60,6 @@
     right 0
     z-index 100
     .news-tab-bar
-      height 48px
       .operators
         position fixed
         width 100%

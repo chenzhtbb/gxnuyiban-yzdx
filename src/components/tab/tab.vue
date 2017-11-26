@@ -3,6 +3,7 @@
     <div class="operators">
       <router-link to="/home" tag="div" class="icon i-left" replace>
         <p class="iconfont icon-fuwuzhongxin"></p>
+        <!--<img class="img-icon" src="~common/image/logo.jpg">-->
         <p class="">服务中心</p>
       </router-link>
       <router-link to="/book" tag="div" class="icon i-center" replace>
@@ -105,6 +106,10 @@
           margin 6px 0
         .iconfont
           font-size 16px
+        .img-icon
+          height 16px
+          width 16px
+          text-align center
       .i-left
         text-align right
 
