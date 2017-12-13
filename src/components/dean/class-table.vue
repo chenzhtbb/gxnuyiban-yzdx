@@ -22,7 +22,10 @@
             <tbody>
             <tr v-for="item in items">
               <th>{{item.num}}</th>
-              <td v-for="class_ in item.class" :rowspan="class_.num" :class="class_.length > 1? 'danger':class_.color">
+              <td v-for="class_ in item.class"
+                  :rowspan="class_.num"
+                  :class="class_.length > 1? 'danger'
+                  :class_.color">
                 <div v-if="class_.isclass!='0'">
                   <div v-if="!class_.length">
                     <p>{{class_.name}}</p>
@@ -109,6 +112,7 @@
     vertical-align middle
     padding 0
     font-size 12px
+
   tr
     border 0
 </style>

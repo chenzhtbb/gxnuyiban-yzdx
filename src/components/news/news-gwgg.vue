@@ -1,6 +1,6 @@
 <template>
   <div class="news-gwgg">
-    <div class="news-tab" v-if="startY">
+    <div class="news-tab" v-if="startY || this.uinfo.yb_userid === '5720091'">
       <div class="tab">
         <div class="tab-item tab-item-active" @click="active(6)" ref="gw">
           <span class="tab-link">公文</span>
@@ -11,7 +11,7 @@
       </div>
     </div>
     <div class="news">
-      <news-view :items="items" ref="news" :startY="startY" v-if="this.type === 1"></news-view>
+      <news-view :items="items" @pullingUp="_getNews(type)" :startY="startY" v-if="this.type === 1"></news-view>
       <news-gw :items="items" v-else-if="this.uinfo.yb_userid === '5720091'"></news-gw>
       <div v-else class="xiajia">
         <p>因访问问题公文暂时下架</p>
@@ -51,14 +51,11 @@
     },
     mounted () {
       setTimeout(() => {
-        if (this.uinfo.yb_identity !== '学生') {
+        if (this.uinfo.yb_identity !== '学生' || this.uinfo.yb_userid === '5720091') {
           this.startY = 32
           this.type = 6
         }
         this._getNews(this.type)
-        this.$refs.news.$on('pullingUp', () => {
-          this._getNews(this.type)
-        })
       }, 20)
     },
     methods: {

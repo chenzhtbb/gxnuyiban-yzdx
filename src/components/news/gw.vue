@@ -2,33 +2,33 @@
   <toggle>
     <div class="gw">
       <iframe></iframe>
-      <scroll style="height: 100%;" :data="item" :isToTop="isToTop">
-        <div style="margin: 8px;">
-          <div class="top">
-            <div class="title">
-              <h3>{{item.title}}</h3>
-            </div>
-            <div class="publish">
-              <span>{{item.author}}</span>
-            </div>
-            <div class="time">
-              <span>{{item.time}}</span>
-            </div>
+      <!--<scroll style="height: 100%; width: 100%;" :data="downloadList" :isToTop="isToTop" :freeScroll="free">-->
+      <div style="margin: 8px;">
+        <div class="top">
+          <div class="title">
+            <h3>{{item.title}}</h3>
           </div>
+          <div class="publish">
+            <span>{{item.author}}</span>
+          </div>
+          <div class="time">
+            <span>{{item.time}}</span>
+          </div>
+        </div>
+        <scroll :style="scrollStyle" :data="downloadList" :isToTop="isToTop" :freeScroll="free">
           <div class="content">
-            <div class="content">
-              <div class="text" v-html="item.content"></div>
-            </div>
-            <div v-for="image in images">
-              <img v-img="{group: 'imggroup'}"
-                   :src="image"
-                   width="100%"
-                   height="61.8%">
-            </div>
+            <div class="text" v-html="item.content"></div>
+            <!--<div v-for="image in images">-->
+            <!--<img v-img="{group: 'imggroup'}"-->
+            <!--:src="image"-->
+            <!--width="100%"-->
+            <!--height="61.8%">-->
+            <!--</div>-->
           </div>
           <div style="position: relative; height: 50px;"></div>
-        </div>
-      </scroll>
+        </scroll>
+      </div>
+      <!--</scroll>-->
     </div>
   </toggle>
 </template>
@@ -48,6 +48,8 @@
     data () {
       return {
         item: [],
+        free: true,
+        scrollStyle: '',
         images: [
           'http://202.193.160.77/zfoa/uploadFile/schooldoc/151152107240030684.files/1.gif',
           'http://202.193.160.77/zfoa/uploadFile/schooldoc/151152107240030684.files/2.gif',
@@ -70,6 +72,7 @@
       }
     },
     activated () {
+      this.scrollStyle = `width: ${window.innerWidth}px; height: ${window.innerHeight}px; z-index: -1;`
       setTimeout(() => {
         if (this.item.length) {
           return
@@ -106,6 +109,11 @@
   img
     width 100% !important
 
+  .content
+    position relative
+    padding 8px 0
+    width 1123px;
+
   .gw
     background #FFFFFF
     position fixed
@@ -128,8 +136,6 @@
         float left
       .time
         text-align right
-    .content
-      padding 8px 0
     .attachment
       ul
         padding 0
