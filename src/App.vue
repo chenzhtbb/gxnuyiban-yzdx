@@ -3,9 +3,6 @@
     <keep-alive>
       <router-view></router-view>
     </keep-alive>
-    <!--<div class="oauth" v-if="isHide">-->
-      <!--<loading :title="'正在前往授权服务器...'"></loading>-->
-    <!--</div>-->
     <tab></tab>
   </div>
 </template>
@@ -14,7 +11,8 @@
   import Scroll from 'base/scroll/scroll'
   import Tab from 'components/tab/tab'
   import Loading from 'base/loading/loading'
-  import { getSessionToken } from 'common/js/cache'
+  import { initUser } from 'api/user'
+  //  import { getSessionToken } from 'common/js/cache'
 
   export default {
     data () {
@@ -27,10 +25,10 @@
       Scroll,
       Loading
     },
-    methods: {
-      isHide () {
-        return getSessionToken
-      }
+    mounted () {
+      initUser().then((res) => {
+        console.log(res)
+      })
     }
   }
 </script>

@@ -25,3 +25,15 @@ export function putFeedback (type = '', title = '', content = '') {
     return Promise.resolve(res.data)
   })
 }
+
+export function initUser (type = '', title = '', content = '') {
+  const url = prefix + '/initUser'
+
+  const data = Object.assign({})
+
+  return axios.get(url, {
+    params: data
+  }).then((res) => {
+    return Promise.resolve(res.data)
+  })
+}
