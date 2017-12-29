@@ -3,7 +3,47 @@
     <div class="score">
       <scroll :data="scoreList" class="table-responsive">
         <div>
-          <div v-for="scores in scoreList">
+          <div v-if="examList.length">
+            <div class="title">国家考试成绩单</div>
+            <table class="table" rules="all">
+              <thead>
+              <tr>
+                <th>科目</th>
+                <th>成绩</th>
+                <th>时间</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr v-for="item in examList" style="height: 25px;">
+                <td class="col-xs-6">{{item.ksmc}}</td>
+                <td class="col-xs-2">{{item.kscj}}</td>
+                <td class="col-xs-4">{{item.kssj}}</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+          <div v-if="unconfirmedList.length">
+            <div class="title">待确认成绩单</div>
+            <table class="table" rules="all">
+              <thead>
+              <tr>
+                <th>科目</th>
+                <th>平时</th>
+                <th>考试</th>
+                <th>总评</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr v-for="item in unconfirmedList" style="height: 25px;">
+                <td class="col-xs-6">{{item.kcmc}}</td>
+                <td class="col-xs-2">{{item.pscj}}</td>
+                <td class="col-xs-2">{{item.kscj}}</td>
+                <td class="col-xs-2">{{item.zpcj}}</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+          <div v-for="scores in scoreList" v-if="scoreList.length">
             <div class="title">{{scores.ndxq}}学期成绩单</div>
             <table class="table" rules="all">
               <thead>
@@ -45,12 +85,16 @@
     },
     data () {
       return {
-        scoreList: []
+        scoreList: [],
+        examList: [],
+        unconfirmedList: []
       }
     },
     activated () {
       getScore().then((res) => {
         this.scoreList = res.score
+        this.examList = res.exam
+        this.unconfirmedList = res.unconfirmed
       })
     }
   }

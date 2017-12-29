@@ -2,11 +2,11 @@
   <div class="news-gwgg">
     <div class="news-tab" v-if="startY || this.uinfo.yb_userid === '5720091'">
       <div class="tab">
-        <div class="tab-item tab-item-active" @click="active(6)" ref="gw">
-          <span class="tab-link">公文</span>
-        </div>
-        <div class="tab-item" @click="active(1)" ref="gg">
+        <div class="tab-item tab-item-active" @click="active(1)" ref="gg">
           <span class="tab-link">公告</span>
+        </div>
+        <div class="tab-item" @click="active(6)" ref="gw">
+          <span class="tab-link">公文</span>
         </div>
       </div>
     </div>
@@ -53,7 +53,7 @@
       setTimeout(() => {
         if (this.uinfo.yb_identity !== '学生' || this.uinfo.yb_userid === '5720091') {
           this.startY = 32
-          this.type = 6
+          this.type = 1
         }
         this._getNews(this.type)
       }, 20)
