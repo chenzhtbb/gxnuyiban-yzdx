@@ -88,8 +88,11 @@
             this.setBinddean(this.bind)
             this.$router.go(-1)
           } else {
+            this.$set(this.bind, 'password', '')
             this.bind.password = ''
-            this.$iosAlert('教务处账号或密码错误')
+            setTimeout(() => {
+              this.$iosAlert('教务处账号或密码错误')
+            }, 20)
           }
         })
       },

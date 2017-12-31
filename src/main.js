@@ -8,6 +8,7 @@ import fastclick from 'fastclick'             // 取消移动端300ms点击延�
 import VueLazyload from 'vue-lazyload'        // 图片懒加载
 import VueImg from 'v-img'                    // 图片图库预览
 import iosAlertView from 'vue-ios-alertview'  // 苹果风格弹窗
+import VueStars from 'vue-stars'
 
 const vueImgConfig = {
   altAsTitle: false,
@@ -28,6 +29,7 @@ const iosAlertViewConfig = {
 Vue.use(VueLazyload, vueLazyloadConfig)
 Vue.use(VueImg, vueImgConfig)
 Vue.use(iosAlertView, iosAlertViewConfig)
+Vue.use(VueStars)
 
 Vue.config.productionTip = false
 

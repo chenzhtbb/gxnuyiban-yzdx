@@ -69,6 +69,28 @@ apiRoutes.get('/getSliderNews', function (req, res) {
   })
 })
 
+apiRoutes.get('/getJxpgList', function (req, res) {
+  var url = 'http://localhost/api/public/index/api/getJxpgList'
+
+  axios.get(url, {
+    params: req.query
+  }).then((response) => {
+    res.json(response.data)
+  }).catch((e) => {
+    console.log(e)
+  })
+})
+
+apiRoutes.post('/putJxpgInfo', function (req, res) {
+  var url = 'http://localhost/api/public/index/api/putJxpgInfo'
+
+  axios.post(url, req).then((response) => {
+    res.json(response.data)
+  }).catch((e) => {
+    console.log(e)
+  })
+})
+
 apiRoutes.get('/getNewsList', function (req, res) {
   var url = 'http://localhost/api/public/index/api/getNewsList'
 

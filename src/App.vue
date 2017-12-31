@@ -11,7 +11,7 @@
   import Scroll from 'base/scroll/scroll'
   import Tab from 'components/tab/tab'
   import Loading from 'base/loading/loading'
-  import { initUser } from 'api/user'
+//  import { initUser } from 'api/user'
   //  import { getSessionToken } from 'common/js/cache'
 
   export default {
@@ -26,9 +26,10 @@
       Loading
     },
     mounted () {
-      initUser().then((res) => {
-        console.log(res)
-      })
+      this.$iosAlert('如果您的成绩或者课表无法查询，那么请重新绑定教务处账户，因为您可能更改了密码或者密码错误')
+//      initUser().then((res) => {
+//        console.log(res)
+//      })
     }
   }
 </script>

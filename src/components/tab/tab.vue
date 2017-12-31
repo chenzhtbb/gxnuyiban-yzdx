@@ -16,11 +16,11 @@
       </router-link>
     </div>
     <!--<confirm-box-->
-      <!--ref="confirm"-->
-      <!--:text="title"-->
-      <!--:confirmBtnText="confirmBtnText"-->
-      <!--:cancelBtnText="cancelBtnText"-->
-      <!--@confirm="gotoBind"-->
+    <!--ref="confirm"-->
+    <!--:text="title"-->
+    <!--:confirmBtnText="confirmBtnText"-->
+    <!--:cancelBtnText="cancelBtnText"-->
+    <!--@confirm="gotoBind"-->
     <!--&gt;</confirm-box>-->
   </div>
 </template>
@@ -28,7 +28,7 @@
 <script type="text/ecmascript-6">
   import { mapMutations } from 'vuex'
   import { getUser } from 'api/user'
-//  import ConfirmBox from 'base/confirm-box/confirm-box'
+  //  import ConfirmBox from 'base/confirm-box/confirm-box'
 
   export default {
 //    components: {
@@ -50,6 +50,9 @@
       _getUserInfo () {
         getUser().then((res) => {
           this.userInfo = res
+          if (res.dean.username !== '') {
+            this.userInfo.yb.yb_studentid = this.userInfo.dean.username
+          }
           this.setUinfo(this.userInfo.yb)
           this.setBinddean(this.userInfo.dean)
 //          if (this.userInfo.dean.dean === 0) {

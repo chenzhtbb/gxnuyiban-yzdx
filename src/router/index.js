@@ -34,6 +34,8 @@ const HelpPeople = () => import('components/online/help-people')
 const WorkService = () => import('components/online/work-service')
 const XgbNotice = () => import('components/online/xgb-notice')
 const Notice = () => import('components/online/notice')
+const Pj = () => import('components/dean/pj')
+const PjContent = () => import('components/dean/pj-content')
 Vue.use(Router)
 
 export default new Router({
@@ -52,6 +54,14 @@ export default new Router({
       path: '/app',
       component: Application,
       children: [
+        {
+          path: 'pj',
+          component: Pj
+        },
+        {
+          path: 'pjcontent',
+          component: PjContent
+        },
         {
           path: 'feedback',
           component: Feedback

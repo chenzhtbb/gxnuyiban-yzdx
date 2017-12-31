@@ -16,10 +16,10 @@
       <span class="iconfont icon-jingqingqidai icon bg-00a65a"></span>
       <span class="grid-center">选课</span>
     </router-link>
-    <router-link tag="div" to="/">
-      <span class="iconfont icon-jingqingqidai icon bg-D81B60"></span>
+    <div @click="gotoDean('/app/pj')">
+      <span class="iconfont icon-pingjiaopingxue icon bg-D81B60"></span>
       <span class="grid-center">评教</span>
-    </router-link>
+    </div>
   </div>
 </template>
 
