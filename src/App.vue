@@ -26,7 +26,6 @@
       Loading
     },
     mounted () {
-      this.$iosAlert('如果您的成绩或者课表无法查询，那么请重新绑定教务处账户，因为您可能更改了密码或者密码错误')
 //      initUser().then((res) => {
 //        console.log(res)
 //      })

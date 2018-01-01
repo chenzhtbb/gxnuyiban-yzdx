@@ -1,48 +1,16 @@
 <template>
-  <div class="news-gwgg">
-    <div class="news-tab" v-if="startY || this.uinfo.yb_userid === '5720091'">
-      <div class="tab">
-        <div class="tab-item tab-item-active" @click="active(1)" ref="gg">
-          <span class="tab-link">公告</span>
-        </div>
-        <div class="tab-item" @click="active(6)" ref="gw">
-          <span class="tab-link">公文</span>
-        </div>
-      </div>
-    </div>
-    <div class="news">
-      <news-view :items="items" @pullingUp="_getNews(type)" :startY="startY" v-if="this.type === 1"></news-view>
-      <news-gw :items="items" v-else-if="this.uinfo.yb_userid === '5720091'"></news-gw>
-      <div v-else class="xiajia">
-        <p>因访问问题公文暂时下架</p>
-      </div>
-    </div>
+  <div class="news">
+
   </div>
 </template>
 
 <script type="text/ecmascript-6">
-  import NewsView from 'base/news-view/news-view'
-  import NewsGw from 'components/news/news-gw'
-  import { getNewsList } from 'api/news'
   import { mapGetters } from 'vuex'
-  import { addClass, moveClass, hasClass } from 'common/js/dom'
 
   export default {
-    components: {
-      NewsView,
-      NewsGw
-    },
+    components: {},
     data () {
-      return {
-        items: [],
-        cache1: [],
-        cache6: [],
-        page: 0,
-        page1: 0,
-        page6: 0,
-        startY: 0,
-        type: 1
-      }
+      return {}
     },
     computed: {
       ...mapGetters([
@@ -50,84 +18,17 @@
       ])
     },
     mounted () {
-      setTimeout(() => {
-        if (this.uinfo.yb_identity !== '学生' || this.uinfo.yb_userid === '5720091') {
-          this.startY = 32
-          this.type = 1
-        }
-        this._getNews(this.type)
-      }, 20)
     },
-    methods: {
-      _getNews (type) {
-        if (type === 1) {
-          this.page = this.page1
-          this.page1++
-        } else {
-          this.page = this.page6
-          this.page6++
-        }
-        getNewsList(type, this.page).then((res) => {
-          this.items = this.items.concat(res)
-        })
-      },
-      active (type) {
-        if (type === 1) {
-          if (hasClass(this.$refs.gg, 'tab-item-active')) {
-            return
-          }
-          addClass(this.$refs.gg, 'tab-item-active')
-          moveClass(this.$refs.gw, 'tab-item-active')
-          this.cache6 = this.items
-          this.items = this.cache1
-        } else {
-          if (hasClass(this.$refs.gw, 'tab-item-active')) {
-            return
-          }
-          addClass(this.$refs.gw, 'tab-item-active')
-          moveClass(this.$refs.gg, 'tab-item-active')
-          this.cache1 = this.items
-          this.items = this.cache6
-        }
-        this.type = type
-        this._getNews(type)
-      }
-    }
+    methods: {}
   }
 </script>
 
 <style scoped lang="stylus" ref="stylesheet/stylus">
-  .xiajia
+  .news
+    background #FFFFFF
     position fixed
-    text-align center
+    top 0
+    bottom 48px
     left 0
     right 0
-    bottom 44px
-    top 32px
-    background-color #ffffff
-
-  .news-gwgg
-    .news
-      position fixed
-      left 0
-      right 0
-      bottom 0
-      top 32px
-      z-index -1
-    .news-tab
-      border-bottom 1px solid #eeeeee
-      .tab
-        display flex
-        height 32px
-        line-height 32px
-        background #FFFFFF
-        .tab-item
-          flex 1
-          text-align center
-          .tab-link
-            padding-bottom 5px
-          &.tab-item-active
-            .tab-link
-              color #0099FF
-              border-bottom 2px solid #66CCFF
 </style>

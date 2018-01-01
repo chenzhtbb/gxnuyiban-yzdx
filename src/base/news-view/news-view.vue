@@ -1,13 +1,12 @@
 <template>
   <div class="news-view">
-    <scroll
-      ref="wrapper"
+    <cube-scroll
+      ref="scroll"
       :data="items"
-      style="height: 100%;"
-      :pullUpLoad="pullUpLoad"
+      :options="options"
+      @pulling-up="onPullingUp"
     >
       <div>
-        <div v-if="startY" :style="styleY"></div>
         <div class="news-list">
           <div v-for="item in items" class="news-item">
             <router-link tag="div" class="news" :to="{path: 'news', query:{page:item.id}}">
@@ -17,18 +16,13 @@
               <div class="bottom">
                 <div class="author">{{item.author}}</div>
                 <div class="time">{{item.time}}</div>
-                <!--<div class="type">{{item.type}}</div>-->
               </div>
             </router-link>
           </div>
         </div>
-        <router-view></router-view>
-        <div style="position: relative; height: 70px;"></div>
       </div>
-    </scroll>
-    <div class="loading-container" v-show="!items.length">
-      <loading></loading>
-    </div>
+    </cube-scroll>
+    <div style="position: relative; height: 70px;"></div>
   </div>
 </template>
 
@@ -51,13 +45,19 @@
     },
     data () {
       return {
-        pullUpLoad: true,
-        styleY: ''
+        options: {
+          pullUpLoad: {
+            threshold: 0,
+            txt: {
+              more: '加载更多...',
+              noMore: '已到最后...'
+            }
+          }
+        }
       }
     },
     mounted () {
       setTimeout(() => {
-        this.styleY = `position: relative; height: ${this.startY}px`
         this.$refs.wrapper.$on('pullingUp', () => {
           this.$emit('pullingUp')
         })
@@ -74,8 +74,8 @@
       }
     },
     watch: {
-      startY () {
-        this.styleY = `position: relative; height: ${this.startY}px`
+      items () {
+        this.$refs.scroll.forceUpdate()
       }
     }
   }
@@ -86,7 +86,7 @@
     background #FFFFFF
     position fixed
     top 0
-    bottom 0
+    bottom 48px
     left 0
     right 0
     .news-list

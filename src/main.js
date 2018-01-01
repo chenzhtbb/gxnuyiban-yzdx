@@ -9,7 +9,9 @@ import VueLazyload from 'vue-lazyload'        // 图片懒加载
 import VueImg from 'v-img'                    // 图片图库预览
 import iosAlertView from 'vue-ios-alertview'  // 苹果风格弹窗
 import VueStars from 'vue-stars'
+import Cube from 'cube-ui'
 
+Vue.use(Cube)
 const vueImgConfig = {
   altAsTitle: false,
   sourceButton: false

@@ -25,11 +25,10 @@
           </div>
           <div class="box-footer col-sm-10">
             <button class="btn btn-info btn-block" @click="_bindDean()" v-if="!bind.dean">绑定</button>
-            <button class="btn btn-danger btn-block" @click="_unbindConfirm()" v-else>解绑</button>
+            <button class="btn btn-danger btn-block" @click="showAlert()" v-else>解绑</button>
           </div>
         </div>
       </div>
-      <confirm-box ref="confirm" :text="text"></confirm-box>
     </div>
   </transition>
 </template>
@@ -37,27 +36,21 @@
 <script type="text/ecmascript-6">
   import { mapGetters, mapMutations } from 'vuex'
   import InputBox from 'base/input-box/input-box'
-  import ConfirmBox from 'base/confirm-box/confirm-box'
   import { bindUser } from 'api/dean'
   import { empty } from 'common/js/util'
 
   export default {
     components: {
-      InputBox,
-      ConfirmBox
+      InputBox
     },
     data () {
       return {
-        text: '确认解除教务处绑定吗？',
         bind: {username: '', password: '', dean: 0}
       }
     },
     mounted () {
       setTimeout(() => {
         this._GetDean()
-        this.$refs.confirm.$on('confirm', () => {
-          this._unbindDean()
-        })
       }, 20)
     },
     computed: {
@@ -79,7 +72,12 @@
       },
       _bindDean () {
         if (empty(this.bind.username) || empty(this.bind.password)) {
-          this.$iosAlert('教务处账号或密码为空')
+          this.$createDialog(
+            {
+              type: 'alert',
+              title: '教务处账号或密码为空'
+            }
+          ).show()
           return
         }
         bindUser(1, this.bind.username, this.bind.password).then((res) => {
@@ -90,14 +88,41 @@
           } else {
             this.$set(this.bind, 'password', '')
             this.bind.password = ''
-            setTimeout(() => {
-              this.$iosAlert('教务处账号或密码错误')
-            }, 20)
+            this.$createDialog(
+              {
+                type: 'alert',
+                title: '教务处账号或密码错误'
+              }
+            ).show()
           }
         })
       },
-      _unbindConfirm () {
-        this.$refs.confirm.show()
+      showAlert () {
+        this.$createDialog(
+          {
+            type: 'confirm',
+            title: '解绑提示',
+            content: '是否解除教务处绑定？',
+            icon: 'cubeic-alert',
+            confirmBtn: {
+              text: '立即解除',
+              active: true,
+              disabled: false,
+              href: 'javascript:;'
+            },
+            cancelBtn: {
+              text: '稍后再说',
+              active: false,
+              disabled: false,
+              href: 'javascript:;'
+            },
+            onConfirm: () => {
+              this._unbindDean()
+            },
+            onCancel: () => {
+            }
+          }
+        ).show()
       },
       _unbindDean () {
         bindUser(2).then((res) => {

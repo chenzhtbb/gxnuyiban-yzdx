@@ -35,14 +35,37 @@
     methods: {
       gotoDean (path) {
         if (this.binddean.dean === 0) {
-          this.$iosConfirm('您还没有绑定教务处账户，是否马上绑定？').then((res) => {
-            this.$router.push('/app/binddean')
-          }).catch((err) => {
-            console.log(err)
-          })
+          this.showAlert()
         } else {
           this.$router.push(path)
         }
+      },
+      showAlert () {
+        this.$createDialog(
+          {
+            type: 'confirm',
+            title: '绑定提示',
+            content: '您还没有绑定教务处账户,暂时无法使用该功能，是否马上绑定？',
+            icon: 'cubeic-alert',
+            confirmBtn: {
+              text: '立即前往',
+              active: true,
+              disabled: false,
+              href: 'javascript:;'
+            },
+            cancelBtn: {
+              text: '稍后再说',
+              active: false,
+              disabled: false,
+              href: 'javascript:;'
+            },
+            onConfirm: () => {
+              this.$router.push('/app/binddean')
+            },
+            onCancel: () => {
+            }
+          }
+        ).show()
       }
     }
   }

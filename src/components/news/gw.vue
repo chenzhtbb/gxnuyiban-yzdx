@@ -15,15 +15,14 @@
             <span>{{item.time}}</span>
           </div>
         </div>
-        <scroll :style="scrollStyle" :data="downloadList" :isToTop="isToTop" :freeScroll="free">
+        <scroll
+          :data="images"
+          :isToTop="isToTop"
+          :freeScroll="free"
+          style="height: 100%; position: relative;"
+        >
           <div class="content">
-            <div class="text" v-html="item.content"></div>
-            <!--<div v-for="image in images">-->
-            <!--<img v-img="{group: 'imggroup'}"-->
-            <!--:src="image"-->
-            <!--width="100%"-->
-            <!--height="61.8%">-->
-            <!--</div>-->
+            <img v-for="image in images" :src="image" style="width: 100%;">
           </div>
           <div style="position: relative; height: 50px;"></div>
         </scroll>
@@ -72,7 +71,7 @@
       }
     },
     activated () {
-      this.scrollStyle = `width: ${window.innerWidth}px; height: ${window.innerHeight}px; z-index: -1;`
+//      this.scrollStyle = `width: ${window.innerWidth}px; height: ${window.innerHeight}px; z-index: -1;`
       setTimeout(() => {
         if (this.item.length) {
           return
@@ -118,6 +117,7 @@
     background #FFFFFF
     position fixed
     top 0
+    height 100%
     bottom 0
     left 0
     right 0

@@ -53,7 +53,7 @@
     },
     methods: {
       _getNews () {
-        getNewsList(6, this.page).then((res) => {
+        getNewsList(1, this.page).then((res) => {
           if (res.length) {
             this.items = this.items.concat(res)
           } else {
