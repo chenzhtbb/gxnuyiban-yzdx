@@ -19,7 +19,8 @@ const NewsJwtz = () => import('components/news/news-jwtz')
 const NewsJzbg = () => import('components/news/news-jzbg')
 const NewsXyxw = () => import('components/news/news-xyxw')
 const News = () => import('components/news/news')
-const Gw = () => import('components/news/gw')
+const Gg = () => import('components/news/news-gg')
+const Gw = () => import('components/news/news-gw')
 const Electricity = () => import('components/life/electricity')
 const SchoolBus = () => import('components/life/school-bus')
 const LostAndFound = () => import('components/life/lost-and-found')
@@ -142,11 +143,25 @@ export default new Router({
           children: [
             {
               path: '/',
-              redirect: 'gwgg'
+              redirect: 'gg'
             },
             {
-              path: '/app/newstab/gwgg',
-              component: NewsGwgg
+              path: 'gg',
+              component: NewsGwgg,
+              children: [
+                {
+                  path: '/',
+                  redirect: '1'
+                },
+                {
+                  path: '1',
+                  component: Gg
+                },
+                {
+                  path: '6',
+                  component: Gw
+                }
+              ]
             },
             {
               path: 'hyap',
@@ -167,10 +182,6 @@ export default new Router({
             {
               path: 'news',
               component: News
-            },
-            {
-              path: 'newsgw',
-              component: Gw
             }
           ]
         },

@@ -11,7 +11,7 @@
           <ul class="products-list product-list-in-box">
             <li class="item" v-for="item in items">
               <div class="product-info">
-                <router-link tag="a" :to="{path: 'news', query:{page:item.id}}" class="title">
+                <router-link tag="div" :to="{path: '/app/newstab/news', query:{page:item.id}}" class="title">
                   {{item.title}}
                 </router-link>
                 <div class="news-height">
@@ -75,7 +75,7 @@
   .news
     background #FFFFFF
     position fixed
-    top 0
+    top 48px
     bottom 48px
     left 0
     right 0

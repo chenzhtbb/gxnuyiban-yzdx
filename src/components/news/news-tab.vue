@@ -6,7 +6,7 @@
       </keep-alive>
       <div class="news-tab-bar">
         <div class="operators">
-          <router-link to="/app/newstab/gwgg" tag="div" class="icon i-left" replace>
+          <router-link to="/app/newstab/gg/1" tag="div" class="icon i-left" replace>
             <p class="iconfont icon-gongwen"></p>
             <p class="text">公文公告</p>
           </router-link>
@@ -60,6 +60,7 @@
     right 0
     z-index 100
     .news-tab-bar
+      z-index -1
       .operators
         position fixed
         width 100%

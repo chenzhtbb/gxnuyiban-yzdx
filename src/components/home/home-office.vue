@@ -1,6 +1,6 @@
 <template>
   <div class="grid-center">
-    <router-link to="/app/newstab/gwgg" tag="div">
+    <router-link to="/app/newstab/gg/1" tag="div">
       <span class="iconfont icon-gongwen icon bg-ff851b"></span>
       <span class="grid-center">公文公告</span>
     </router-link>

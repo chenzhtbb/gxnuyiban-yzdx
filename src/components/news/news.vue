@@ -18,17 +18,6 @@
           <div class="content">
             <div class="text" v-html="item.content"></div>
           </div>
-          <!--<div class="attachment">-->
-          <!--<div style="border-bottom: 1px solid #EEEEEE;">-->
-          <!--<p style="margin: 10px 0 5px 0;">附件(点击下载)</p>-->
-          <!--</div>-->
-          <!--<ul>-->
-          <!--<li>附件1：啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦</li>-->
-          <!--<li>附件2：啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦</li>-->
-          <!--<li>附件3：啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦</li>-->
-          <!--</ul>-->
-          <!--<div style="position: relative; height: 20px;"></div>-->
-          <!--</div>-->
           <div style="position: relative; height: 50px;"></div>
         </div>
       </scroll>
@@ -136,7 +125,7 @@
     bottom 0
     left 0
     right 0
-    z-index 200
+    z-index 500
     .top
       position relative
       top 0
