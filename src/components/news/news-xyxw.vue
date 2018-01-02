@@ -35,6 +35,7 @@
       return {
         items: [],
         options: {
+          observeDOM: false,
           pullUpLoad: {
             threshold: 0,
             txt: {

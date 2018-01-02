@@ -2,8 +2,8 @@
   <transition name="slide">
     <div class="news">
       <iframe></iframe>
-      <cube-scroll :data="item">
-        <div style="margin: 8px;">
+      <cube-scroll :data="items">
+        <div style="margin: 8px;" v-for="item in items">
           <div class="top">
             <div class="title">
               <h3>{{item.title}}</h3>
@@ -30,19 +30,19 @@
   export default {
     data () {
       return {
-        item: []
+        items: []
       }
     },
     activated () {
       setTimeout(() => {
-        if (this.item.length) {
+        if (this.items.length) {
           return
         }
         this.getNewsPage()
       }, 20)
     },
     deactivated () {
-      this.item = []
+      this.items = []
     },
     methods: {
 //      aDownload (target) {
@@ -62,7 +62,7 @@
       getNewsPage () {
         let page = this.$route.query.page
         getNews(page).then((res) => {
-          this.item = res
+          this.items = this.items.concat(res)
         })
       }
     }
