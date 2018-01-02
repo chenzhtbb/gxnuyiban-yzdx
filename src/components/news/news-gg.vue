@@ -1,5 +1,5 @@
 <template>
-  <div class="news">
+  <div class="news" :style="uinfo.yb_identity === '学生'? 'top: 0px;' :'top: 48px;'">
     <cube-scroll
       ref="scroll"
       :data="items"
@@ -29,8 +29,14 @@
 
 <script type="text/ecmascript-6">
   import { getNewsList } from 'api/news'
+  import { mapGetters } from 'vuex'
 
   export default {
+    computed: {
+      ...mapGetters([
+        'uinfo'
+      ])
+    },
     data () {
       return {
         items: [],
@@ -90,4 +96,12 @@
   .product-description
     padding 0
 
+  .news-height
+    border-top 10px solid #ffffff
+
+  .item
+    padding-bottom 0
+
+  .box-body
+    padding-top 0
 </style>

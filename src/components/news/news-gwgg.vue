@@ -1,6 +1,6 @@
 <template>
   <div class="news">
-    <div class="operators">
+    <div class="operators" v-if="uinfo.yb_identity === '学生1111111'">
       <router-link to="/app/newstab/gg/1" tag="div" class="icon i-left" replace>
         <p class="">公告</p>
       </router-link>
@@ -18,18 +18,11 @@
   import { mapGetters } from 'vuex'
 
   export default {
-    components: {},
-    data () {
-      return {}
-    },
     computed: {
       ...mapGetters([
         'uinfo'
       ])
-    },
-    mounted () {
-    },
-    methods: {}
+    }
   }
 </script>
 

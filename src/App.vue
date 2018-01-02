@@ -8,27 +8,11 @@
 </template>
 
 <script type="text/ecmascript-6">
-  import Scroll from 'base/scroll/scroll'
   import Tab from 'components/tab/tab'
-  import Loading from 'base/loading/loading'
-//  import { initUser } from 'api/user'
-  //  import { getSessionToken } from 'common/js/cache'
 
   export default {
-    data () {
-      return {
-        items: []
-      }
-    },
     components: {
-      Tab,
-      Scroll,
-      Loading
-    },
-    mounted () {
-//      initUser().then((res) => {
-//        console.log(res)
-//      })
+      Tab
     }
   }
 </script>

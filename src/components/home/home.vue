@@ -12,11 +12,10 @@
                 <div class="bottom">
                   <div class="type">{{item.author}}</div>
                 </div>
+                <div class="border"></div>
               </a>
             </cube-slide-item>
-            <!--<div slot="dots" :current="currentPageIndex" :dots="dots">-->
-            <!--<span :class="{active: currentPageIndex === index}" v-for="(item, index) in dots"></span>-->
-            <!--</div>-->
+            <div slot="dots"></div>
           </cube-slide>
           <div style="padding-bottom: 2px;">
             <p style="border-left: 5px solid #FF6699" text-left="">&nbsp;&nbsp;学工在线</p>
@@ -106,22 +105,26 @@
     top 0
     bottom 0
 
-  /*.title
+  .title
+    margin 15px 10px 0 10px
     font-size 14px
+    text-align left
     word-wrap break-word
     no-wrap()
 
   .bottom
     position relative
-    padding-top 15px
+    padding-top 10px
     font-size 12px
     color #AAAAAA
+
+  .border
+    padding-top 15px
+    border-bottom 1px solid #000000
+    margin-bottom 15px
 
   .type
     float left
     text-align left
-
-  .time
-    text-align right
-    padding-right 20px*/
+    margin 0 10px
 </style>

@@ -1,77 +1,29 @@
 <template>
-  <toggle>
-    <div class="gw">
+  <transition name="slide">
+    <div class="news">
       <iframe></iframe>
-      <!--<scroll style="height: 100%; width: 100%;" :data="downloadList" :isToTop="isToTop" :freeScroll="free">-->
-      <div style="margin: 8px;">
-        <div class="top">
-          <div class="title">
-            <h3>{{item.title}}</h3>
-          </div>
-          <div class="publish">
-            <span>{{item.author}}</span>
-          </div>
-          <div class="time">
-            <span>{{item.time}}</span>
-          </div>
-        </div>
-        <scroll
-          :data="images"
-          :isToTop="isToTop"
-          :freeScroll="free"
-          style="height: 100%; position: relative;"
-        >
-          <div class="content">
-            <img v-for="image in images" :src="image" style="width: 100%;">
-          </div>
-          <div style="position: relative; height: 50px;"></div>
-        </scroll>
-      </div>
-      <!--</scroll>-->
+      <cube-scroll :data="item">
+        <img class="" v-for="image in images" :src="image">
+      </cube-scroll>
     </div>
-  </toggle>
+  </transition>
 </template>
 
 <script type="text/ecmascript-6">
-  import Toggle from 'base/toggle/toggle'
-  import Scroll from 'base/scroll/scroll'
-  import Loading from 'base/loading/loading'
   import { getNews } from 'api/news'
 
   export default {
-    components: {
-      Toggle,
-      Scroll,
-      Loading
-    },
     data () {
       return {
         item: [],
-        free: true,
-        scrollStyle: '',
         images: [
-          'http://202.193.160.77/zfoa/uploadFile/schooldoc/151152107240030684.files/1.gif',
-          'http://202.193.160.77/zfoa/uploadFile/schooldoc/151152107240030684.files/2.gif',
-          'http://202.193.160.77/zfoa/uploadFile/schooldoc/151152107240030684.files/3.gif',
-          'http://202.193.160.77/zfoa/uploadFile/schooldoc/151152107240030684.files/4.gif',
-          'http://202.193.160.77/zfoa/uploadFile/schooldoc/151152107240030684.files/5.gif',
-          'http://202.193.160.77/zfoa/uploadFile/schooldoc/151152107240030684.files/6.gif',
-          'http://202.193.160.77/zfoa/uploadFile/schooldoc/151152107240030684.files/7.gif',
-          'http://202.193.160.77/zfoa/uploadFile/schooldoc/151152107240030684.files/8.gif',
-          'http://202.193.160.77/zfoa/uploadFile/schooldoc/151152107240030684.files/9.gif',
-          'http://202.193.160.77/zfoa/uploadFile/schooldoc/151152107240030684.files/10.gif',
-          'http://202.193.160.77/zfoa/uploadFile/schooldoc/151152107240030684.files/11.gif',
-          'http://202.193.160.77/zfoa/uploadFile/schooldoc/151152107240030684.files/12.gif',
-          'http://202.193.160.77/zfoa/uploadFile/schooldoc/151152107240030684.files/13.gif',
-          'http://202.193.160.77/zfoa/uploadFile/schooldoc/151152107240030684.files/14.gif',
-          'http://202.193.160.77/zfoa/uploadFile/schooldoc/151152107240030684.files/15.gif'
-        ],
-        isToTop: true,
-        downloadList: []
+          'http://202.193.160.77/zfoa/uploadFile/schooldoc/151469852241388786.files/1.gif',
+          'http://202.193.160.77/zfoa/uploadFile/schooldoc/151469852241388786.files/2.gif',
+          'http://202.193.160.77/zfoa/uploadFile/schooldoc/151469852241388786.files/3.gif'
+        ]
       }
     },
     activated () {
-//      this.scrollStyle = `width: ${window.innerWidth}px; height: ${window.innerHeight}px; z-index: -1;`
       setTimeout(() => {
         if (this.item.length) {
           return
@@ -80,7 +32,7 @@
       }, 20)
     },
     deactivated () {
-      this.item.content = ''
+      this.item = {}
     },
     methods: {
       aDownload (target) {
@@ -98,6 +50,13 @@
 <style scoped lang="stylus" ref="stylesheet/stylus">
   @import "~common/stylus/mixin"
 
+  .free
+    position: absolute
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0
+
   iframe
     z-index -1
     width 0
@@ -106,22 +65,24 @@
     display none
 
   img
-    width 100% !important
+    position relative
+    width 130%
+    left -60px
+    padding 0
 
   .content
     position relative
     padding 8px 0
     width 1123px;
 
-  .gw
+  .news
     background #FFFFFF
     position fixed
     top 0
-    height 100%
     bottom 0
     left 0
     right 0
-    z-index 200
+    z-index 500
     .top
       position relative
       top 0
@@ -136,6 +97,8 @@
         float left
       .time
         text-align right
+    .content
+      padding 8px 0
     .attachment
       ul
         padding 0
@@ -144,4 +107,10 @@
           padding 6px 0
           color royalblue
           no-wrap()
+
+  .slide-enter-active, .slide-leave-active
+    transition all 0.3s
+
+  .slide-enter, .slide-leave-to
+    transform translate3d(100%, 0, 0)
 </style>

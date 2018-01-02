@@ -90,4 +90,13 @@
   .product-description
     padding 0
 
+  .news-height
+    border-top 10px solid #ffffff
+
+  .item
+    padding-bottom 0
+
+  .box-body
+    padding-top 0
+
 </style>

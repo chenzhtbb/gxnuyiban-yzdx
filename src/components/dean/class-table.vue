@@ -1,10 +1,7 @@
 <template>
   <transition name="slide">
     <div class="class-table">
-      <!--<table class="table table-head">-->
-      <!---->
-      <!--</table>-->
-      <scroll style="height: 100%; width: 100%;" :data="items">
+      <cube-scroll :data="items">
         <div>
           <table class="table table-class" frame="void" rules="none">
             <thead>
@@ -47,19 +44,15 @@
             </tbody>
           </table>
         </div>
-      </scroll>
+      </cube-scroll>
     </div>
   </transition>
 </template>
 
 <script type="text/ecmascript-6">
   import { getTimetable } from 'api/dean'
-  import Scroll from 'base/scroll/scroll'
 
   export default {
-    components: {
-      Scroll
-    },
     activated () {
       this._getTimetable()
     },
@@ -82,6 +75,10 @@
 
   .table-class
     width 100%
+    background-color #EEEEEE
+
+  .cube-scroll-wrapper
+    background-color #EEEEEE
 
   .class-table
     position fixed
@@ -91,8 +88,7 @@
     left 0
     right 0
     z-index 100
-    background-color #EEEEEE
-    background-image url('~common/image/1c264fdfff5081e1f279a3fb643b00f3.png')
+    /*background-image url('~common/image/1c264fdfff5081e1f279a3fb643b00f3.png')*/
     background-repeat repeat-y
     background-size 100%
 

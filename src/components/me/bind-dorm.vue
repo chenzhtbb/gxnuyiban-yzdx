@@ -9,7 +9,7 @@
           <div class="box-body">
             <div class="form-group col-sm-10">
               <label>选择校区</label>
-              <button class="form-control" @click="selectCampus" >{{bind.campus}}</button>
+              <button class="form-control" @click="selectCampus">{{bind.campus}}</button>
             </div>
             <div class="form-group">
               <label class="col-sm-2 control-label">宿舍号</label>
@@ -22,7 +22,7 @@
           </div>
           <div class="box-footer col-sm-10">
             <button class="btn btn-info btn-block" @click="_bindDorm()" v-if="!bind.dorm">绑定</button>
-            <button class="btn btn-danger btn-block" @click="_unbindConfirm()" v-else>解绑</button>
+            <button class="btn btn-danger btn-block" @click="showAlert()" v-else>解绑</button>
           </div>
         </div>
       </div>
@@ -92,12 +92,14 @@
 
         })
       },
-      _GetDorm () {
-//        this.bind = this.binddorm
-      },
       _bindDorm () {
         if (this.bind.campus === '请选择校区' || empty(this.bind.campus) || empty(this.bind.room)) {
-          this.$iosAlert('校区或宿舍号为空')
+          this.$createDialog(
+            {
+              type: 'alert',
+              title: '校区或宿舍号为空'
+            }
+          ).show()
           return
         }
         bindDorm(1, this.bind.campus, this.bind.room).then((res) => {
@@ -110,14 +112,38 @@
           }
         })
       },
-      _unbindConfirm () {
-        this.$refs.confirm.show()
+      showAlert () {
+        this.$createDialog(
+          {
+            type: 'confirm',
+            title: '解绑提示',
+            content: '确认解除宿舍绑定吗？',
+            icon: 'cubeic-alert',
+            confirmBtn: {
+              text: '立即解除',
+              active: true,
+              disabled: false,
+              href: 'javascript:;'
+            },
+            cancelBtn: {
+              text: '稍后再说',
+              active: false,
+              disabled: false,
+              href: 'javascript:;'
+            },
+            onConfirm: () => {
+              this._unbindorm()
+            },
+            onCancel: () => {
+            }
+          }
+        ).show()
       },
       _unbindorm () {
         bindDorm(2).then((res) => {
           if (res.code === 1) {
             this.bind.dorm = 0
-            this.bind.campus = ''
+            this.bind.campus = '请选择校区'
             this.bind.room = ''
             this.setBinddorm(this.bind)
           } else {
