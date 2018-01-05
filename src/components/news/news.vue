@@ -2,8 +2,8 @@
   <transition name="slide">
     <div class="news">
       <iframe></iframe>
-      <cube-scroll :data="items">
-        <div style="margin: 8px;" v-for="item in items">
+      <scroll style="height: 100%;" :data="item" :isToTop="isToTop">
+        <div style="margin: 8px;">
           <div class="top">
             <div class="title">
               <h3>{{item.title}}</h3>
@@ -18,51 +18,98 @@
           <div class="content">
             <div class="text" v-html="item.content"></div>
           </div>
+          <!--<div class="attachment">-->
+          <!--<div style="border-bottom: 1px solid #EEEEEE;">-->
+          <!--<p style="margin: 10px 0 5px 0;">附件(点击下载)</p>-->
+          <!--</div>-->
+          <!--<ul>-->
+          <!--<li>附件1：啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦</li>-->
+          <!--<li>附件2：啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦</li>-->
+          <!--<li>附件3：啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦</li>-->
+          <!--</ul>-->
+          <!--<div style="position: relative; height: 20px;"></div>-->
+          <!--</div>-->
+          <div style="position: relative; height: 50px;"></div>
         </div>
-      </cube-scroll>
+      </scroll>
     </div>
   </transition>
 </template>
 
 <script type="text/ecmascript-6">
+  import Scroll from 'base/scroll/scroll'
+  import Loading from 'base/loading/loading'
   import { getNews } from 'api/news'
+  import { downloadFun, browser } from 'common/js/ybh5.js'
 
   export default {
+    components: {
+      Scroll,
+      Loading
+    },
     data () {
       return {
-        items: []
+        item: [],
+        isToTop: true,
+        downloadList: []
       }
     },
     activated () {
       setTimeout(() => {
-        if (this.items.length) {
+        if (this.item.length) {
           return
         }
         this.getNewsPage()
       }, 20)
     },
     deactivated () {
-      this.items = []
+      this.item = []
     },
     methods: {
-//      aDownload (target) {
-//        // http://www.gxnu.edu.cn/notice/download/
-//        if (this.downloadList[target].search(/\dhttp:/i) < 0) {
-//          if (browser.versions.ios) {
-//            window.location.href = this.downloadList[target]
-//          } else if (browser.versions.android) {
-//            downloadFun(this.downloadList[target])
-//          }
-//        } else {
-//          let link = this.downloadList[target].match(/\dhttp:.*$/i)[0]
-//          link = link.match(/http:.*$/i)[0]
-//          window.location.href = link
-//        }
-//      },
+      aDownload (target) {
+        // http://www.gxnu.edu.cn/notice/download/
+        if (this.downloadList[target].search(/\dhttp:/i) < 0) {
+          if (browser.versions.ios) {
+            window.location.href = this.downloadList[target]
+          } else if (browser.versions.android) {
+            downloadFun(this.downloadList[target])
+          }
+        } else {
+          let link = this.downloadList[target].match(/\dhttp:.*$/i)[0]
+          link = link.match(/http:.*$/i)[0]
+          window.location.href = link
+        }
+      },
       getNewsPage () {
         let page = this.$route.query.page
         getNews(page).then((res) => {
-          this.items = this.items.concat(res)
+          this.item = res
+          setTimeout(() => {
+            let alist = document.getElementsByTagName('a')
+            for (let i = 0; i < alist.length; i++) {
+              this.downloadList.push(alist[i].href)
+              alist[i].href = 'javascript:;'
+              alist[i].target = i
+              console.log(alist[i])
+              alist[i].onclick = (e) => {
+                this.aDownload(e.target.target) // 下载附件
+              }
+            }
+          }, 400)
+          this.item.content += `<style scoped lang="stylus" ref="stylesheet/stylus">
+                                  p{
+                                    font-size: 20px ;
+                                    line-height: 30px ;
+                                  }
+                                  span{
+                                    font-size: 20px ;
+                                    line-height: 30px ;
+                                  }
+                                  img{
+                                    width: ${window.innerWidth}px !important;
+                                    height: ${window.innerWidth * 0.618}px !important;
+                                  }
+                                </style>`
         })
       }
     }
@@ -89,7 +136,7 @@
     bottom 0
     left 0
     right 0
-    z-index 500
+    z-index 200
     .top
       position relative
       top 0
