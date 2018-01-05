@@ -1,37 +1,45 @@
 <template>
-  <div class="box box-widget widget-user">
-    <div class="widget-user-header bg-black bg-orange">
-      <h3 class="username">欢迎使用易班评教</h3>
-      <!--<h5 class="desc">{{user.yb_schoolname}}</h5>-->
-    </div>
-    <div class="box-footer no-padding">
-      <ul class="nav nav-stacked">
-        <li>
-          <router-link tag="a" to="/app/pjcontent">
-            评教须知
-          </router-link>
-        </li>
-        <li v-for="item in items">
-          <a @click="goto(item)">
-            {{item.kcmc}}
-            <span class="pull-right badge bg-blue" v-if="item.pjzt == '已评'">已评教</span>
-            <span class="pull-right badge bg-green" v-else>未评教</span>
-          </a>
-        </li>
-      </ul>
-    </div>
+  <div class="box box-widget widget-user pj">
+    <scroll :data="items" style="height: 100%">
+      <div>
+        <div class="widget-user-header bg-black bg-orange">
+          <h3 class="username">欢迎使用易班评教</h3>
+          <!--<h5 class="desc">{{user.yb_schoolname}}</h5>-->
+        </div>
+        <div class="box-footer no-padding">
+          <ul class="nav nav-stacked">
+            <li>
+              <router-link tag="a" to="/app/pjcontent">
+                评教须知
+              </router-link>
+            </li>
+            <li v-for="item in items">
+              <a @click="goto(item)">
+                {{item.kcmc}}
+                <span class="pull-right badge bg-blue" v-if="item.pjzt == '已评'">已评教</span>
+                <span class="pull-right badge bg-green" v-else>未评教</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </scroll>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
   import { getJxpgList } from 'api/dean'
+  import Scroll from 'base/scroll/scroll'
 
   export default {
+    components: {
+      Scroll
+    },
     methods: {
       goto (item) {
         if (item.pjzt === '已评') {
-          this.$iosAlert('您已对该课程评教~')
-          return
+//          this.$iosAlert('您已对该课程评教~')
+//          return
         }
         this.$router.push({path: '/app/pjcontent', query: {kch: item.kch}})
       }
@@ -52,5 +60,7 @@
 </script>
 
 <style scoped lang="stylus" ref="stylesheet/stylus">
-
+  .pj
+    position fixed
+    height 100%
 </style>

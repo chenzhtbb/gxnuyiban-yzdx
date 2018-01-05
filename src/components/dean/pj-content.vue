@@ -1,6 +1,6 @@
 <template>
   <div class="pj">
-    <scroll style="height: 100%;" :data="items">
+    <scroll :data="items" style="height: 100%">
       <div class="box box-widget widget-user">
         <div v-for="item in items">
           <div class="box-header">{{item.title}}</div>
