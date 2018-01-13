@@ -29,7 +29,7 @@
       },
       showDot: {
         type: Boolean,
-        default: true
+        default: false
       },
       dotPos: {
         type: String,

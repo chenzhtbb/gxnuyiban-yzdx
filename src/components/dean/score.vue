@@ -24,24 +24,25 @@
           </div>
           <div v-if="unconfirmedList.length">
             <div class="title">待确认成绩单</div>
-            <table class="table" rules="all">
-              <thead>
-              <tr>
-                <th>科目</th>
-                <th>平时</th>
-                <th>考试</th>
-                <th>总评</th>
-              </tr>
-              </thead>
-              <tbody>
-              <tr v-for="item in unconfirmedList" style="height: 25px;">
-                <td class="col-xs-6">{{item.kcmc}}</td>
-                <td class="col-xs-2">{{item.pscj}}</td>
-                <td class="col-xs-2">{{item.kscj}}</td>
-                <td class="col-xs-2">{{item.zpcj}}</td>
-              </tr>
-              </tbody>
-            </table>
+            <div v-html="unconfirmedList[0].table"></div>
+            <!--<table class="table" rules="all">-->
+              <!--<thead>-->
+              <!--<tr>-->
+                <!--<th>科目</th>-->
+                <!--<th>平时</th>-->
+                <!--<th>考试</th>-->
+                <!--<th>总评</th>-->
+              <!--</tr>-->
+              <!--</thead>-->
+              <!--<tbody>-->
+              <!--<tr v-for="item in unconfirmedList" style="height: 25px;">-->
+                <!--<td class="col-xs-6">{{item.kcmc}}</td>-->
+                <!--<td class="col-xs-2">{{item.pscj}}</td>-->
+                <!--<td class="col-xs-2">{{item.kscj}}</td>-->
+                <!--<td class="col-xs-2">{{item.zpcj}}</td>-->
+              <!--</tr>-->
+              <!--</tbody>-->
+            <!--</table>-->
           </div>
           <div v-for="scores in scoreList" v-if="scoreList.length">
             <div class="title">{{scores.ndxq}}学期成绩单</div>
@@ -65,7 +66,7 @@
             </table>
           </div>
         </div>
-        <div class="loading-container" v-show="!scoreList.length">
+        <div class="loading-container" v-show="!scoreList.length&&!unconfirmedList.length&&!examList.length">
           <loading></loading>
         </div>
       </scroll>
@@ -92,9 +93,15 @@
     },
     activated () {
       getScore().then((res) => {
-        this.scoreList = res.score
-        this.examList = res.exam
-        this.unconfirmedList = res.unconfirmed
+        if (res.score) {
+          this.scoreList = res.score
+        }
+        if (res.exam) {
+          this.examList = res.exam
+        }
+        if (res.unconfirmed) {
+          this.unconfirmedList = res.unconfirmed
+        }
       })
     }
   }

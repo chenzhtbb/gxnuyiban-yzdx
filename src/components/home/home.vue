@@ -3,7 +3,7 @@
     <cube-scroll :data="items">
       <div>
         <div v-if="items.length">
-          <cube-slide>
+          <cube-slide ref="slide">
             <cube-slide-item v-for="(item, index) in items" :key="index">
               <a :href="item.link">
                 <div class="title">
@@ -20,40 +20,43 @@
           <div style="padding-bottom: 2px;">
             <p style="border-left: 5px solid #FF6699" text-left="">&nbsp;&nbsp;学工在线</p>
           </div>
-          <cube-slide :auto-play="false">
-            <cube-slide-item>
-              <home-online></home-online>
-              <!--<home-online2></home-online2>-->
-            </cube-slide-item>
+          <slider :auto-play="false" ref="online">
+            <!--<cube-slide-item>-->
+            <home-online></home-online>
+            <!--<home-online2></home-online2>-->
+            <!--</cube-slide-item>-->
             <div slot="dots"></div>
-          </cube-slide>
+          </slider>
+          <div style="height: 20px;"></div>
           <div style="padding-bottom: 2px;">
             <p style="border-left: 5px solid #00CCFF" text-left="">&nbsp;&nbsp;教务服务</p>
           </div>
-          <cube-slide :auto-play="false">
-            <cube-slide-item>
-              <home-dean></home-dean>
-            </cube-slide-item>
+          <slider :auto-play="false" ref="dean">
+            <!--<cube-slide-item>-->
+            <home-dean></home-dean>
+            <!--</cube-slide-item>-->
             <div slot="dots"></div>
-          </cube-slide>
+          </slider>
+          <div style="height: 20px;"></div>
           <div style="padding-bottom: 2px;">
             <p style="border-left: 5px solid #FF0033" text-left="">&nbsp;&nbsp;生活服务</p>
           </div>
-          <cube-slide :auto-play="false">
-            <cube-slide-item>
-              <home-life></home-life>
-            </cube-slide-item>
+          <slider :auto-play="false" ref="life">
+            <!--<cube-slide-item>-->
+            <home-life></home-life>
+            <!--</cube-slide-item>-->
             <div slot="dots"></div>
-          </cube-slide>
+          </slider>
+          <div style="height: 20px;"></div>
           <div style="padding-bottom: 2px;">
             <p style="border-left: 5px solid #CC00FF" text-left="">&nbsp;&nbsp;办公服务</p>
           </div>
-          <cube-slide :auto-play="false">
-            <cube-slide-item>
-              <home-office></home-office>
-            </cube-slide-item>
+          <slider :auto-play="false" ref="office">
+            <!--<cube-slide-item>-->
+            <home-office></home-office>
+            <!--</cube-slide-item>-->
             <div slot="dots"></div>
-          </cube-slide>
+          </slider>
         </div>
         <div style="height: 48px;"></div>
       </div>
@@ -68,6 +71,7 @@
   import HomeOnline from 'components/home/home-online'
   import HomeOnline2 from 'components/home/home-online-2'
   import { getSliderNews } from 'api/news'
+  import Slider from 'base/slider/slider'
 
   export default {
     data () {
@@ -76,16 +80,27 @@
       }
     },
     components: {
+      Slider,
       HomeDean,
       HomeLife,
       HomeOffice,
       HomeOnline,
       HomeOnline2
     },
+    activated () {
+      setTimeout(() => {
+        this.$refs.slide && this.$refs.slide.refresh()
+        this.$refs.online && this.$refs.online.refresh()
+        this.$refs.dean && this.$refs.dean.refresh()
+        this.$refs.life && this.$refs.life.refresh()
+        this.$refs.office && this.$refs.office.refresh()
+      }, 20)
+    },
     mounted () {
       setTimeout(() => {
         getSliderNews().then((res) => {
-          this.items = res
+          this.items = []
+          this.items = this.items.concat(res)
         })
       }, 20)
     }
