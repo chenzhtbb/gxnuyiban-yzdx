@@ -27,7 +27,7 @@
             <!--</cube-slide-item>-->
             <div slot="dots"></div>
           </slider>
-          <div style="height: 20px;"></div>
+          <div style="height: 6px;"></div>
           <div style="padding-bottom: 2px;">
             <p style="border-left: 5px solid #00CCFF" text-left="">&nbsp;&nbsp;教务服务</p>
           </div>
@@ -37,7 +37,7 @@
             <!--</cube-slide-item>-->
             <div slot="dots"></div>
           </slider>
-          <div style="height: 20px;"></div>
+          <div style="height: 6px;"></div>
           <div style="padding-bottom: 2px;">
             <p style="border-left: 5px solid #FF0033" text-left="">&nbsp;&nbsp;生活服务</p>
           </div>
@@ -47,7 +47,7 @@
             <!--</cube-slide-item>-->
             <div slot="dots"></div>
           </slider>
-          <div style="height: 20px;"></div>
+          <div style="height: 6px;"></div>
           <div style="padding-bottom: 2px;">
             <p style="border-left: 5px solid #CC00FF" text-left="">&nbsp;&nbsp;办公服务</p>
           </div>

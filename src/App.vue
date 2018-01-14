@@ -9,10 +9,18 @@
 
 <script type="text/ecmascript-6">
   import Tab from 'components/tab/tab'
+  import { browser } from 'common/js/ybh5'
 
   export default {
     components: {
       Tab
+    },
+    mounted () {
+      setTimeout(() => {
+        if (!browser.versions.mobile) {
+          window.location.href = 'http://yiban.gxnu.edu.cn/score'
+        }
+      }, 20)
     }
   }
 </script>

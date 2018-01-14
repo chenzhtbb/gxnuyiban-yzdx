@@ -65,7 +65,7 @@
       }),
       _GetDean () {
         this.bind = this.binddean
-        if (this.bind.dean === 1) {
+        if (this.bind.dean) {
           this.bind.password = 'abcdefghijklmnopqrstuvwxzy'
         }
         this.bind.username = this.uinfo.yb_studentid

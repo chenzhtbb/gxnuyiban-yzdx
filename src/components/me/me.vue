@@ -29,6 +29,12 @@
                 <!--<span class="pull-right badge bg-blue"></span>-->
               </router-link>
             </li>
+            <li>
+              <router-link tag="a" to="/app/score">
+                查询成绩
+                <!--<span class="pull-right badge bg-blue"></span>-->
+              </router-link>
+            </li>
           </ul>
         </div>
       </div>

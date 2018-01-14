@@ -29,11 +29,41 @@
       }, 20)
     },
     methods: {
+      showAlert () {
+        this.$createDialog(
+          {
+            type: 'confirm',
+            title: '系统提示',
+            content: '您当前绑定的教务处账户密码错误，是否需要重新绑定？',
+            icon: 'cubeic-alert',
+            confirmBtn: {
+              text: '重新绑定',
+              active: true,
+              disabled: false,
+              href: 'javascript:;'
+            },
+            cancelBtn: {
+              text: '稍后再说',
+              active: false,
+              disabled: false,
+              href: 'javascript:;'
+            },
+            onConfirm: () => {
+              this.$router.push('/app/binddean')
+            },
+            onCancel: () => {
+            }
+          }
+        ).show()
+      },
       _getUserInfo () {
         getUser().then((res) => {
           this.userInfo = res
           if (res.dean.username !== '') {
             this.userInfo.yb.yb_studentid = this.userInfo.dean.username
+          }
+          if (this.userInfo.dean.dean > 1) {
+            this.showAlert()
           }
           this.setUinfo(this.userInfo.yb)
           this.setBinddean(this.userInfo.dean)
