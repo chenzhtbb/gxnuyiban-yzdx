@@ -12,7 +12,7 @@ var webpack = require('webpack')
 var proxyMiddleware = require('http-proxy-middleware')
 var webpackConfig = require('./webpack.dev.conf')
 var axios = require('axios')
-
+var prefix = process.env.API_PREFIX
 // default port where dev server listens for incoming traffic
 var port = process.env.PORT || config.dev.port
 // automatically open browser, if not set will be false
@@ -26,7 +26,7 @@ var app = express()
 var apiRoutes = express.Router()
 
 apiRoutes.get('/getScore', function (req, res) {
-  var url = 'http://localhost/api/public/index/api/getscore'
+  var url = prefix + '/getscore'
 
   axios.get(url).then((response) => {
     res.json(response.data)
@@ -36,7 +36,7 @@ apiRoutes.get('/getScore', function (req, res) {
 })
 
 apiRoutes.get('/bindUser', function (req, res) {
-  var url = 'http://localhost/api/public/index/api/bindUser'
+  var url = prefix + '/bindUser'
   axios.get(url, {
     params: req.query
   }).then((response) => {
@@ -47,7 +47,7 @@ apiRoutes.get('/bindUser', function (req, res) {
 })
 
 apiRoutes.get('/bindDorm', function (req, res) {
-  var url = 'http://localhost/api/public/index/api/bindDorm'
+  var url = prefix + '/bindDorm'
   axios.get(url, {
     params: req.query
   }).then((response) => {
@@ -58,7 +58,7 @@ apiRoutes.get('/bindDorm', function (req, res) {
 })
 
 apiRoutes.get('/getSliderNews', function (req, res) {
-  var url = 'http://localhost/api/public/index/api/getSliderNews'
+  var url = prefix + '/getSliderNews'
 
   axios.get(url, {
     params: req.query
@@ -70,7 +70,7 @@ apiRoutes.get('/getSliderNews', function (req, res) {
 })
 
 apiRoutes.get('/getJxpgList', function (req, res) {
-  var url = 'http://localhost/api/public/index/api/getJxpgList'
+  var url = prefix + '/getJxpgList'
 
   axios.get(url, {
     params: req.query
@@ -82,7 +82,7 @@ apiRoutes.get('/getJxpgList', function (req, res) {
 })
 
 apiRoutes.post('/putJxpgInfo', function (req, res) {
-  var url = 'http://localhost/api/public/index/api/putJxpgInfo'
+  var url = prefix + '/putJxpgInfo'
 
   axios.post(url, req).then((response) => {
     res.json(response.data)
@@ -92,7 +92,7 @@ apiRoutes.post('/putJxpgInfo', function (req, res) {
 })
 
 apiRoutes.get('/getNewsList', function (req, res) {
-  var url = 'http://localhost/api/public/index/api/getNewsList'
+  var url = prefix + '/getNewsList'
 
   axios.get(url, {
     params: req.query
@@ -104,7 +104,7 @@ apiRoutes.get('/getNewsList', function (req, res) {
 })
 
 apiRoutes.get('/getNews', function (req, res) {
-  var url = 'http://localhost/api/public/index/api/getNews'
+  var url = prefix + '/getNews'
 
   axios.get(url, {
     params: req.query
@@ -116,7 +116,7 @@ apiRoutes.get('/getNews', function (req, res) {
 })
 
 apiRoutes.get('/getUser', function (req, res) {
-  var url = 'http://localhost/api/public/index/api/getUser'
+  var url = prefix + '/getUser'
 
   axios.get(url, {
     params: req.query
@@ -128,7 +128,7 @@ apiRoutes.get('/getUser', function (req, res) {
 })
 
 apiRoutes.get('/getTimetable', function (req, res) {
-  var url = 'http://localhost/api/public/index/api/getTimetable'
+  var url = prefix + '/getTimetable'
 
   axios.get(url, {
     params: req.query
@@ -140,7 +140,7 @@ apiRoutes.get('/getTimetable', function (req, res) {
 })
 
 apiRoutes.get('/getLostList', function (req, res) {
-  var url = 'http://localhost/api/public/index/api/getLostList'
+  var url = prefix + '/getLostList'
 
   axios.get(url, {
     params: req.query
@@ -152,7 +152,7 @@ apiRoutes.get('/getLostList', function (req, res) {
 })
 
 apiRoutes.get('/getBook', function (req, res) {
-  var url = 'http://localhost/api/public/index/api/getBook'
+  var url = prefix + '/getBook'
 
   axios.get(url, {
     params: req.query
@@ -164,7 +164,7 @@ apiRoutes.get('/getBook', function (req, res) {
 })
 
 apiRoutes.get('/getBookList', function (req, res) {
-  var url = 'http://localhost/api/public/index/api/getBookList'
+  var url = prefix + '/getBookList'
 
   axios.get(url, {
     params: req.query
@@ -176,7 +176,7 @@ apiRoutes.get('/getBookList', function (req, res) {
 })
 
 apiRoutes.get('/getXgbList', function (req, res) {
-  var url = 'http://localhost/api/public/index/api/getXgbList'
+  var url = prefix + '/getXgbList'
 
   axios.get(url, {
     params: req.query
@@ -188,7 +188,7 @@ apiRoutes.get('/getXgbList', function (req, res) {
 })
 
 apiRoutes.get('/getXgbNotice', function (req, res) {
-  var url = 'http://localhost/api/public/index/api/getXgbNotice'
+  var url = prefix + '/getXgbNotice'
 
   axios.get(url, {
     params: req.query
@@ -200,7 +200,7 @@ apiRoutes.get('/getXgbNotice', function (req, res) {
 })
 
 apiRoutes.get('/oauth', function (req, res) {
-  var url = 'http://localhost/api/public/index/api/oauth'
+  var url = prefix + '/oauth'
 
   axios.get(url, {
     params: req.query
@@ -212,7 +212,7 @@ apiRoutes.get('/oauth', function (req, res) {
 })
 
 apiRoutes.get('/getSearchBookList', function (req, res) {
-  var url = 'http://localhost/api/public/index/api/getSearchBookList'
+  var url = prefix + '/getSearchBookList'
 
   axios.get(url, {
     params: req.query
@@ -224,7 +224,7 @@ apiRoutes.get('/getSearchBookList', function (req, res) {
 })
 
 apiRoutes.post('/putFeedback', function (req, res) {
-  var url = 'http://localhost/api/public/index/api/putFeedback'
+  var url = prefix + '/putFeedback'
 
   axios.post(url, req).then((response) => {
     res.json(response.data)
@@ -233,7 +233,7 @@ apiRoutes.post('/putFeedback', function (req, res) {
   })
 })
 
-app.use('/index/api', apiRoutes)
+app.use('/api', apiRoutes)
 
 var compiler = webpack(webpackConfig)
 

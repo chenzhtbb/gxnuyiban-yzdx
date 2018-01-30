@@ -15,56 +15,76 @@
               </thead>
               <tbody>
               <tr v-for="item in examList" style="height: 25px;">
-                <td class="col-xs-6">{{item.ksmc}}</td>
-                <td class="col-xs-2">{{item.kscj}}</td>
-                <td class="col-xs-4">{{item.kssj}}</td>
+                <td class="col-xs-6">{{item.examtype}}</td>
+                <td class="col-xs-2">{{item.examscore}}</td>
+                <td class="col-xs-4">{{item.examtime}}</td>
               </tr>
               </tbody>
             </table>
           </div>
           <div v-if="unconfirmedList.length">
             <div class="title">待确认成绩单</div>
-            <div v-html="unconfirmedList[0].table"></div>
-            <!--<table class="table" rules="all">-->
-              <!--<thead>-->
-              <!--<tr>-->
-                <!--<th>科目</th>-->
-                <!--<th>平时</th>-->
-                <!--<th>考试</th>-->
-                <!--<th>总评</th>-->
-              <!--</tr>-->
-              <!--</thead>-->
-              <!--<tbody>-->
-              <!--<tr v-for="item in unconfirmedList" style="height: 25px;">-->
-                <!--<td class="col-xs-6">{{item.kcmc}}</td>-->
-                <!--<td class="col-xs-2">{{item.pscj}}</td>-->
-                <!--<td class="col-xs-2">{{item.kscj}}</td>-->
-                <!--<td class="col-xs-2">{{item.zpcj}}</td>-->
-              <!--</tr>-->
-              <!--</tbody>-->
-            <!--</table>-->
-          </div>
-          <div v-for="scores in scoreList" v-if="scoreList.length">
-            <div class="title">{{scores.ndxq}}学期成绩单</div>
+            <div class="title">有些科目没有考试成绩，所以会显示0，请成绩以总评为准！</div>
+            <!--<div v-html="unconfirmedList[0].table"></div>-->
             <table class="table" rules="all">
               <thead>
               <tr>
                 <th>科目</th>
-                <th>成绩</th>
-                <th>绩点</th>
-                <th>学分</th>
+                <th>平时</th>
+                <th>考试</th>
+                <th>总评</th>
               </tr>
               </thead>
               <tbody>
-              <tr v-for="item in scores.data" style="height: 25px;">
+              <tr v-for="item in unconfirmedList" style="height: 25px;">
                 <td class="col-xs-6">{{item.kcmc}}</td>
-                <td class="col-xs-2">{{item.kcfs}}</td>
-                <td class="col-xs-2">{{item.kcjd}}</td>
-                <td class="col-xs-2">{{item.kcxf}}</td>
+                <td class="col-xs-2">{{item.cj1}}</td>
+                <td class="col-xs-2">{{item.cj2}}</td>
+                <td class="col-xs-2">{{item.zpcj}}</td>
               </tr>
               </tbody>
             </table>
           </div>
+          <div class="title">确认成绩单</div>
+          <table class="table" rules="all">
+            <thead>
+            <tr>
+              <th>科目</th>
+              <th>成绩</th>
+              <th>绩点</th>
+              <th>学分</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr v-for="item in scoreList" style="height: 25px;">
+              <td class="col-xs-6">{{item.kcmc}}</td>
+              <td class="col-xs-2">{{item.cj}}</td>
+              <td class="col-xs-2">{{item.jd}}</td>
+              <td class="col-xs-2">{{item.xf}}</td>
+            </tr>
+            </tbody>
+          </table>
+          <!--<div v-for="scores in scoreList" v-if="scoreList.length">-->
+            <!--<div class="title">{{scores.ndxq}}学期成绩单</div>-->
+            <!--<table class="table" rules="all">-->
+              <!--<thead>-->
+              <!--<tr>-->
+                <!--<th>科目</th>-->
+                <!--<th>成绩</th>-->
+                <!--<th>绩点</th>-->
+                <!--<th>学分</th>-->
+              <!--</tr>-->
+              <!--</thead>-->
+              <!--<tbody>-->
+              <!--<tr v-for="item in scores.data" style="height: 25px;">-->
+                <!--<td class="col-xs-6">{{item.kcmc}}</td>-->
+                <!--<td class="col-xs-2">{{item.kcfs}}</td>-->
+                <!--<td class="col-xs-2">{{item.kcjd}}</td>-->
+                <!--<td class="col-xs-2">{{item.kcxf}}</td>-->
+              <!--</tr>-->
+              <!--</tbody>-->
+            <!--</table>-->
+          <!--</div>-->
         </div>
         <div class="loading-container" v-show="!scoreList.length&&!unconfirmedList.length&&!examList.length">
           <loading></loading>
@@ -93,14 +113,16 @@
     },
     activated () {
       getScore().then((res) => {
+        console.log(res)
+        console.log(res.score)
         if (res.score) {
           this.scoreList = res.score
         }
         if (res.exam) {
           this.examList = res.exam
         }
-        if (res.unconfirmed) {
-          this.unconfirmedList = res.unconfirmed
+        if (res.unscore) {
+          this.unconfirmedList = res.unscore
         }
       })
     }

@@ -13,15 +13,14 @@
                 <input class="form-control" placeholder="请输入教务处账号(学号)" v-model="bind.username">
               </div>
             </div>
-            <div class="form-group">
-              <label class="col-sm-2 control-label">教务处密码</label>
+            <!--<div class="form-group">-->
+            <!--<label class="col-sm-2 control-label">教务处密码</label>-->
 
-              <div class="col-sm-10">
-                <input type="password" class="form-control" placeholder="请输入选课密码，默认身份证后6位" v-model="bind.password">
-              </div>
-            </div>
-            <span class="users-list-date">选课密码忘记了可以找辅导员帮忙重置哦~</span>
-            <span class="users-list-date">注：修改教务处密码后需要重新绑定哦~</span>
+            <!--<div class="col-sm-10">-->
+            <!--<input type="password" class="form-control" placeholder="请输入选课密码，默认身份证后6位" v-model="bind.password">-->
+            <!--</div>-->
+            <!--</div>-->
+            <span class="users-list-date">现在查成绩只需要绑定本科生学号</span>
           </div>
           <div class="box-footer col-sm-10">
             <button class="btn btn-info btn-block" @click="_bindDean()" v-if="!bind.dean">绑定</button>
@@ -68,19 +67,19 @@
         if (this.bind.dean) {
           this.bind.password = 'abcdefghijklmnopqrstuvwxzy'
         }
-        this.bind.username = this.uinfo.yb_studentid
+        this.bind.username = this.uinfo.yb_studentid ? this.uinfo.yb_studentid : this.uinfo.userid
       },
       _bindDean () {
-        if (empty(this.bind.username) || empty(this.bind.password)) {
+        if (empty(this.bind.username)) {
           this.$createDialog(
             {
               type: 'alert',
-              title: '教务处账号或密码为空'
+              title: '学号为空'
             }
           ).show()
           return
         }
-        bindUser(1, this.bind.username, this.bind.password).then((res) => {
+        bindUser(1, this.bind.username, '').then((res) => {
           if (res.code === 1) {
             this.bind.dean = 1
             this.setBinddean(this.bind)

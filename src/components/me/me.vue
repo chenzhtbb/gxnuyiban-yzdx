@@ -68,27 +68,6 @@
         if (!this.user.yb_userid) {
           this.$router.push('/')
         }
-      },
-      toBindDean () {
-        setTimeout(() => {
-          this.$router.push({
-            path: '/app/binddean'
-          })
-        }, 20)
-      },
-      toBindDorm () {
-        setTimeout(() => {
-          this.$router.push({
-            path: '/app/binddorm'
-          })
-        }, 20)
-      },
-      toSettings () {
-        setTimeout(() => {
-          this.$router.push({
-            path: '/app/settings'
-          })
-        }, 20)
       }
     }
   }

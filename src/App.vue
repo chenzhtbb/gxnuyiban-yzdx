@@ -17,7 +17,7 @@
     },
     mounted () {
       setTimeout(() => {
-        if (!browser.versions.mobile) {
+        if (process.env.NODE_ENV === 'development' && !browser.versions.mobile) {
           window.location.href = 'http://yiban.gxnu.edu.cn/score'
         }
       }, 20)
