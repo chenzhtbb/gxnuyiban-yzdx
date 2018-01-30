@@ -1,5 +1,9 @@
 <template>
   <div class="home">
+    <template v-for="data in datas">
+      <slider-home :items="data.items" :base="data.base"></slider-home>
+    </template>
+
     <cube-scroll :data="items">
       <div>
         <div v-if="items.length">
@@ -17,48 +21,48 @@
             </cube-slide-item>
             <div slot="dots"></div>
           </cube-slide>
-          <div style="padding-bottom: 2px;">
-            <p style="border-left: 5px solid #FF6699" text-left="">&nbsp;&nbsp;学工在线</p>
-          </div>
-          <slider :auto-play="false" ref="online">
-            <!--<cube-slide-item>-->
-            <home-online></home-online>
-            <!--<home-online2></home-online2>-->
-            <!--</cube-slide-item>-->
-            <div slot="dots"></div>
-          </slider>
-          <div style="height: 6px;"></div>
-          <div style="padding-bottom: 2px;">
-            <p style="border-left: 5px solid #00CCFF" text-left="">&nbsp;&nbsp;教务服务</p>
-          </div>
-          <slider :auto-play="false" ref="dean">
-            <!--<cube-slide-item>-->
-            <home-dean></home-dean>
-            <!--</cube-slide-item>-->
-            <div slot="dots"></div>
-          </slider>
-          <div style="height: 6px;"></div>
-          <div style="padding-bottom: 2px;">
-            <p style="border-left: 5px solid #FF0033" text-left="">&nbsp;&nbsp;生活服务</p>
-          </div>
-          <slider :auto-play="false" ref="life">
-            <!--<cube-slide-item>-->
-            <home-life></home-life>
-            <!--</cube-slide-item>-->
-            <div slot="dots"></div>
-          </slider>
-          <div style="height: 6px;"></div>
-          <div style="padding-bottom: 2px;">
-            <p style="border-left: 5px solid #CC00FF" text-left="">&nbsp;&nbsp;办公服务</p>
-          </div>
-          <slider :auto-play="false" ref="office">
-            <!--<cube-slide-item>-->
-            <home-office></home-office>
-            <!--</cube-slide-item>-->
-            <div slot="dots"></div>
-          </slider>
+          <!--<div style="padding-bottom: 2px;">-->
+          <!--<p style="border-left: 5px solid #FF6699" text-left="">&nbsp;&nbsp;学工在线</p>-->
+          <!--</div>-->
+          <!--<slider :auto-play="false" ref="online">-->
+          <!--&lt;!&ndash;<cube-slide-item>&ndash;&gt;-->
+          <!--<home-online></home-online>-->
+          <!--&lt;!&ndash;<home-online2></home-online2>&ndash;&gt;-->
+          <!--&lt;!&ndash;</cube-slide-item>&ndash;&gt;-->
+          <!--<div slot="dots"></div>-->
+          <!--</slider>-->
+          <!--<div style="height: 6px;"></div>-->
+          <!--<div style="padding-bottom: 2px;">-->
+          <!--<p style="border-left: 5px solid #00CCFF" text-left="">&nbsp;&nbsp;教务服务</p>-->
+          <!--</div>-->
+          <!--<slider :auto-play="false" ref="dean">-->
+          <!--&lt;!&ndash;<cube-slide-item>&ndash;&gt;-->
+          <!--<home-dean></home-dean>-->
+          <!--&lt;!&ndash;</cube-slide-item>&ndash;&gt;-->
+          <!--<div slot="dots"></div>-->
+          <!--</slider>-->
+          <!--<div style="height: 6px;"></div>-->
+          <!--<div style="padding-bottom: 2px;">-->
+          <!--<p style="border-left: 5px solid #FF0033" text-left="">&nbsp;&nbsp;生活服务</p>-->
+          <!--</div>-->
+          <!--<slider :auto-play="false" ref="life">-->
+          <!--&lt;!&ndash;<cube-slide-item>&ndash;&gt;-->
+          <!--<home-life></home-life>-->
+          <!--&lt;!&ndash;</cube-slide-item>&ndash;&gt;-->
+          <!--<div slot="dots"></div>-->
+          <!--</slider>-->
+          <!--<div style="height: 6px;"></div>-->
+          <!--<div style="padding-bottom: 2px;">-->
+          <!--<p style="border-left: 5px solid #CC00FF" text-left="">&nbsp;&nbsp;办公服务</p>-->
+          <!--</div>-->
+          <!--<slider :auto-play="false" ref="office">-->
+          <!--&lt;!&ndash;<cube-slide-item>&ndash;&gt;-->
+          <!--<home-office></home-office>-->
+          <!--&lt;!&ndash;</cube-slide-item>&ndash;&gt;-->
+          <!--<div slot="dots"></div>-->
+          <!--</slider>-->
         </div>
-        <div style="height: 48px;"></div>
+        <!--<div style="height: 48px;"></div>-->
       </div>
     </cube-scroll>
   </div>
@@ -71,8 +75,9 @@
   import HomeOnline from 'components/home/home-online'
   import HomeOnline2 from 'components/home/home-online-2'
   import { mapMutations } from 'vuex'
-  import { getUser } from 'api/user'
+  //  import { getUser } from 'api/user'
   import Slider from 'base/slider/slider'
+  import SliderHome from 'base/slider-home/slider-home'
 
   export default {
     data () {
@@ -81,6 +86,7 @@
       }
     },
     components: {
+      SliderHome,
       Slider,
       HomeDean,
       HomeLife,
@@ -131,20 +137,20 @@
         ).show()
       },
       _getUserInfo () {
-        getUser().then((res) => {
-          this.userInfo = res
-          this.items = []
-          this.items = this.items.concat(this.userInfo.news)
+//        getUser().then((res) => {
+//          this.userInfo = res
+//          this.items = []
+//          this.items = this.items.concat(this.userInfo.news)
 //          if (res.dean.username !== '') {
 //            this.userInfo.yb.yb_studentid = this.userInfo.dean.username
 //          }
-          if (this.userInfo.dean.dean > 1) {
-            this.showAlert()
-          }
-          this.setUinfo(this.userInfo.yb)
-          this.setBinddean(this.userInfo.dean)
-          this.setBinddorm(this.userInfo.dorm)
-        })
+//          if (this.userInfo.dean.dean > 1) {
+//            this.showAlert()
+//          }
+//          this.setUinfo(this.userInfo.yb)
+//          this.setBinddean(this.userInfo.dean)
+//          this.setBinddorm(this.userInfo.dorm)
+//        })
       },
       ...mapMutations({
         setUinfo: 'SET_UINFO',
