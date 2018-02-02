@@ -13,7 +13,7 @@
   import Toggle from 'base/toggle/toggle'
   import Loading from 'base/loading/loading'
   import { mapActions } from 'vuex'
-  import { getHelpFlag } from 'common/js/cache'
+  import { getHrefFlag } from 'common/js/cache'
 
   export default {
     components: {
@@ -26,21 +26,21 @@
       }
     },
     activated () {
-      this.helpflag = getHelpFlag()
-      console.log(this.helpflag)
-      if (this.helpflag) {
-        this.saveHelpFlag(false)
+      this.hrefflag = getHrefFlag()
+      console.log(this.hrefflag)
+      if (this.hrefflag) {
+        this.saveHrefFlag(false)
         this.$router.replace('/home')
       } else {
         setTimeout(() => {
-          this.saveHelpFlag(true)
+          this.saveHrefFlag(true)
           window.location.href = 'https://oauth.yiban.cn/code/html?client_id=321a8e203164b766&redirect_uri=http://116.1.2.242:3489/AdminLTE_Mod/Yb/Yb.aspx&state=yb_oauth'
         }, 20)
       }
     },
     methods: {
       ...mapActions([
-        'saveHelpFlag'
+        'saveHrefFlag'
       ])
     }
   }

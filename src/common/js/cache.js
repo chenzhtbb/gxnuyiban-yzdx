@@ -1,7 +1,6 @@
 import storage from 'good-storage'
 
-const HELP_KEY = '__help__'
-const LOST_KEY = '__lost__'
+const HREF_KEY = '__href__'
 const TOKEN_KEY = '__token__'
 
 export function getSessionToken () {
@@ -20,18 +19,10 @@ export function setToken (token) {
   storage.set(TOKEN_KEY, token)
 }
 
-export function setHelpFlag (flag) {
-  storage.set(HELP_KEY, flag)
+export function setHrefFlag (flag) {
+  storage.set(HREF_KEY, flag)
 }
 
-export function getHelpFlag () {
-  return storage.get(HELP_KEY)
-}
-
-export function setLostFlag (flag) {
-  storage.set(LOST_KEY, flag)
-}
-
-export function getLostFlag () {
-  return storage.get(LOST_KEY)
+export function getHrefFlag () {
+  return storage.get(HREF_KEY)
 }

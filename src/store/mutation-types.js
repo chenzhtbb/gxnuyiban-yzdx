@@ -1,5 +1,4 @@
 export const SET_UINFO = 'SET_UINFO'
 export const SET_BINDDEAN = 'SET_BINDDEAN'
 export const SET_BINDDORM = 'SET_BINDDORM'
-export const SET_HELPFLAG = 'SET_HELPFLAG'
-export const SET_LOSTFLAG = 'SET_LOSTFLAG'
+export const SET_HREFFLAG = 'SET_HREFFLAG'

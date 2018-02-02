@@ -21,8 +21,6 @@
 <script type="text/ecmascript-6">
   import Toggle from 'base/toggle/toggle'
   import Loading from 'base/loading/loading'
-  import { mapActions } from 'vuex'
-  import { getLostFlag } from 'common/js/cache'
 
   export default {
     components: {
@@ -35,21 +33,16 @@
       }
     },
     activated () {
-      this.lostflag = getLostFlag()
-      if (this.lostflag) {
-        this.saveLostFlag(false)
-        this.$router.replace('/home')
-      } else {
-        setTimeout(() => {
-          this.saveLostFlag(true)
-          window.location.href = 'http://www.gxnuyiban.com/lostandfound/'
-        }, 20)
-      }
-    },
-    methods: {
-      ...mapActions([
-        'saveLostFlag'
-      ])
+//      this.lostflag = getLostFlag()
+//      if (this.lostflag) {
+//        this.saveLostFlag(false)
+//        this.$router.replace('/home')
+//      } else {
+//        setTimeout(() => {
+//          this.saveLostFlag(true)
+//          window.location.href = 'http://www.gxnuyiban.com/lostandfound/'
+//        }, 20)
+//      }
     }
   }
 </script>

@@ -10,11 +10,8 @@ const mutations = {
   [types.SET_BINDDORM] (state, binddorm) {
     state.binddorm = binddorm
   },
-  [types.SET_HELPFLAG] (state, helpflag) {
-    state.helpflag = helpflag
-  },
-  [types.SET_LOSTFLAG] (state, lostflag) {
-    state.lostflag = lostflag
+  [types.SET_HREFFLAG] (state, hrefflag) {
+    state.hrefflag = hrefflag
   }
 }
 

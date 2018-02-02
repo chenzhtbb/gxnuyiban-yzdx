@@ -29,7 +29,7 @@
 
 <script type="text/ecmascript-6">
   import { mapMutations } from 'vuex'
-  //  import { getUser } from 'api/user'
+  import { getUser } from 'api/user'
   import Slider from 'base/slider/slider'
   import SliderHome from 'base/slider-home/slider-home'
 
@@ -179,16 +179,19 @@
       Slider
     },
     activated () {
-      setTimeout(() => {
-        this.$refs.slide && this.$refs.slide.refresh()
-      }, 20)
+      this.updateNews()
     },
     mounted () {
       setTimeout(() => {
-        this._getUserInfo()
+        this.getUserInfo()
       }, 20)
     },
     methods: {
+      updateNews () {
+        setTimeout(() => {
+          this.$refs.slide && this.$refs.slide.refresh()
+        }, 20)
+      },
       showAlert () {
         this.$createDialog(
           {
@@ -216,21 +219,24 @@
           }
         ).show()
       },
-      _getUserInfo () {
-//        getUser().then((res) => {
-//          this.userInfo = res
-//          this.items = []
-//          this.items = this.items.concat(this.userInfo.news)
-//          if (res.dean.username !== '') {
-//            this.userInfo.yb.yb_studentid = this.userInfo.dean.username
-//          }
-//          if (this.userInfo.dean.dean > 1) {
-//            this.showAlert()
-//          }
-//          this.setUinfo(this.userInfo.yb)
-//          this.setBinddean(this.userInfo.dean)
-//          this.setBinddorm(this.userInfo.dorm)
-//        })
+      getUserInfo () {
+        getUser().then((res) => {
+          this.userInfo = res
+          this.sliderNews = [].concat(this.userInfo.news)
+          this.updateNews()
+          // 获取绑定的账号
+          if (this.userInfo.dean.username !== '') {
+            this.userInfo.yb.yb_studentid = this.userInfo.dean.username
+          }
+          // 更改过教务处密码的提示
+          if (this.userInfo.dean.dean > 1) {
+            this.showAlert()
+          }
+          // 保存教务处，宿舍，用户信息
+          this.setUinfo(this.userInfo.yb)
+          this.setBinddean(this.userInfo.dean)
+          this.setBinddorm(this.userInfo.dorm)
+        })
       },
       ...mapMutations({
         setUinfo: 'SET_UINFO',

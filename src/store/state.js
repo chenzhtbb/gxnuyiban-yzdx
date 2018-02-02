@@ -2,8 +2,7 @@ const state = {
   uinfo: {},
   binddean: {},
   binddorm: {},
-  helpflag: false,
-  lostflag: false
+  hrefflag: false
 }
 
 export default state

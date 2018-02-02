@@ -22,7 +22,7 @@
   import Toggle from 'base/toggle/toggle'
   import Loading from 'base/loading/loading'
   import { mapActions } from 'vuex'
-  import { getLostFlag } from 'common/js/cache'
+  import { getHrefFlag } from 'common/js/cache'
 
   export default {
     components: {
@@ -35,20 +35,20 @@
       }
     },
     activated () {
-      this.lostflag = getLostFlag()
-      if (this.lostflag) {
-        this.saveLostFlag(false)
+      this.hrefflag = getHrefFlag()
+      if (this.hrefflag) {
+        this.saveHrefFlag(false)
         this.$router.replace('/home')
       } else {
         setTimeout(() => {
-          this.saveLostFlag(true)
+          this.saveHrefFlag(true)
           window.location.href = 'http://yiban.gxnu.edu.cn/secondhand'
         }, 20)
       }
     },
     methods: {
       ...mapActions([
-        'saveLostFlag'
+        'saveHrefFlag'
       ])
     }
   }
