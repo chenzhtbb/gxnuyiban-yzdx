@@ -129,7 +129,6 @@
         })
 
         this.slider.on('beforeScrollStart', () => {
-          console.log('beforeScrollStart')
           if (this.autoPlay) {
             clearTimeout(this.timer)
           }

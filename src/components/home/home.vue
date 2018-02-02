@@ -1,79 +1,33 @@
 <template>
   <div class="home">
-    <template v-for="data in datas">
-      <slider-home :items="data.items" :base="data.base"></slider-home>
-    </template>
-
-    <cube-scroll :data="items">
+    <cube-scroll :data="sliderNews">
       <div>
-        <div v-if="items.length">
+        <div v-if="sliderNews.length">
           <cube-slide ref="slide">
-            <cube-slide-item v-for="(item, index) in items" :key="index">
-              <a :href="item.link">
+            <cube-slide-item v-for="(news, index) in sliderNews" :key="index">
+              <a :href="news.link">
                 <div class="title">
-                  {{item.title}}
+                  {{news.title}}
                 </div>
                 <div class="bottom">
-                  <div class="type">{{item.author}}</div>
+                  <div class="type">{{news.author}}</div>
                 </div>
                 <div class="border"></div>
               </a>
             </cube-slide-item>
             <div slot="dots"></div>
           </cube-slide>
-          <!--<div style="padding-bottom: 2px;">-->
-          <!--<p style="border-left: 5px solid #FF6699" text-left="">&nbsp;&nbsp;学工在线</p>-->
-          <!--</div>-->
-          <!--<slider :auto-play="false" ref="online">-->
-          <!--&lt;!&ndash;<cube-slide-item>&ndash;&gt;-->
-          <!--<home-online></home-online>-->
-          <!--&lt;!&ndash;<home-online2></home-online2>&ndash;&gt;-->
-          <!--&lt;!&ndash;</cube-slide-item>&ndash;&gt;-->
-          <!--<div slot="dots"></div>-->
-          <!--</slider>-->
-          <!--<div style="height: 6px;"></div>-->
-          <!--<div style="padding-bottom: 2px;">-->
-          <!--<p style="border-left: 5px solid #00CCFF" text-left="">&nbsp;&nbsp;教务服务</p>-->
-          <!--</div>-->
-          <!--<slider :auto-play="false" ref="dean">-->
-          <!--&lt;!&ndash;<cube-slide-item>&ndash;&gt;-->
-          <!--<home-dean></home-dean>-->
-          <!--&lt;!&ndash;</cube-slide-item>&ndash;&gt;-->
-          <!--<div slot="dots"></div>-->
-          <!--</slider>-->
-          <!--<div style="height: 6px;"></div>-->
-          <!--<div style="padding-bottom: 2px;">-->
-          <!--<p style="border-left: 5px solid #FF0033" text-left="">&nbsp;&nbsp;生活服务</p>-->
-          <!--</div>-->
-          <!--<slider :auto-play="false" ref="life">-->
-          <!--&lt;!&ndash;<cube-slide-item>&ndash;&gt;-->
-          <!--<home-life></home-life>-->
-          <!--&lt;!&ndash;</cube-slide-item>&ndash;&gt;-->
-          <!--<div slot="dots"></div>-->
-          <!--</slider>-->
-          <!--<div style="height: 6px;"></div>-->
-          <!--<div style="padding-bottom: 2px;">-->
-          <!--<p style="border-left: 5px solid #CC00FF" text-left="">&nbsp;&nbsp;办公服务</p>-->
-          <!--</div>-->
-          <!--<slider :auto-play="false" ref="office">-->
-          <!--&lt;!&ndash;<cube-slide-item>&ndash;&gt;-->
-          <!--<home-office></home-office>-->
-          <!--&lt;!&ndash;</cube-slide-item>&ndash;&gt;-->
-          <!--<div slot="dots"></div>-->
-          <!--</slider>-->
         </div>
-        <!--<div style="height: 48px;"></div>-->
+        <template v-for="data in datas">
+          <slider-home :items="data.items" :name="data.name" :color="data.color"></slider-home>
+        </template>
+        <div style="height: 48px;"></div>
       </div>
     </cube-scroll>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
-  import HomeDean from 'components/home/home-dean'
-  import HomeLife from 'components/home/home-life'
-  import HomeOffice from 'components/home/home-office'
-  import HomeOnline from 'components/home/home-online'
-  import HomeOnline2 from 'components/home/home-online-2'
   import { mapMutations } from 'vuex'
   //  import { getUser } from 'api/user'
   import Slider from 'base/slider/slider'
@@ -82,25 +36,151 @@
   export default {
     data () {
       return {
-        items: []
+        sliderNews: [''],
+        datas: [
+          {
+            name: '学工在线',
+            color: '#FF6699',
+            items: [
+              {
+                name: '学工通知',
+                link: '/app/xgbnotice',
+                query: {
+                  notice: '9a9870f3ebbd8fde2da5d1dd615b5f54'
+                },
+                icon: 'iconfont icon-tongzhi bg-D81B60'
+              },
+              {
+                name: '资助育人',
+                link: '/app/helppeople',
+                icon: 'iconfont icon-icon_shengyuandizhuxuedaikuan bg-00a65a'
+              },
+              {
+                name: '易班在线',
+                link: '/app/xgbnotice',
+                query: {
+                  notice: '55938ef9fe8c8e8a617a093c90cf19ee'
+                },
+                icon: 'iconfont icon-yibanlogo bg-00c0ef'
+              },
+              {
+                name: '办事指南',
+                link: '/app/xgbnotice',
+                query: {
+                  notice: 'e42c9b4c2866afef633ee98f7c49c155'
+                },
+                icon: 'iconfont icon-zhuyizhishi bg-ff851b'
+              },
+              {
+                name: '就业服务',
+                link: '/app/workservice',
+                icon: 'iconfont icon-jiuyeshuai bg-00c0ef'
+              }
+            ]
+          },
+          {
+            name: '教务服务',
+            color: '#00CCFF',
+            items: [
+              {
+                name: '成绩',
+                link: '/app/score',
+                icon: 'iconfont icon-chengjichaxun bg-00c0ef'
+              },
+              {
+                name: '课表',
+                link: '/app/classtable',
+                icon: 'iconfont icon-kebiaochaxun bg-00a65a'
+              },
+              {
+                name: '图书馆',
+                link: '/app/library',
+                icon: 'iconfont icon-tushuguan bg-ff851b'
+              },
+              {
+                name: '选课',
+                link: '/',
+                icon: 'iconfont icon-jingqingqidai bg-00a65a'
+              },
+              {
+                name: '成绩',
+                link: '/app/pj',
+                icon: 'iconfont icon-pingjiaopingxue bg-D81B60'
+              }
+            ]
+          },
+          {
+            name: '生活服务',
+            color: '#FF0033',
+            items: [
+              {
+                name: '校车时刻',
+                link: '/app/schoolbus',
+                icon: 'iconfont icon-xiaochexinxi bg-ff851b'
+              },
+              {
+                name: '失物招领',
+                link: '/app/lostandfound',
+                icon: 'iconfont icon-xingzhuang9kaobei bg-00c0ef'
+              },
+              {
+                name: '二手市场',
+                link: '/app/secondhand',
+                icon: 'iconfont icon-ershou bg-D81B60'
+              },
+              {
+                name: '资费查询',
+                link: '/',
+                icon: 'iconfont icon-jingqingqidai bg-00a65a'
+              },
+              {
+                name: '宿舍用电',
+                link: '/',
+                icon: 'iconfont icon-jingqingqidai bg-00c0ef'
+              }
+            ]
+          },
+          {
+            name: '办公服务',
+            color: '#CC00FF',
+            items: [
+              {
+                name: '公文公告',
+                link: '/app/score',
+                icon: 'iconfont icon-gongwen bg-ff851b'
+              },
+              {
+                name: '会议安排',
+                link: '/app/newstab/hyap',
+                icon: 'iconfont icon-iconhuiyianpai01 bg-00a65a'
+              },
+              {
+                name: '教务通知',
+                link: '/app/newstab/jwtz',
+                icon: 'iconfont icon-jiaowuguanli bg-D81B60'
+              },
+              {
+                name: '校园新闻',
+                link: '/app/newstab/xyxw',
+                icon: 'iconfont icon-xiaoyuanxinwen bg-00c0ef'
+              },
+              {
+                name: '讲座报告',
+                link: '/app/newstab/jzbg',
+                icon: 'iconfont icon-jiangzuo bg-ff851b'
+              }
+            ]
+          }
+        ]
       }
     },
     components: {
       SliderHome,
-      Slider,
-      HomeDean,
-      HomeLife,
-      HomeOffice,
-      HomeOnline,
-      HomeOnline2
+      Slider
     },
     activated () {
       setTimeout(() => {
         this.$refs.slide && this.$refs.slide.refresh()
-        this.$refs.online && this.$refs.online.refresh()
-        this.$refs.dean && this.$refs.dean.refresh()
-        this.$refs.life && this.$refs.life.refresh()
-        this.$refs.office && this.$refs.office.refresh()
       }, 20)
     },
     mounted () {

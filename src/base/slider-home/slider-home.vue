@@ -2,13 +2,13 @@
   <div>
     <div style="height: 6px;"></div>
     <div style="padding-bottom: 2px;">
-      <p style="border-left: 5px solid" :style="base.color" text-left="">&nbsp;&nbsp;{{base.name}}</p>
+      <p :style="titleColor" text-left>&nbsp;&nbsp;{{name}}</p>
     </div>
     <slider :auto-play="false" ref="slider">
       <ul class="grid-center">
         <li v-for="item in items">
-          <router-link :to="item.link" tag="a">
-            <i class="icon" :class="item.class"></i>
+          <router-link :to="{path: item.link, query: item.query}" tag="a">
+            <i class="icon" :class="item.icon"></i>
             <span class="grid-center">{{item.name}}</span>
           </router-link>
         </li>
@@ -26,15 +26,30 @@
     components: {
       Slider
     },
+    data () {
+      return {
+        titleColor: ''
+      }
+    },
     props: {
-      base: {
-        type: Object,
-        default: {}
+      name: {
+        type: String,
+        default: ''
+      },
+      color: {
+        type: String,
+        default: ''
       },
       items: {
         type: Array,
         default: []
       }
+    },
+    activated () {
+      setTimeout(() => {
+        this.titleColor = 'border-left: 5px solid ' + this.color + ';'
+        this.$refs.slider && this.$refs.slider.refresh()
+      }, 20)
     }
   }
 </script>
