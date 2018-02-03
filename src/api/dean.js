@@ -25,11 +25,10 @@ export function getTimetable () {
   })
 }
 
-export function bindUser (type = 0, username = '', password = '') {
-  const url = prefix + '/bindUser'
+export function bindDean (type = 0, password = '') {
+  const url = prefix + '/bindDean'
   const data = Object.assign({}, {
     type: type,
-    username: username,
     password: password
   })
   return axios.get(url, {

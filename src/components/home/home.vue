@@ -224,10 +224,6 @@
           this.userInfo = res
           this.sliderNews = [].concat(this.userInfo.news)
           this.updateNews()
-          // 获取绑定的账号
-          if (this.userInfo.dean.username !== '') {
-            this.userInfo.yb.yb_studentid = this.userInfo.dean.username
-          }
           // 更改过教务处密码的提示
           if (this.userInfo.dean.dean > 1) {
             this.showAlert()

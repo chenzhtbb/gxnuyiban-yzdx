@@ -9,16 +9,12 @@
           <div class="box-body">
             <div class="form-group col-sm-10">
               <label>选择校区</label>
-              <button class="form-control" @click="selectCampus">{{bind.campus}}</button>
+              <button class="form-control" @click="selectCampus">{{bind.campus == '' ? '请选择校区' : bind.campus}}</button>
             </div>
-            <div class="form-group">
-              <label class="col-sm-2 control-label">宿舍号</label>
-
-              <div class="col-sm-10">
-                <input class="form-control" placeholder="请输入宿舍号" v-model="bind.room">
-              </div>
+            <div class="form-group col-sm-10">
+              <label>选择宿舍</label>
+              <button class="form-control" @click="selectRoom">{{bind.room == '' ? '请选择宿舍' : bind.room}}</button>
             </div>
-            <span class="users-list-date">注：楼栋-楼层-房间号，例：46-7-722</span>
           </div>
           <div class="box-footer col-sm-10">
             <button class="btn btn-info btn-block" @click="_bindDorm()" v-if="!bind.dorm">绑定</button>
@@ -26,35 +22,39 @@
           </div>
         </div>
       </div>
-      <confirm-box ref="confirm" :text="text"></confirm-box>
     </div>
   </transition>
 </template>
 
 <script type="text/ecmascript-6">
   import { mapGetters, mapMutations } from 'vuex'
-  import InputBox from 'base/input-box/input-box'
-  import ConfirmBox from 'base/confirm-box/confirm-box'
   import { bindDorm } from 'api/dorm'
   import { empty } from 'common/js/util'
 
   export default {
-    components: {
-      InputBox,
-      ConfirmBox
-    },
     data () {
       return {
-        text: '确认解除宿舍绑定吗？',
-        bind: {campus: '请选择校区', room: '', dorm: 0}
+        bind: {campus: '', room: '', dorm: 0}
       }
     },
     mounted () {
       setTimeout(() => {
-        this._GetDorm()
-        this.$refs.confirm.$on('confirm', () => {
-          this._unbindorm()
-        })
+        this.getDorm()
+        this.campusData = [{text: '雁山校区', value: '雁山校区'}, {text: '育才校区', value: '育才校区'}, {text: '王城校区', value: '王城校区'}]
+        this.campusIndex = [0]
+        this.lData = [{text: '楼号', value: '楼号'}]
+        this.cData = [{text: '层数', value: '层数'}]
+        this.fData = [{text: '房间号', value: '房间号'}]
+        for (let i = 1; i < 100; i++) {
+          this.lData.push({text: i, value: i})
+        }
+        for (let i = 1; i < 7; i++) {
+          this.cData.push({text: i, value: i})
+        }
+        for (let i = 1; i < 30; i++) {
+          this.fData.push({text: i, value: i})
+        }
+        this.roomIndex = [1, 1, 1]
       }, 20)
     },
     computed: {
@@ -66,31 +66,39 @@
       ...mapMutations({
         setBinddorm: 'SET_BINDDORM'
       }),
+      getDorm () {
+        this.bind = this.binddorm
+      },
       selectCampus () {
-        this.$iosAlertView({
+        this.$createPicker({
           title: '选择您所在的校区',
-          buttons: [
-            {
-              text: '雁山校区',
-              onClick: () => {
-                this.bind.campus = '雁山校区'
-              }
-            },
-            {
-              text: '育才校区',
-              onClick: () => {
-                this.bind.campus = '育才校区'
-              }
-            },
-            {
-              text: '王城校区',
-              onClick: () => {
-                this.bind.campus = '王城校区'
+          data: [this.campusData],
+          selectedIndex: this.campusIndex,
+          onSelect: (selectedVal, selectedIndex) => {
+            this.bind.campus = selectedVal[0]
+            this.campusIndex = selectedIndex
+          },
+          onCancel: () => {
+          }
+        }).show()
+      },
+      selectRoom () {
+        this.$createPicker({
+          title: '选择您所在的宿舍',
+          data: [this.lData, this.cData, this.fData],
+          selectedIndex: this.roomIndex,
+          onSelect: (selectedVal, selectedIndex) => {
+            for (let i = 0; i < 3; i++) {
+              if (selectedIndex[i] === 0) {
+                return
               }
             }
-          ]
-
-        })
+            this.bind.room = `${selectedVal[0]}-${selectedVal[1]}-${selectedVal[2]}`
+            this.roomIndex = selectedIndex
+          },
+          onCancel: () => {
+          }
+        }).show()
       },
       _bindDorm () {
         if (this.bind.campus === '请选择校区' || empty(this.bind.campus) || empty(this.bind.room)) {
@@ -103,7 +111,7 @@
           return
         }
         bindDorm(1, this.bind.campus, this.bind.room).then((res) => {
-          if (res.code === 1) {
+          if (res.code === 0) {
             this.bind.dorm = 1
             this.setBinddorm(this.bind)
             this.$router.go(-1)
@@ -141,7 +149,7 @@
       },
       _unbindorm () {
         bindDorm(2).then((res) => {
-          if (res.code === 1) {
+          if (res.code === 0) {
             this.bind.dorm = 0
             this.bind.campus = '请选择校区'
             this.bind.room = ''

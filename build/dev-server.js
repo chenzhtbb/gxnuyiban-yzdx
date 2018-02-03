@@ -35,8 +35,8 @@ apiRoutes.get('/getScore', function (req, res) {
   })
 })
 
-apiRoutes.get('/bindUser', function (req, res) {
-  var url = prefix + '/bindUser'
+apiRoutes.get('/bindDean', function (req, res) {
+  var url = prefix + '/bindDean'
   axios.get(url, {
     params: req.query
   }).then((response) => {

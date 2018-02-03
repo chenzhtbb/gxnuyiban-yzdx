@@ -1,6 +1,5 @@
 <template>
   <div>
-    <div style="height: 6px;"></div>
     <div style="padding-bottom: 2px;">
       <p :style="titleColor" text-left>&nbsp;&nbsp;{{name}}</p>
     </div>

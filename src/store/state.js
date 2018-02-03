@@ -1,6 +1,6 @@
 const state = {
   uinfo: {},
-  binddean: {},
+  binddean: 0,
   binddorm: {},
   hrefflag: false
 }

@@ -10,20 +10,20 @@
             <div class="form-group">
               <label class="col-sm-2 control-label">教务处账号</label>
               <div class="col-sm-10">
-                <input class="form-control" placeholder="请输入教务处账号(学号)" v-model="bind.username">
+                <input class="form-control" placeholder="请输入学号" v-model="uinfo.yb_studentid" disabled>
               </div>
             </div>
-            <!--<div class="form-group">-->
-            <!--<label class="col-sm-2 control-label">教务处密码</label>-->
+            <div class="form-group">
+              <label class="col-sm-2 control-label">教务处密码</label>
+              <div class="col-sm-10">
+                <input type="password" class="form-control" placeholder="请输入选课密码" v-model="password">
+              </div>
+            </div>
+            <span class="users-list-date">需要帮助请联系校易班工作站</span>
 
-            <!--<div class="col-sm-10">-->
-            <!--<input type="password" class="form-control" placeholder="请输入选课密码，默认身份证后6位" v-model="bind.password">-->
-            <!--</div>-->
-            <!--</div>-->
-            <span class="users-list-date">现在查成绩只需要绑定本科生学号</span>
           </div>
           <div class="box-footer col-sm-10">
-            <button class="btn btn-info btn-block" @click="_bindDean()" v-if="!bind.dean">绑定</button>
+            <button class="btn btn-info btn-block" @click="bindDean()" v-if="!bind">绑定</button>
             <button class="btn btn-danger btn-block" @click="showAlert()" v-else>解绑</button>
           </div>
         </div>
@@ -34,22 +34,19 @@
 
 <script type="text/ecmascript-6">
   import { mapGetters, mapMutations } from 'vuex'
-  import InputBox from 'base/input-box/input-box'
-  import { bindUser } from 'api/dean'
+  import { bindDean } from 'api/dean'
   import { empty } from 'common/js/util'
 
   export default {
-    components: {
-      InputBox
-    },
     data () {
       return {
-        bind: {username: '', password: '', dean: 0}
+        password: '',
+        bind: 0
       }
     },
     mounted () {
       setTimeout(() => {
-        this._GetDean()
+        this.getDean()
       }, 20)
     },
     computed: {
@@ -62,35 +59,34 @@
       ...mapMutations({
         setBinddean: 'SET_BINDDEAN'
       }),
-      _GetDean () {
+      getDean () {
         this.bind = this.binddean
-        if (this.bind.dean) {
-          this.bind.password = 'abcdefghijklmnopqrstuvwxzy'
+        if (this.bind) {
+          this.password = 'abcdefghijklmnopqrstuvwxzy'
         }
-        this.bind.username = this.uinfo.yb_studentid ? this.uinfo.yb_studentid : this.uinfo.userid
       },
-      _bindDean () {
-        if (empty(this.bind.username)) {
+      bindDean () {
+        if (empty(this.password)) {
           this.$createDialog(
             {
               type: 'alert',
-              title: '学号为空'
+              title: '密码为空'
             }
           ).show()
           return
         }
-        bindUser(1, this.bind.username, '').then((res) => {
-          if (res.code === 1) {
-            this.bind.dean = 1
+        bindDean(1, this.password).then((res) => {
+          if (res.code === 0) {
+            this.bind = 1
             this.setBinddean(this.bind)
             this.$router.go(-1)
           } else {
-            this.$set(this.bind, 'password', '')
-            this.bind.password = ''
+            this.password = ''
+            this.setBinddean(this.bind)
             this.$createDialog(
               {
                 type: 'alert',
-                title: '教务处账号或密码错误'
+                title: '密码错误'
               }
             ).show()
           }
@@ -116,19 +112,18 @@
               href: 'javascript:;'
             },
             onConfirm: () => {
-              this._unbindDean()
+              this.unbindDean()
             },
             onCancel: () => {
             }
           }
         ).show()
       },
-      _unbindDean () {
-        bindUser(2).then((res) => {
-          if (res.code === 1) {
-            this.bind.dean = 0
-            this.bind.username = this.uinfo.yb_studentid
-            this.bind.password = ''
+      unbindDean () {
+        bindDean(2, null).then((res) => {
+          if (res.code === 0) {
+            this.bind = 0
+            this.password = ''
             this.setBinddean(this.bind)
           } else {
             alert('error')
