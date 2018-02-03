@@ -1,7 +1,7 @@
 <template>
   <toggle>
     <div class="feedback">
-      <scroll style="height: 100%;">
+      <scroll style="height: 100%;" :data="[]">
         <div>
           <div class="box box-success">
             <div class="box-header with-border">
@@ -11,12 +11,8 @@
               <div class="form-group has-success">
                 <div class="form-group">
                   <label>反馈类别</label>
-                  <select class="form-control" v-model="type">
-                    <option>反馈BUG</option>
-                    <option>提供意见</option>
-                    <option>界面改进</option>
-                  </select>
-                  <span class="help-block">各位小伙伴一定要描述清楚问题哦，我们好马上解决！</span>
+                  <button class="form-control" @click="selectType">{{type == '' ? '请选择反馈类别' : type}}</button>
+                  <span class="help-block">各位小伙伴一定要描述清楚问题哦，方便我们解决问题！</span>
                 </div>
               </div>
               <div class="form-group has-success">
@@ -52,18 +48,59 @@
       Toggle,
       Scroll
     },
+    data () {
+      return {
+        type: '',
+        title: '',
+        content: ''
+      }
+    },
+    mounted () {
+      setTimeout(() => {
+        this.colData = [{text: '反馈BUG', value: '反馈BUG'}, {text: '提供意见', value: '提供意见'}, {text: '界面改进', value: '界面改进'}]
+        this.typeIndex = [0]
+      }, 20)
+    },
     methods: {
+      selectType () {
+        this.$createPicker({
+          title: '请选择反馈类别',
+          data: [this.colData],
+          selectedIndex: this.typeIndex,
+          onSelect: (selectedVal, selectedIndex) => {
+            this.type = selectedVal[0]
+            this.typeIndex = selectedIndex
+          },
+          onCancel: () => {
+          }
+        }).show()
+      },
       onFeedback () {
         if (!this.type) {
-          this.$iosAlert('请选择反馈的类别')
+          this.$createDialog(
+            {
+              type: 'alert',
+              title: '请选择反馈的类别'
+            }
+          ).show()
           return
         }
         if (!this.title) {
-          this.$iosAlert('您还未填写反馈标题')
+          this.$createDialog(
+            {
+              type: 'alert',
+              title: '您还未填写反馈标题'
+            }
+          ).show()
           return
         }
         if (!this.content) {
-          this.$iosAlert('您还未填写反馈内容')
+          this.$createDialog(
+            {
+              type: 'alert',
+              title: '您还未填写反馈内容'
+            }
+          ).show()
           return
         }
         putFeedback(this.type, this.title, this.content).then(res => {
@@ -72,18 +109,16 @@
             this.$router.go(-1)
           })
         }).catch(() => {
-          this.$iosAlert('提交反馈意见失败，请重新提交')
+          this.$createDialog(
+            {
+              type: 'alert',
+              title: '提交反馈意见失败，请重新提交'
+            }
+          ).show()
         })
       },
       gotoPop () {
         this.$router.go(-1)
-      }
-    },
-    data () {
-      return {
-        type: '',
-        title: '',
-        content: ''
       }
     }
   }
