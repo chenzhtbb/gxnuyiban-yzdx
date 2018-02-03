@@ -6,10 +6,10 @@
     <slider :auto-play="false" ref="slider">
       <ul class="grid-center">
         <li v-for="item in items">
-          <router-link :to="{path: item.link, query: item.query}" tag="a">
+          <div @click="gotoPush(item)">
             <i class="icon" :class="item.icon"></i>
             <span class="grid-center">{{item.name}}</span>
-          </router-link>
+          </div>
         </li>
       </ul>
       <div slot="dots"></div>
@@ -44,6 +44,11 @@
         default: []
       }
     },
+    methods: {
+      gotoPush (item) {
+        this.$router.push({path: item.link, query: item.query})
+      }
+    },
     activated () {
       setTimeout(() => {
         this.titleColor = 'border-left: 5px solid ' + this.color + ';'
@@ -54,6 +59,7 @@
 </script>
 
 <style scoped lang="stylus" ref="stylesheet/stylus">
+
   .grid-center
     display block
     text-align center
