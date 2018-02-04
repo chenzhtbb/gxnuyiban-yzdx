@@ -103,7 +103,7 @@
                 icon: 'iconfont icon-jingqingqidai bg-00a65a'
               },
               {
-                name: '成绩',
+                name: '评教',
                 link: '/app/pj',
                 icon: 'iconfont icon-pingjiaopingxue bg-D81B60'
               }
@@ -146,7 +146,7 @@
             items: [
               {
                 name: '公文公告',
-                link: '/app/score',
+                link: '/app/newstab/gg/1',
                 icon: 'iconfont icon-gongwen bg-ff851b'
               },
               {
