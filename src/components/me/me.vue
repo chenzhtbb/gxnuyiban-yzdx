@@ -3,7 +3,7 @@
     <div class="top">
       <div class="box box-widget widget-user">
         <div class="widget-user-header bg-black bg-img">
-          <h3 class="username">{{user.yb_username}}</h3>
+          <h3 class="username">{{user.yb_usernick}}</h3>
           <!--<h5 class="desc">{{user.yb_schoolname}}</h5>-->
         </div>
         <div class="widget-user-image">
