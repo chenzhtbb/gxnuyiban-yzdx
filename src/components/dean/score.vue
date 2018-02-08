@@ -25,11 +25,11 @@
             </div>
           </template>
           <template v-else>
-            <div class="title">暂无成绩</div>
+            <div class="loading-container" v-if="this.tip === 0">
+              <loading></loading>
+            </div>
+            <div class="title" v-else>暂无成绩</div>
           </template>
-          <div class="loading-container" v-show="items.length === []">
-            <loading></loading>
-          </div>
         </div>
       </scroll>
     </div>
@@ -48,7 +48,8 @@
     },
     data () {
       return {
-        items: []
+        items: [],
+        tip: 0
       }
     },
     methods: {
@@ -63,6 +64,9 @@
     activated () {
       getScore().then((res) => {
         this.items = res
+        if (res.length === 0) {
+          this.tip = 1
+        }
       })
     }
   }

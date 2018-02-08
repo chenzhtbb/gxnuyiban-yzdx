@@ -17,10 +17,10 @@
             </cube-slide-item>
             <div slot="dots"></div>
           </cube-slide>
+          <template v-for="data in datas">
+            <slider-home :items="data.items" :name="data.name" :color="data.color"></slider-home>
+          </template>
         </div>
-        <template v-for="data in datas">
-          <slider-home :items="data.items" :name="data.name" :color="data.color"></slider-home>
-        </template>
         <div style="height: 48px;"></div>
       </div>
     </cube-scroll>
