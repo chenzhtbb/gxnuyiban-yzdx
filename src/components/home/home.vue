@@ -5,7 +5,7 @@
         <div v-if="sliderNews.length">
           <cube-slide ref="slide">
             <cube-slide-item v-for="(news, index) in sliderNews" :key="index">
-              <a :href="news.link">
+              <a :href="news.link" style="height: 70px;">
                 <div class="title">
                   {{news.title}}
                 </div>
@@ -17,10 +17,10 @@
             </cube-slide-item>
             <div slot="dots"></div>
           </cube-slide>
-          <template v-for="data in datas">
-            <slider-home :items="data.items" :name="data.name" :color="data.color"></slider-home>
-          </template>
         </div>
+        <template v-for="data in datas">
+          <slider-home :items="data.items" :name="data.name" :color="data.color"></slider-home>
+        </template>
         <div style="height: 48px;"></div>
       </div>
     </cube-scroll>
