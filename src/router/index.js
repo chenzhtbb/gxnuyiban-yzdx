@@ -1,43 +1,32 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-const Home = () => import('components/home/home')
-const Me = () => import('components/me/me')
-const BindDean = () => import('components/me/bind-dean')
-const Settings = () => import('components/me/settings')
-const BindDorm = () => import('components/me/bind-dorm')
-const Feedback = () => import('components/me/feedback')
-const Score = () => import('components/dean/score')
-const ClassTable = () => import('components/dean/class-table')
-const Selcourse = () => import('components/dean/selcourse')
-const Appraise = () => import('components/dean/appraise')
-const Library = () => import('components/dean/library')
-const NewsTab = () => import('components/news/news-tab')
-const NewsGwgg = () => import('components/news/news-gwgg')
-const NewsHyap = () => import('components/news/news-hyap')
-const NewsJwtz = () => import('components/news/news-jwtz')
-const NewsJzbg = () => import('components/news/news-jzbg')
-const NewsXyxw = () => import('components/news/news-xyxw')
-const News = () => import('components/news/news')
-const Gg = () => import('components/news/news-gg')
-const Gw = () => import('components/news/news-gw')
-const Gnews = () => import('components/news/gw')
-const Electricity = () => import('components/life/electricity')
-const SchoolBus = () => import('components/life/school-bus')
-const LostAndFound = () => import('components/life/lost-and-found')
-const SecondHand = () => import('components/life/second-hand')
-const Book = () => import('components/book/book')
-const BookList = () => import('components/book/book-list')
-const Lost = () => import('components/lost-found/lost')
-const Found = () => import('components/lost-found/found')
-const PutInfo = () => import('components/lost-found/put-info')
-const Application = () => import('components/home/application')
-const HelpPeople = () => import('components/online/help-people')
-const WorkService = () => import('components/online/work-service')
-const XgbNotice = () => import('components/online/xgb-notice')
-const Notice = () => import('components/online/notice')
-const Pj = () => import('components/dean/pj')
-const PjContent = () => import('components/dean/pj-content')
+const Tab = () => import('home/tab')
+const Index = () => import('home/index/index')
+const Book = () => import('home/book/book')
+const BookList = () => import('home/book/book-list')
+const Me = () => import('home/me/me')
+const Dean = () => import('home/me/bind-dean')
+const Dorm = () => import('home/me/bind-dorm')
+const Feedback = () => import('home/me/feedback')
+const Application = () => import('app/application')
+const Cj = () => import('app/dean/cj')
+const Kcb = () => import('app/dean/kcb')
+const Tsg = () => import('app/dean/tsg')
+// const Xk = () => import('app/dean/xk')
+const Pj = () => import('app/dean/pj')
+const PjContent = () => import('app/dean/pj-content')
+const Xcsk = () => import('app/life/xcsk')
+
+const Office = () => import('app/office/office-tab')
+const News = () => import('app/office/news')
+const Gg = () => import('app/office/type/gg')
+const Gw = () => import('app/office/type/gw')
+const Hyap = () => import('app/office/type/hyap')
+const Jwtz = () => import('app/office/type/jwtz')
+const Xyxw = () => import('app/office/type/xyxw')
+const Jzbg = () => import('app/office/type/jzbg')
+
 Vue.use(Router)
 
 export default new Router({
@@ -49,172 +38,158 @@ export default new Router({
       redirect: '/home'
     },
     {
-      path: '/book',
-      component: Book
+      path: '/home',
+      component: Tab,
+      children: [
+        {
+          path: '/',
+          redirect: 'index'
+        },
+        {
+          path: 'index',
+          component: Index
+        },
+        {
+          path: 'book',
+          component: Book
+        },
+        {
+          path: 'me',
+          component: Me
+        }
+      ]
     },
     {
       path: '/app',
       component: Application,
       children: [
         {
-          path: 'pj',
-          component: Pj
+          path: 'book/type',
+          component: BookList
         },
         {
-          path: 'pjcontent',
-          component: PjContent
+          path: 'me/dean',
+          component: Dean
         },
         {
-          path: 'feedback',
+          path: 'me/dorm',
+          component: Dorm
+        },
+        {
+          path: 'me/feedback',
           component: Feedback
         },
         {
-          path: 'secondhand',
-          component: SecondHand
+          path: 'dean/cj',
+          component: Cj
         },
         {
-          path: 'xgbnotice',
-          component: XgbNotice
+          path: 'dean/kcb',
+          component: Kcb
         },
         {
-          path: 'notice',
-          component: Notice
+          path: 'dean/tsg',
+          component: Tsg
         },
         {
-          path: 'helppeople',
-          component: HelpPeople
+          path: 'dean/xk',
+          component: Cj
         },
         {
-          path: 'workservice',
-          component: WorkService
+          path: 'dean/pj',
+          component: Pj
         },
         {
-          path: 'lostandfound',
-          component: LostAndFound,
+          path: 'dean/pjcontent',
+          component: PjContent
+        },
+        {
+          path: 'life/xcsk',
+          component: Xcsk
+        },
+        {
+          path: 'life/swzl',
+          component: Cj
+        },
+        {
+          path: 'life/essc',
+          component: Cj
+        },
+        {
+          path: 'life/zfcx',
+          component: Cj
+        },
+        {
+          path: 'life/ssyd',
+          component: Cj
+        },
+        {
+          path: 'office',
+          component: Office,
           children: [
             {
-              path: '/',
-              redirect: 'lost'
-            },
-            {
-              path: 'lost',
-              component: Lost
-            },
-            {
-              path: 'found',
-              component: Found
-            },
-            {
-              path: 'put',
-              component: PutInfo
-            }
-          ]
-        },
-        {
-          path: 'schoolbus',
-          component: SchoolBus
-        },
-        {
-          path: 'electricity',
-          component: Electricity
-        },
-        {
-          path: 'score',
-          component: Score
-        },
-        {
-          path: 'classtable',
-          component: ClassTable
-        },
-        {
-          path: 'selcourse',
-          component: Selcourse
-        },
-        {
-          path: 'appraise',
-          component: Appraise
-        },
-        {
-          path: 'library',
-          component: Library
-        },
-        {
-          path: 'newstab',
-          component: NewsTab,
-          children: [
-            {
-              path: '/',
-              redirect: 'gg'
-            },
-            {
-              path: 'gg',
-              component: NewsGwgg,
-              children: [
-                {
-                  path: '/',
-                  redirect: '1'
-                },
-                {
-                  path: '1',
-                  component: Gg
-                },
-                {
-                  path: '6',
-                  component: Gw
-                }
-              ]
-            },
-            {
-              path: 'hyap',
-              component: NewsHyap
-            },
-            {
-              path: 'jwtz',
-              component: NewsJwtz
-            },
-            {
-              path: 'xyxw',
-              component: NewsXyxw
-            },
-            {
-              path: 'jzbg',
-              component: NewsJzbg
-            },
-            {
-              path: 'news',
+              path: 'news/:id',
               component: News
             },
             {
-              path: 'gnews',
-              component: Gnews
+              path: 'gg',
+              component: Gg
+            },
+            {
+              path: 'gw',
+              component: Gw
+            },
+            {
+              path: 'hyap',
+              component: Hyap
+            },
+            {
+              path: 'jwtz',
+              component: Jwtz
+            },
+            {
+              path: 'xyxw',
+              component: Xyxw
+            },
+            {
+              path: 'jzbg',
+              component: Jzbg
+            },
+            {
+              path: '*',
+              redirect: '/'
             }
           ]
         },
         {
-          path: 'binddean',
-          component: BindDean
+          path: 'online/xgtz',
+          component: Cj
         },
         {
-          path: 'settings',
-          component: Settings
+          path: 'online/zzyr',
+          component: Cj
         },
         {
-          path: 'binddorm',
-          component: BindDorm
+          path: 'online/ybzx',
+          component: Cj
         },
         {
-          path: 'booklist',
-          component: BookList
+          path: 'online/bszn',
+          component: Cj
+        },
+        {
+          path: 'online/jyfw',
+          component: Cj
+        },
+        {
+          path: '*',
+          redirect: '/'
         }
       ]
     },
     {
-      path: '/home',
-      component: Home
-    },
-    {
-      path: '/me',
-      component: Me
+      path: '*',
+      redirect: '/'
     }
   ]
 })

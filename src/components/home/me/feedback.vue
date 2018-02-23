@@ -1,51 +1,47 @@
 <template>
-  <toggle>
-    <div class="feedback">
-      <scroll style="height: 100%;" :data="[]">
-        <div>
-          <div class="box box-success">
-            <div class="box-header with-border">
-              <h3 class="box-title">意见反馈</h3>
-            </div>
-            <div class="box-body">
-              <div class="form-group has-success">
-                <div class="form-group">
-                  <label>反馈类别</label>
-                  <button class="form-control" @click="selectType">{{type == '' ? '请选择反馈类别' : type}}</button>
-                  <span class="help-block">各位小伙伴一定要描述清楚问题哦，方便我们解决问题！</span>
-                </div>
-              </div>
-              <div class="form-group has-success">
-                <label class="control-label">反馈标题</label>
-                <input class="form-control" placeholder="反馈标题 ..." v-model="title">
-              </div>
-              <div class="form-group has-success">
-                <label class="control-label">反馈内容</label>
-                <textarea rows="11" class="form-control" placeholder="反馈内容 ..." v-model="content"></textarea>
-              </div>
-            </div>
-            <!-- /.box-body -->
-            <div class="box-footer">
-              <button class="btn btn-success btn-block" @click="onFeedback">提交</button>
-              <br>
-              <button class="btn btn-warning btn-block" @click="gotoPop">返回</button>
-            </div>
-            <!-- /.box-footer -->
+  <div class="feedback">
+    <scroll style="height: 100%;" :data="[]">
+      <div>
+        <div class="box box-success">
+          <div class="box-header with-border">
+            <h3 class="box-title">意见反馈</h3>
           </div>
+          <div class="box-body">
+            <div class="form-group has-success">
+              <div class="form-group">
+                <label>反馈类别</label>
+                <button class="form-control" @click="selectType">{{type == '' ? '请选择反馈类别' : type}}</button>
+                <span class="help-block">各位小伙伴一定要描述清楚问题哦，方便我们解决问题！</span>
+              </div>
+            </div>
+            <div class="form-group has-success">
+              <label class="control-label">反馈标题</label>
+              <input class="form-control" placeholder="反馈标题 ..." v-model="title">
+            </div>
+            <div class="form-group has-success">
+              <label class="control-label">反馈内容</label>
+              <textarea rows="11" class="form-control" placeholder="反馈内容 ..." v-model="content"></textarea>
+            </div>
+          </div>
+          <!-- /.box-body -->
+          <div class="box-footer">
+            <button class="btn btn-success btn-block" @click="onFeedback">提交</button>
+            <br>
+            <button class="btn btn-warning btn-block" @click="gotoPop">返回</button>
+          </div>
+          <!-- /.box-footer -->
         </div>
-      </scroll>
-    </div>
-  </toggle>
+      </div>
+    </scroll>
+  </div>
 </template>
 
 <script type="text/ecmascript-6">
   import Scroll from 'base/scroll/scroll'
-  import Toggle from 'base/toggle/toggle'
   import { putFeedback } from 'api/user'
 
   export default {
     components: {
-      Toggle,
       Scroll
     },
     data () {

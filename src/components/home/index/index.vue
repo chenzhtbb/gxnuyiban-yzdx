@@ -2,10 +2,10 @@
   <div class="home">
     <cube-scroll :data="sliderNews">
       <div>
-        <div v-if="sliderNews.length">
-          <cube-slide ref="slide">
+        <div style="height: 70px;">
+          <cube-slide ref="slide" v-if="sliderNews.length">
             <cube-slide-item v-for="(news, index) in sliderNews" :key="index">
-              <a :href="news.link" style="height: 70px;">
+              <a :href="news.link">
                 <div class="title">
                   {{news.title}}
                 </div>
@@ -17,11 +17,10 @@
             </cube-slide-item>
             <div slot="dots"></div>
           </cube-slide>
-          <template v-for="data in datas">
-            <slider-home :items="data.items" :name="data.name" :color="data.color"></slider-home>
-          </template>
         </div>
-        <div style="height: 48px;"></div>
+        <template v-for="data in datas">
+          <slider-home :items="data.items" :name="data.name" :color="data.color"></slider-home>
+        </template>
       </div>
     </cube-scroll>
   </div>
@@ -44,7 +43,7 @@
             items: [
               {
                 name: '学工通知',
-                link: '/app/xgbnotice',
+                link: '/app/online/xgtz',
                 query: {
                   notice: '9a9870f3ebbd8fde2da5d1dd615b5f54'
                 },
@@ -52,12 +51,12 @@
               },
               {
                 name: '资助育人',
-                link: '/app/helppeople',
+                link: '/app/online/zzyr',
                 icon: 'iconfont icon-icon_shengyuandizhuxuedaikuan bg-00a65a'
               },
               {
                 name: '易班在线',
-                link: '/app/xgbnotice',
+                link: '/app/online/ybzx',
                 query: {
                   notice: '55938ef9fe8c8e8a617a093c90cf19ee'
                 },
@@ -65,7 +64,7 @@
               },
               {
                 name: '办事指南',
-                link: '/app/xgbnotice',
+                link: '/app/online/bszn',
                 query: {
                   notice: 'e42c9b4c2866afef633ee98f7c49c155'
                 },
@@ -73,7 +72,7 @@
               },
               {
                 name: '就业服务',
-                link: '/app/workservice',
+                link: '/app/online/jyfw',
                 icon: 'iconfont icon-jiuyeshuai bg-00c0ef'
               }
             ]
@@ -84,27 +83,27 @@
             items: [
               {
                 name: '成绩',
-                link: '/app/score',
+                link: '/app/dean/cj',
                 icon: 'iconfont icon-chengjichaxun bg-00c0ef'
               },
               {
                 name: '课表',
-                link: '/app/classtable',
+                link: '/app/dean/kcb',
                 icon: 'iconfont icon-kebiaochaxun bg-00a65a'
               },
               {
                 name: '图书馆',
-                link: '/app/library',
+                link: '/app/dean/tsg',
                 icon: 'iconfont icon-tushuguan bg-ff851b'
               },
               {
                 name: '选课',
-                link: '/',
+                link: '/app/dean/xk',
                 icon: 'iconfont icon-jingqingqidai bg-00a65a'
               },
               {
                 name: '评教',
-                link: '/app/pj',
+                link: '/app/dean/pj',
                 icon: 'iconfont icon-pingjiaopingxue bg-D81B60'
               }
             ]
@@ -115,27 +114,27 @@
             items: [
               {
                 name: '校车时刻',
-                link: '/app/schoolbus',
+                link: '/app/life/xcsk',
                 icon: 'iconfont icon-xiaochexinxi bg-ff851b'
               },
               {
                 name: '失物招领',
-                link: '/app/lostandfound',
+                link: '/app/life/swzl',
                 icon: 'iconfont icon-xingzhuang9kaobei bg-00c0ef'
               },
               {
                 name: '二手市场',
-                link: '/app/secondhand',
+                link: '/app/life/essc',
                 icon: 'iconfont icon-ershou bg-D81B60'
               },
               {
                 name: '资费查询',
-                link: '/',
+                link: '/app/life/zfcx',
                 icon: 'iconfont icon-jingqingqidai bg-00a65a'
               },
               {
                 name: '宿舍用电',
-                link: '/',
+                link: '/app/life/ssyd',
                 icon: 'iconfont icon-jingqingqidai bg-00c0ef'
               }
             ]
@@ -146,27 +145,27 @@
             items: [
               {
                 name: '公文公告',
-                link: '/app/newstab/gg/1',
+                link: '/app/office/gg',
                 icon: 'iconfont icon-gongwen bg-ff851b'
               },
               {
                 name: '会议安排',
-                link: '/app/newstab/hyap',
+                link: '/app/office/hyap',
                 icon: 'iconfont icon-iconhuiyianpai01 bg-00a65a'
               },
               {
                 name: '教务通知',
-                link: '/app/newstab/jwtz',
+                link: '/app/office/jwtz',
                 icon: 'iconfont icon-jiaowuguanli bg-D81B60'
               },
               {
                 name: '校园新闻',
-                link: '/app/newstab/xyxw',
+                link: '/app/office/xyxw',
                 icon: 'iconfont icon-xiaoyuanxinwen bg-00c0ef'
               },
               {
                 name: '讲座报告',
-                link: '/app/newstab/jzbg',
+                link: '/app/office/jzbg',
                 icon: 'iconfont icon-jiangzuo bg-ff851b'
               }
             ]
@@ -223,7 +222,7 @@
         getUser().then((res) => {
           this.userInfo = res
           this.sliderNews = [].concat(this.userInfo.news)
-          this.updateNews()
+//          this.updateNews()
           // 更改过教务处密码的提示
           if (this.userInfo.dean.dean > 1) {
             this.showAlert()
@@ -254,7 +253,7 @@
     position fixed
     width 100%
     top 0
-    bottom 0
+    bottom 48px
 
   .title
     margin 15px 10px 0 10px
@@ -271,7 +270,7 @@
 
   .border
     padding-top 15px
-    border-bottom 1px solid #000000
+    /*border-bottom 1px solid #000000*/
     margin-bottom 15px
 
   .type

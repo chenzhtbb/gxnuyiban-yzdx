@@ -30,8 +30,6 @@ apiRoutes.get('/getScore', function (req, res) {
 
   axios.get(url).then((response) => {
     res.json(response.data)
-  }).catch((e) => {
-    console.log(e)
   })
 })
 
@@ -41,8 +39,6 @@ apiRoutes.get('/bindDean', function (req, res) {
     params: req.query
   }).then((response) => {
     res.json(response.data)
-  }).catch((e) => {
-    console.log(e)
   })
 })
 
@@ -52,8 +48,6 @@ apiRoutes.get('/bindDorm', function (req, res) {
     params: req.query
   }).then((response) => {
     res.json(response.data)
-  }).catch((e) => {
-    console.log(e)
   })
 })
 
@@ -64,8 +58,6 @@ apiRoutes.get('/getSliderNews', function (req, res) {
     params: req.query
   }).then((response) => {
     res.json(response.data)
-  }).catch((e) => {
-    console.log(e)
   })
 })
 
@@ -76,8 +68,6 @@ apiRoutes.get('/getJxpgList', function (req, res) {
     params: req.query
   }).then((response) => {
     res.json(response.data)
-  }).catch((e) => {
-    console.log(e)
   })
 })
 
@@ -86,8 +76,6 @@ apiRoutes.post('/putJxpgInfo', function (req, res) {
 
   axios.post(url, req).then((response) => {
     res.json(response.data)
-  }).catch((e) => {
-    console.log(e)
   })
 })
 
@@ -98,8 +86,6 @@ apiRoutes.get('/getNewsList', function (req, res) {
     params: req.query
   }).then((response) => {
     res.json(response.data)
-  }).catch((e) => {
-    console.log(e)
   })
 })
 
@@ -110,8 +96,6 @@ apiRoutes.get('/getNews', function (req, res) {
     params: req.query
   }).then((response) => {
     res.json(response.data)
-  }).catch((e) => {
-    console.log(e)
   })
 })
 
@@ -122,8 +106,6 @@ apiRoutes.get('/getUser', function (req, res) {
     params: req.query
   }).then((response) => {
     res.json(response.data)
-  }).catch((e) => {
-    console.log(e)
   })
 })
 
@@ -134,8 +116,6 @@ apiRoutes.get('/getTimetable', function (req, res) {
     params: req.query
   }).then((response) => {
     res.json(response.data)
-  }).catch((e) => {
-    console.log(e)
   })
 })
 
@@ -146,8 +126,6 @@ apiRoutes.get('/getLostList', function (req, res) {
     params: req.query
   }).then((response) => {
     res.json(response.data)
-  }).catch((e) => {
-    console.log(e)
   })
 })
 
@@ -158,8 +136,6 @@ apiRoutes.get('/getBook', function (req, res) {
     params: req.query
   }).then((response) => {
     res.json(response.data)
-  }).catch((e) => {
-    console.log(e)
   })
 })
 
@@ -170,8 +146,6 @@ apiRoutes.get('/getBookList', function (req, res) {
     params: req.query
   }).then((response) => {
     res.json(response.data)
-  }).catch((e) => {
-    console.log(e)
   })
 })
 
@@ -182,8 +156,6 @@ apiRoutes.get('/getXgbList', function (req, res) {
     params: req.query
   }).then((response) => {
     res.json(response.data)
-  }).catch((e) => {
-    console.log(e)
   })
 })
 
@@ -194,8 +166,6 @@ apiRoutes.get('/getXgbNotice', function (req, res) {
     params: req.query
   }).then((response) => {
     res.json(response.data)
-  }).catch((e) => {
-    console.log(e)
   })
 })
 
@@ -206,8 +176,6 @@ apiRoutes.get('/oauth', function (req, res) {
     params: req.query
   }).then((response) => {
     res.json(response.data)
-  }).catch((e) => {
-    console.log(e)
   })
 })
 
@@ -218,8 +186,6 @@ apiRoutes.get('/getSearchBookList', function (req, res) {
     params: req.query
   }).then((response) => {
     res.json(response.data)
-  }).catch((e) => {
-    console.log(e)
   })
 })
 
@@ -228,8 +194,6 @@ apiRoutes.post('/putFeedback', function (req, res) {
 
   axios.post(url, req).then((response) => {
     res.json(response.data)
-  }).catch((e) => {
-    console.log(e)
   })
 })
 

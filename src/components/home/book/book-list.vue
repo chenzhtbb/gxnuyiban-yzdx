@@ -1,39 +1,36 @@
 <template>
-  <toggle>
-    <div class="book-list">
-      <scroll :data="items" style="height: 100%;" ref="scroll">
-        <div class="col-xs-12">
-          <div v-for="(item, index) in items">
-            <div class="box box-warning">
-              <div class="box-header with-border" @click="onClickCollapse(index)">
-                <h3 class="box-title">{{item.department}}</h3>
-                <div class="box-tools pull-right">
-                  <button type="button" class="btn btn-box-tool"><i class="iconfont" :class="item.icon"></i>
-                  </button>
-                </div>
+  <div class="book-list">
+    <scroll :data="items" style="height: 100%;" ref="scroll">
+      <div class="col-xs-12">
+        <div v-for="(item, index) in items">
+          <div class="box box-warning">
+            <div class="box-header with-border" @click="onClickCollapse(index)">
+              <h3 class="box-title">{{item.department}}</h3>
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool"><i class="iconfont" :class="item.icon"></i>
+                </button>
               </div>
-              <div class="box-body" :style="item.style">
-                <div class="box-footer no-padding">
-                  <ul class="nav nav-stacked">
-                    <li class="item" v-for="i in item.list" @click="tel(i.tel)">
-                      <a>
-                        {{i.name | wrap}}
-                        <span class="pull-right tel">{{i.tel | areaCode}}</span>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
+            </div>
+            <div class="box-body" :style="item.style">
+              <div class="box-footer no-padding">
+                <ul class="nav nav-stacked">
+                  <li class="item" v-for="i in item.list" @click="tel(i.tel)">
+                    <a>
+                      {{i.name | wrap}}
+                      <span class="pull-right tel">{{i.tel | areaCode}}</span>
+                    </a>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
         </div>
-      </scroll>
-    </div>
-  </toggle>
+      </div>
+    </scroll>
+  </div>
 </template>
 
 <script type="text/ecmascript-6">
-  import Toggle from 'base/toggle/toggle'
   import Scroll from 'base/scroll/scroll'
   import { getBookList } from 'api/book'
   import { phoneFun, browser } from 'common/js/ybh5'
@@ -55,7 +52,6 @@
       }
     },
     components: {
-      Toggle,
       Scroll
     },
     data () {

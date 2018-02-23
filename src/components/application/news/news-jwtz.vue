@@ -73,31 +73,5 @@
 </script>
 
 <style scoped lang="stylus" ref="stylesheet/stylus">
-  .news
-    background #FFFFFF
-    position fixed
-    top 0
-    bottom 48px
-    left 0
-    right 0
-
-  .title
-    font-size 16px
-    color black
-
-  .product-info
-    margin 0
-
-  .product-description
-    padding 0
-
-  .news-height
-    border-top 10px solid #ffffff
-
-  .item
-    padding-bottom 0
-
-  .box-body
-    padding-top 0
 
 </style>

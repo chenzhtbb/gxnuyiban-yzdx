@@ -4,7 +4,6 @@
       <div class="box box-widget widget-user">
         <div class="widget-user-header bg-black bg-img">
           <h3 class="username">{{user.yb_usernick}}</h3>
-          <!--<h5 class="desc">{{user.yb_schoolname}}</h5>-->
         </div>
         <div class="widget-user-image">
           <img class="img-circle" v-lazy="imgurl" alt="User Photo" style="height: 90px;">
@@ -12,29 +11,29 @@
         <div class="box-footer no-padding">
           <ul class="nav nav-stacked">
             <li>
-              <router-link tag="a" to="/app/binddean">
+              <router-link tag="a" to="/app/me/dean">
                 绑定教务处
                 <!--<span class="pull-right badge bg-blue"></span>-->
               </router-link>
             </li>
             <li>
-              <router-link tag="a" to="/app/binddorm">
+              <router-link tag="a" to="/app/me/dorm">
                 绑定宿舍号
                 <!--<span class="pull-right badge bg-blue"></span>-->
               </router-link>
             </li>
             <li>
-              <router-link tag="a" to="/app/feedback">
+              <router-link tag="a" to="/app/me/feedback">
                 意见反馈
                 <!--<span class="pull-right badge bg-blue"></span>-->
               </router-link>
             </li>
-            <li>
-              <router-link tag="a" to="/app/score">
-                查询成绩
-                <!--<span class="pull-right badge bg-blue"></span>-->
-              </router-link>
-            </li>
+            <!--<li>-->
+            <!--<router-link tag="a" to="/app/score">-->
+            <!--查询成绩-->
+            <!--&lt;!&ndash;<span class="pull-right badge bg-blue"></span>&ndash;&gt;-->
+            <!--</router-link>-->
+            <!--</li>-->
           </ul>
         </div>
       </div>
@@ -65,9 +64,9 @@
       _GetUser () {
         this.user = this.uinfo
         this.imgurl = `http://img02.fs.yiban.cn/${this.uinfo.yb_userid}/avatar/user/200`
-        if (!this.user.yb_userid) {
-          this.$router.push('/')
-        }
+//        if (!this.user.yb_userid) {
+//          this.$router.push('/')
+//        }
       }
     }
   }

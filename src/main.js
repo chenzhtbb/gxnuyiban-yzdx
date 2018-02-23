@@ -3,11 +3,10 @@ import Vue from 'vue'
 import App from './App'
 import store from './store'                   // vuex状态管理
 import router from './router'                 // 路由
-// import './permission'                      // 前端授权 加速访问
+import './permission'                      // 前端授权 加速访问
 import fastclick from 'fastclick'             // 取消移动端300ms点击延时
 import VueLazyload from 'vue-lazyload'        // 图片懒加载
 import VueImg from 'v-img'                    // 图片图库预览
-import iosAlertView from 'vue-ios-alertview'  // 苹果风格弹窗
 import Cube from 'cube-ui'
 
 Vue.use(Cube)
@@ -21,15 +20,8 @@ const vueLazyloadConfig = {
   attempt: 3                                                              // 重试次数
 }
 
-const iosAlertViewConfig = {
-  okText: '确认',
-  cancelText: '取消',
-  remindDuration: 400
-}
-
 Vue.use(VueLazyload, vueLazyloadConfig)
 Vue.use(VueImg, vueImgConfig)
-Vue.use(iosAlertView, iosAlertViewConfig)
 
 Vue.config.productionTip = false
 

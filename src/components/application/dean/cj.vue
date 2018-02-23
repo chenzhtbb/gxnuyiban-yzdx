@@ -1,39 +1,37 @@
 <template>
-  <transition name="slide">
-    <div class="score">
-      <scroll :data="items" class="table-responsive">
-        <div>
-          <template v-if="items.length">
-            <div v-for="item in items">
-              <div class="title" v-if="item.title">{{item.title}}</div>
-              <table class="table" rules="all" v-if="item.body.length">
-                <thead>
-                <tr>
-                  <template v-for="head in item.head">
-                    <th>{{head}}</th>
-                  </template>
-                </tr>
-                </thead>
-                <tbody>
-                <tr v-for="body in item.body" style="height: 25px;">
-                  <template v-for="(td, index) in body">
-                    <td :class="col(index)">{{td}}</td>
-                  </template>
-                </tr>
-                </tbody>
-              </table>
-            </div>
-          </template>
-          <template v-else>
-            <div class="loading-container" v-if="this.tip === 0">
-              <loading></loading>
-            </div>
-            <div class="title" v-else>暂无成绩</div>
-          </template>
-        </div>
-      </scroll>
-    </div>
-  </transition>
+  <div class="score">
+    <scroll :data="items" class="table-responsive">
+      <div>
+        <template v-if="items.length">
+          <div v-for="item in items">
+            <div class="title" v-if="item.title">{{item.title}}</div>
+            <table class="table" rules="all" v-if="item.body.length">
+              <thead>
+              <tr>
+                <template v-for="head in item.head">
+                  <th>{{head}}</th>
+                </template>
+              </tr>
+              </thead>
+              <tbody>
+              <tr v-for="body in item.body" style="height: 25px;">
+                <template v-for="(td, index) in body">
+                  <td :class="col(index)">{{td}}</td>
+                </template>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </template>
+        <template v-else>
+          <div class="loading-container" v-if="this.tip === 0">
+            <loading></loading>
+          </div>
+          <div class="title" v-else>暂无成绩</div>
+        </template>
+      </div>
+    </scroll>
+  </div>
 </template>
 
 <script type="text/ecmascript-6">
@@ -117,10 +115,4 @@
     width: 100%
     top: 50%
     transform: translateY(-50%)
-
-  .slide-enter-active, .slide-leave-active
-    transition all 0.3s
-
-  .slide-enter, .slide-leave-to
-    transform translate3d(100%, 0, 0)
 </style>
