@@ -3,11 +3,12 @@ import Vue from 'vue'
 import App from './App'
 import store from './store'                   // vuex状态管理
 import router from './router'                 // 路由
-import './permission'                      // 前端授权 加速访问
+import './permission'                          // 前端授权 加速访问
 import fastclick from 'fastclick'             // 取消移动端300ms点击延时
 import VueLazyload from 'vue-lazyload'        // 图片懒加载
 import VueImg from 'v-img'                    // 图片图库预览
 import Cube from 'cube-ui'
+import Http from './http'
 
 Vue.use(Cube)
 const vueImgConfig = {
@@ -19,9 +20,16 @@ const vueLazyloadConfig = {
   error: require('common/image/c07bf04c4452b9f354c5b9c201ffade4.png'),    // 加载错误拖
   attempt: 3                                                              // 重试次数
 }
+const httpConfig = {
+  baseURL: process.env.API_PREFIX,
+  timeout: 2000
+}
 
 Vue.use(VueLazyload, vueLazyloadConfig)
 Vue.use(VueImg, vueImgConfig)
+Vue.use(Http, httpConfig)
+
+process.env.NODE_ENV === 'development' && require('./mock/mock') // 引入mockjs
 
 Vue.config.productionTip = false
 
@@ -41,7 +49,8 @@ new Vue({
   render: h => h(App)
 })
 
-Vue.filter('date', function (val) {
+// 全局过滤器，更改时间显示方式
+Vue.filter('formatDate', function (val) {
   let date = val.split(' ')
   let d = new Date()
   let nowDate = d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate()

@@ -19,6 +19,7 @@
     "cube-ui": "^1.2.3",
     "fastclick": "^1.0.6",
     "good-storage": "^1.0.1",
+    "mockjs": "^1.0.1-beta3",
     "v-img": "^0.1.5",
     "vue": "^2.4.2",
     "vue-lazyload": "^1.1.4",
