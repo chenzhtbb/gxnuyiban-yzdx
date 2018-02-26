@@ -1,7 +1,3 @@
-export function getScore () {
-  return this.$http.get('/getscore')
-}
-
 export function getTimetable () {
   return this.$http.get('/getTimetable')
 }

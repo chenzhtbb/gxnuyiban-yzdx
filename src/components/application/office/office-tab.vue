@@ -35,21 +35,28 @@
 </template>
 
 <script type="text/ecmascript-6">
-//  export default {
-//    activated () {
-//      setTimeout(() => {
+  export default {
+    mounted () {
+      setTimeout(() => {
+        // 请求新闻样式并挂载
 //        this.refreshRouter()
-//      }, 20)
-//    },
-//    methods: {
-//      refreshRouter () {
-//        this.$router.replace({
-//          path: this.$route.path,
-//          query: {refresh: 'refresh'}
-//        })
-//      }
-//    }
-//  }
+      }, 20)
+    },
+    activated () {
+      setTimeout(() => {
+        // 类似路由守卫，刷新路由
+        this.refreshRouter()
+      }, 20)
+    },
+    methods: {
+      refreshRouter () {
+        this.$router.replace({
+          path: this.$route.path,
+          query: {refresh: 'refresh'}
+        })
+      }
+    }
+  }
 </script>
 
 <style scoped lang="stylus" ref="stylesheet/stylus">

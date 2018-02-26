@@ -64,9 +64,16 @@
       _GetUser () {
         this.user = this.uinfo
         this.imgurl = `http://img02.fs.yiban.cn/${this.uinfo.yb_userid}/avatar/user/200`
-//        if (!this.user.yb_userid) {
-//          this.$router.push('/')
-//        }
+        if (!this.user.yb_userid) {
+//          this.$createDialog(
+//            {
+//              type: 'alert',
+//              title: '系统提示',
+//              content: '您当前身份验证未通过或过期，请重新进入应用'
+//            }
+//          ).show()
+          this.$router.push('/')
+        }
       }
     }
   }

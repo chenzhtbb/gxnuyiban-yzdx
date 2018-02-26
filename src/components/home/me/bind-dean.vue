@@ -34,7 +34,6 @@
 
 <script type="text/ecmascript-6">
   import { mapGetters, mapMutations } from 'vuex'
-  import { bindDean } from 'api/me'
   import { empty } from 'common/js/util'
 
   export default {
@@ -75,7 +74,10 @@
           ).show()
           return
         }
-        bindDean(1, this.password).then((res) => {
+        this.$http.get('/bindDean', {
+          type: 1,
+          password: this.password
+        }).then((res) => {
           if (res.code === 0) {
             this.bind = 1
             this.setBinddean(this.bind)
@@ -120,7 +122,10 @@
         ).show()
       },
       unbindDean () {
-        bindDean(2, null).then((res) => {
+        this.$http.get('/bindDean', {
+          type: 2,
+          password: ''
+        }).then((res) => {
           if (res.code === 0) {
             this.bind = 0
             this.password = ''

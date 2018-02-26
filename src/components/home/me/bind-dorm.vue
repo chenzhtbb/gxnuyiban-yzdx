@@ -28,7 +28,6 @@
 
 <script type="text/ecmascript-6">
   import { mapGetters, mapMutations } from 'vuex'
-  import { bindDorm } from 'api/me'
   import { empty } from 'common/js/util'
 
   export default {
@@ -80,7 +79,7 @@
           },
           onCancel: () => {
           }
-        }).show()
+        }, true).show()
       },
       selectRoom () {
         this.$createPicker({
@@ -110,7 +109,11 @@
           ).show()
           return
         }
-        bindDorm(1, this.bind.campus, this.bind.room).then((res) => {
+        this.$http.get('/bindDorm', {
+          type: 1,
+          campus: this.bind.campus,
+          room: this.bind.room
+        }).then((res) => {
           if (res.code === 0) {
             this.bind.dorm = 1
             this.setBinddorm(this.bind)
@@ -148,7 +151,11 @@
         ).show()
       },
       _unbindorm () {
-        bindDorm(2).then((res) => {
+        this.$http.get('/bindDorm', {
+          type: 2,
+          campus: '',
+          room: ''
+        }).then((res) => {
           if (res.code === 0) {
             this.bind.dorm = 0
             this.bind.campus = '请选择校区'

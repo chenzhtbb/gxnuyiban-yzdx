@@ -69,7 +69,7 @@
           },
           onCancel: () => {
           }
-        }).show()
+        }, true).show()
       },
       onFeedback () {
         if (!this.type) {

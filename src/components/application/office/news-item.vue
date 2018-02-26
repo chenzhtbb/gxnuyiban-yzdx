@@ -27,8 +27,6 @@
 </template>
 
 <script type="text/ecmascript-6">
-  import { getNewsList } from 'api/office'
-
   export default {
     props: {
       type: {
@@ -38,116 +36,7 @@
     },
     data () {
       return {
-        items: [
-          {
-            id: '1',
-            title: '1',
-            author: '1',
-            time: '1'
-          },
-          {
-            id: '1',
-            title: '1',
-            author: '1',
-            time: '1'
-          },
-          {
-            id: '1',
-            title: '1',
-            author: '1',
-            time: '1'
-          },
-          {
-            id: '1',
-            title: '1',
-            author: '1',
-            time: '1'
-          },
-          {
-            id: '1',
-            title: '1',
-            author: '1',
-            time: '1'
-          },
-          {
-            id: '1',
-            title: '1',
-            author: '1',
-            time: '1'
-          },
-          {
-            id: '1',
-            title: '1',
-            author: '1',
-            time: '1'
-          },
-          {
-            id: '1',
-            title: '1',
-            author: '1',
-            time: '1'
-          },
-          {
-            id: '1',
-            title: '1',
-            author: '1',
-            time: '1'
-          },
-          {
-            id: '1',
-            title: '1',
-            author: '1',
-            time: '1'
-          },
-          {
-            id: '1',
-            title: '1',
-            author: '1',
-            time: '1'
-          },
-          {
-            id: '1',
-            title: '1',
-            author: '1',
-            time: '1'
-          },
-          {
-            id: '1',
-            title: '1',
-            author: '1',
-            time: '1'
-          },
-          {
-            id: '1',
-            title: '1',
-            author: '1',
-            time: '1'
-          },
-          {
-            id: '1',
-            title: '1',
-            author: '1',
-            time: '1'
-          },
-          {
-            id: '1',
-            title: '1',
-            author: '1',
-            time: '1'
-          },
-          {
-            id: '1',
-            title: '1',
-            author: '1',
-            time: '1'
-          },
-          {
-            id: '1',
-            title: '1',
-            author: '1',
-            time: '1'
-          }
-        ],
+        items: [],
         options: {
           observeDOM: false,
           pullUpLoad: {
@@ -168,7 +57,10 @@
     },
     methods: {
       _getNews () {
-        getNewsList(this.type, this.page).then((res) => {
+        this.$http.get('/getNewsList', {
+          type: this.type,
+          page: this.page
+        }).then((res) => {
           if (res.length) {
             this.items = this.items.concat(res)
             this.page++
@@ -206,7 +98,7 @@
     padding 0
 
   .news-height
-    border-top 10px solid #ffffff
+    padding-top 10px
 
   .item
     padding-bottom 0
