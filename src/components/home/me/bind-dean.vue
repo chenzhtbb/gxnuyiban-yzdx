@@ -34,7 +34,7 @@
 
 <script type="text/ecmascript-6">
   import { mapGetters, mapMutations } from 'vuex'
-  import { bindDean } from 'api/dean'
+  import { bindDean } from 'api/me'
   import { empty } from 'common/js/util'
 
   export default {

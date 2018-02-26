@@ -36,7 +36,6 @@
 
 <script type="text/ecmascript-6">
   import Loading from 'base/loading/loading'
-  import { getScore } from 'api/dean'
   import Scroll from 'base/scroll/scroll'
 
   export default {
@@ -60,7 +59,7 @@
       }
     },
     activated () {
-      getScore().then((res) => {
+      this.$http.get('/getScore').then((res) => {
         this.items = res
         if (res.length === 0) {
           this.tip = 1

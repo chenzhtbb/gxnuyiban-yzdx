@@ -35,7 +35,7 @@
 
 <script type="text/ecmascript-6">
   import Scroll from 'base/scroll/scroll'
-  import { getNews } from 'api/news'
+  import { getNews } from 'api/office'
   import { downloadFun, browser } from 'common/js/ybh5.js'
 
   export default {

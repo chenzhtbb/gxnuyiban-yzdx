@@ -1,7 +1,9 @@
 <template>
   <transition name="slide">
     <div class="home">
-      <router-view></router-view>
+      <keep-alive>
+        <router-view></router-view>
+      </keep-alive>
       <div class="bottom">
         <div class="operators">
           <router-link to="index" tag="div" class="icon" replace>
@@ -50,7 +52,7 @@
         flex 1
         &.router-link-active
           color #0099FF
-          /*border-bottom 1px solid #0099FF*/
+        /*border-bottom 1px solid #0099FF*/
         p
           text-align center
           font-size 14px

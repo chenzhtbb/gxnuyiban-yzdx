@@ -20,10 +20,10 @@
 </template>
 
 <script type="text/ecmascript-6">
-  import { getBook, getSearchBookList } from 'api/book'
+  import { getSearchBookList } from 'api/book'
   import SearchBox from 'base/search-box/search-box'
   import SearchList from 'base/search-list/search-list'
-//  import { checkRepeat } from 'common/js/util'
+  //  import { checkRepeat } from 'common/js/util'
   import { phoneFun, browser } from 'common/js/ybh5'
 
   export default {
@@ -55,7 +55,6 @@
         }
       },
       queryKey (val) {
-        console.log(val)
         if (val === '') {
           this.searches = []
         } else {
@@ -72,7 +71,7 @@
         }
       },
       getBook () {
-        getBook().then((res) => {
+        this.$http.get('/getBook').then((res) => {
           this.items = res.items
         })
       }

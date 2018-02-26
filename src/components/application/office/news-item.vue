@@ -27,7 +27,7 @@
 </template>
 
 <script type="text/ecmascript-6">
-  import { getNewsList } from 'api/news'
+  import { getNewsList } from 'api/office'
 
   export default {
     props: {

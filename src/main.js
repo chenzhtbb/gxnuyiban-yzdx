@@ -3,12 +3,12 @@ import Vue from 'vue'
 import App from './App'
 import store from './store'                   // vuex状态管理
 import router from './router'                 // 路由
-import './permission'                          // 前端授权 加速访问
+// import './permission'                          // 前端授权 加速访问
 import fastclick from 'fastclick'             // 取消移动端300ms点击延时
 import VueLazyload from 'vue-lazyload'        // 图片懒加载
 import VueImg from 'v-img'                    // 图片图库预览
 import Cube from 'cube-ui'
-import Http from './http'
+import Http from './http/index'
 
 Vue.use(Cube)
 const vueImgConfig = {

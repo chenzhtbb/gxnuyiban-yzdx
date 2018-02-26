@@ -28,7 +28,6 @@
 
 <script type="text/ecmascript-6">
   import { mapMutations } from 'vuex'
-  import { getUser } from 'api/user'
   import Slider from 'base/slider/slider'
   import SliderHome from 'base/slider-home/slider-home'
 
@@ -219,7 +218,8 @@
         ).show()
       },
       getUserInfo () {
-        getUser().then((res) => {
+        this.$http.get('/getUser').then((res) => {
+          console.log(res)
           this.userInfo = res
           this.sliderNews = [].concat(this.userInfo.news)
 //          this.updateNews()

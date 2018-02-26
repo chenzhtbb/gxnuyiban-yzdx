@@ -28,7 +28,7 @@
 
 <script type="text/ecmascript-6">
   import { mapGetters, mapMutations } from 'vuex'
-  import { bindDorm } from 'api/dorm'
+  import { bindDorm } from 'api/me'
   import { empty } from 'common/js/util'
 
   export default {

@@ -38,7 +38,7 @@
 
 <script type="text/ecmascript-6">
   import Scroll from 'base/scroll/scroll'
-  import { putFeedback } from 'api/user'
+  import { putFeedback } from 'api/me'
 
   export default {
     components: {
