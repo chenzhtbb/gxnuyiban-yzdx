@@ -62,4 +62,7 @@
 
   .slide-leave-active
     transition all 0.3s
+
+  .slide-leave-to
+    transform translateZ(0)
 </style>

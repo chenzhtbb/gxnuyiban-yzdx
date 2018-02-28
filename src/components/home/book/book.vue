@@ -6,7 +6,7 @@
       </div>
       <ul class="nav nav-stacked" v-if="!searches.length">
         <li v-for="item in items" class="item">
-          <router-link tag="a" :to="{path: '/app/booklist', query:{id:item.type}}">
+          <router-link tag="a" :to="{ path: `/app/book/${item.type}`}">
             {{item.name}}
           </router-link>
         </li>

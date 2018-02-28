@@ -5,7 +5,7 @@ import router from './router'
 // import { ERR_OR, REDIRECT_URL, CLIENT_ID } from 'api/config'
 
 router.beforeEach((to, from, next) => {
-  console.log(to, from, next)
+  console.log(to, from)
   next()
   // removeOauthToken()
   // setOauthToken('123')

@@ -38,7 +38,6 @@
 
 <script type="text/ecmascript-6">
   import Scroll from 'base/scroll/scroll'
-  import { putFeedback } from 'api/me'
 
   export default {
     components: {
@@ -99,7 +98,11 @@
           ).show()
           return
         }
-        putFeedback(this.type, this.title, this.content).then(res => {
+        this.$http.post('/putFeedback', {
+          type: this.type,
+          title: this.title,
+          content: this.content
+        }).then((res) => {
           this.$iosAlert('提交反馈意见成功').then(() => {
             this.type = this.title = this.content = ''
             this.$router.go(-1)

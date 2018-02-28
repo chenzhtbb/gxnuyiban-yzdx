@@ -4,7 +4,7 @@ import Router from 'vue-router'
 const Tab = () => import('home/tab')
 const Index = () => import('home/index/index')
 const Book = () => import('home/book/book')
-const BookList = () => import('home/book/book-list')
+const BookList = () => import('home/book/type')
 const Me = () => import('home/me/me')
 const Dean = () => import('home/me/bind-dean')
 const Dorm = () => import('home/me/bind-dorm')
@@ -17,7 +17,11 @@ const Tsg = () => import('app/dean/tsg')
 const Pj = () => import('app/dean/pj')
 const PjContent = () => import('app/dean/pj-content')
 const Xcsk = () => import('app/life/xcsk')
-
+const Swzl = () => import('app/life/lost-and-found/tab')
+const Lost = () => import('app/life/lost-and-found/lost')
+const Found = () => import('app/life/lost-and-found/lost')
+const Goods = () => import('app/life/lost-and-found/lost')
+const Publish = () => import('app/life/lost-and-found/publish')
 const Office = () => import('app/office/office-tab')
 const News = () => import('app/office/news')
 const Gg = () => import('app/office/type/gg')
@@ -64,7 +68,7 @@ export default new Router({
       component: Application,
       children: [
         {
-          path: 'book/type',
+          path: 'book/:type',
           component: BookList
         },
         {
@@ -109,7 +113,33 @@ export default new Router({
         },
         {
           path: 'life/swzl',
-          component: Cj
+          component: Swzl,
+          children: [
+            {
+              path: '/',
+              redirect: 'lost'
+            },
+            {
+              path: 'lost',
+              component: Lost
+            },
+            {
+              path: 'found',
+              component: Found
+            },
+            {
+              path: 'goods/:id',
+              component: Goods
+            },
+            {
+              path: 'publish',
+              component: Publish
+            },
+            {
+              path: '*',
+              redirect: 'lost'
+            }
+          ]
         },
         {
           path: 'life/essc',
@@ -157,7 +187,7 @@ export default new Router({
             },
             {
               path: '*',
-              redirect: '/'
+              redirect: 'gg'
             }
           ]
         },

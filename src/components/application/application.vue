@@ -18,7 +18,6 @@
     left 0
     right 0
     z-index 150
-    background #FFFFFF
     iframe
       z-index -1
       width 0

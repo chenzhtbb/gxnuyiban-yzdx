@@ -49,7 +49,9 @@
   window.onload = function () {
     var parent = document.getElementById('app')
     var child = document.getElementsByClassName('loading')
-    parent.removeChild(child[0])
+    if (child[0]) {
+      parent.removeChild(child[0])
+    }
   }
 </script>
 <head>

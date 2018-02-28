@@ -3,17 +3,17 @@ import Vue from 'vue'
 import App from './App'
 import store from './store'                   // vuex状态管理
 import router from './router'                 // 路由
-// import './permission'                          // 前端授权 加速访问
+import './permission'                          // 前端授权 加速访问
 import fastclick from 'fastclick'             // 取消移动端300ms点击延时
 import VueLazyload from 'vue-lazyload'        // 图片懒加载
-import VueImg from 'v-img'                    // 图片图库预览
 import Cube from 'cube-ui'
-import Http from './http/index'
-
+import Http from './pulgin/http/index'
+import VueImg from './pulgin/v-img/index'                    // 图片图库预览
 Vue.use(Cube)
 const vueImgConfig = {
   altAsTitle: false,
-  sourceButton: false
+  sourceButton: true,
+  thumbnails: true
 }
 const vueLazyloadConfig = {
   loading: require('common/image/1c264fdfff5081e1f279a3fb643b00f3.png'),  // 加载中图片

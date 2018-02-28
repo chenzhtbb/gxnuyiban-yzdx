@@ -32,7 +32,6 @@
 
 <script type="text/ecmascript-6">
   import Scroll from 'base/scroll/scroll'
-  import { getBookList } from 'api/book'
   import { phoneFun, browser } from 'common/js/ybh5'
 
   export default {
@@ -78,7 +77,7 @@
       },
       getBookList () {
         let page = this.$route.query.id
-        getBookList(page).then((res) => {
+        this.$http.get('/getBookList', {page}).then((res) => {
           this.items = res
           this.items[0].style = ''
           this.items[0].icon = 'fa-minus'

@@ -5,7 +5,7 @@
 </template>
 
 <script type="text/ecmascript-6">
-  import BScroll from 'better-scroll'
+  import { BetterScroll } from 'cube-ui'
   import Loading from 'base/loading/loading'
 
   export default {
@@ -33,14 +33,6 @@
       freeScroll: {
         type: Boolean,
         default: false
-      },
-      isToTop: {
-        type: Boolean,
-        default: false
-      },
-      startY: {
-        type: Number,
-        default: 0
       }
     },
     data () {
@@ -67,12 +59,11 @@
           let height = sHeight + 48
           this.$refs.wrapper.children[0].style.height = height + 'px'
         }
-        this.scroll = new BScroll(this.$refs.wrapper, {
+        this.scroll = new BetterScroll(this.$refs.wrapper, {
           probeType: this.probeType,
           click: this.click,
           pullUpLoad: this.pullUpLoad,
           freeScroll: this.freeScroll
-//          startY: this.startY
         })
         this.refresh()
         if (this.pullUpLoad) {
@@ -119,7 +110,3 @@
     }
   }
 </script>
-
-<style scoped lang="stylus" ref="stylesheet/stylus">
-
-</style>

@@ -1,7 +1,6 @@
 <template>
   <div class="news">
     <cube-scroll
-      ref="scroll"
       :data="items"
       :options="options"
       @pulling-up="onPullingUp">
