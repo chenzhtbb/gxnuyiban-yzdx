@@ -1,66 +1,57 @@
 <template>
   <transition name="slide">
     <div class="publish">
-      <scroll style="height: 100%;" :data="items" ref="scroll">
-        <div class="box">
-          <div class="box-header with-border">
-            <h3 class="box-title">信息发布</h3>
-          </div>
-          <!-- /.box-header -->
-          <!-- div start -->
+      <scroll style="height: 100%;" :data="[]">
+        <div>
           <div class="form-horizontal">
             <div class="box-body">
               <div class="form-group">
                 <label class="col-sm-2">发布类型</label>
                 <div class="col-sm-10">
-                  <select class="form-control">
-                    <option>失物招领（找失主）</option>
-                    <option>寻物启事（丢东西）</option>
-                  </select>
+                  <cube-select :options="options" v-model="typeValue" title="发布类型"></cube-select>
                 </div>
               </div>
               <div class="form-group">
                 <label class="col-sm-2 control-label">物品说明</label>
                 <div class="col-sm-10">
-                  <cube-input class="form-control" placeholder="物品说明"></cube-input>
+                  <cube-input placeholder="物品说明"></cube-input>
                 </div>
               </div>
               <div class="form-group">
                 <label class="col-sm-2 control-label">捡到地点</label>
                 <div class="col-sm-10">
-                  <cube-input class="form-control" placeholder="捡到地点"></cube-input>
+                  <cube-input placeholder="捡到地点"></cube-input>
                 </div>
               </div>
               <div class="form-group">
                 <label class="col-sm-2 control-label">捡到时间</label>
                 <div class="col-sm-10">
-                  <cube-input class="form-control" placeholder="捡到时间"></cube-input>
+                  <cube-input placeholder="捡到时间"></cube-input>
                 </div>
               </div>
               <div class="form-group">
                 <label class="col-sm-2 control-label">联系电话</label>
                 <div class="col-sm-10">
-                  <cube-input class="form-control" placeholder="联系电话"></cube-input>
+                  <cube-input placeholder="联系电话"></cube-input>
                 </div>
               </div>
               <div class="form-group">
                 <label class="col-sm-2 control-label">上传图片</label>
                 <div class="col-sm-10">
-                  <div>
-                  </div>
+                  <cube-upload
+                    ref="upload"
+                    :simultaneous-uploads="1"
+                    @files-added="filesAdded"></cube-upload>
                 </div>
               </div>
               <div class="form-group">
                 <label class="col-sm-2 control-label">补充说明</label>
                 <div class="col-sm-10">
-                  <cube-textarea class="form-control" rows="3" placeholder="补充说明 ..."></cube-textarea>
+                  <cube-textarea placeholder="补充说明..."></cube-textarea>
                 </div>
               </div>
-              <div class="box-footer">
-                <button class="btn btn-default">取消</button>
-                <button class="btn btn-info pull-right" @click="upload">发布</button>
-              </div>
-              <!-- /.box-footer -->
+              <button class="btn btn-info btn-block">发布</button>
+              <button class="btn btn-danger btn-block">取消</button>
             </div>
           </div>
         </div>
@@ -71,12 +62,16 @@
 
 <script type="text/ecmascript-6">
   import Scroll from 'base/scroll/scroll'
-  import { Input } from 'cube-ui'
 
   export default {
     components: {
-      Scroll,
-      Input
+      Scroll
+    },
+    data () {
+      return {
+        options: ['失物招领（找失主）', '寻物启事（丢东西）'],
+        typeValue: ''
+      }
     },
     methods: {
       filesAdded (files) {
@@ -100,7 +95,7 @@
     transform translate3d(0, 100%, 0)
 
   .publish
-    background #FFFFFF
+    background #EEEEEE
     position fixed
     left 0
     right 0

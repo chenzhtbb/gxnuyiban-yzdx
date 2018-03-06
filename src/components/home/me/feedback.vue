@@ -2,34 +2,26 @@
   <div class="feedback">
     <scroll style="height: 100%;" :data="[]">
       <div>
-        <div class="box box-success">
-          <div class="box-header with-border">
-            <h3 class="box-title">意见反馈</h3>
-          </div>
-          <div class="box-body">
-            <div class="form-group has-success">
-              <div class="form-group">
-                <label>反馈类别</label>
-                <button class="form-control" @click="selectType">{{type == '' ? '请选择反馈类别' : type}}</button>
-                <span class="help-block">各位小伙伴一定要描述清楚问题哦，方便我们解决问题！</span>
-              </div>
-            </div>
-            <div class="form-group has-success">
-              <label class="control-label">反馈标题</label>
-              <input class="form-control" placeholder="反馈标题 ..." v-model="title">
-            </div>
-            <div class="form-group has-success">
-              <label class="control-label">反馈内容</label>
-              <textarea rows="11" class="form-control" placeholder="反馈内容 ..." v-model="content"></textarea>
-            </div>
-          </div>
-          <!-- /.box-body -->
-          <div class="box-footer">
-            <button class="btn btn-success btn-block" @click="onFeedback">提交</button>
-            <br>
-            <button class="btn btn-warning btn-block" @click="gotoPop">返回</button>
-          </div>
-          <!-- /.box-footer -->
+        <div class="form-group">
+          <label class="title">问题类型</label>
+          <cube-select
+            :options="['反馈BUG','提供意见','界面改进']"
+            v-model="type"
+            title="问题类型"
+            placeholder="请选择">
+          </cube-select>
+        </div>
+        <div class="form-group">
+          <label class="title">问题和意见</label>
+          <cube-textarea
+            placeholder="献上您宝贵的意见，一同见证更好的易知独秀"
+            v-model="content"
+            maxlength="512"></cube-textarea>
+        </div>
+        <div class="col-xs-12">
+          <button class="btn btn-success btn-block" @click="onFeedback">提交</button>
+          <br>
+          <button class="btn btn-danger btn-block" @click="gotoPop">返回</button>
         </div>
       </div>
     </scroll>
@@ -46,45 +38,16 @@
     data () {
       return {
         type: '',
-        title: '',
         content: ''
       }
     },
-    mounted () {
-      setTimeout(() => {
-        this.colData = [{text: '反馈BUG', value: '反馈BUG'}, {text: '提供意见', value: '提供意见'}, {text: '界面改进', value: '界面改进'}]
-        this.typeIndex = [0]
-      }, 20)
-    },
     methods: {
-      selectType () {
-        this.$createPicker({
-          title: '请选择反馈类别',
-          data: [this.colData],
-          selectedIndex: this.typeIndex,
-          onSelect: (selectedVal, selectedIndex) => {
-            this.type = selectedVal[0]
-            this.typeIndex = selectedIndex
-          },
-          onCancel: () => {
-          }
-        }, true).show()
-      },
       onFeedback () {
         if (!this.type) {
           this.$createDialog(
             {
               type: 'alert',
               title: '请选择反馈的类别'
-            }
-          ).show()
-          return
-        }
-        if (!this.title) {
-          this.$createDialog(
-            {
-              type: 'alert',
-              title: '您还未填写反馈标题'
             }
           ).show()
           return
@@ -133,4 +96,7 @@
     right 0
     z-index 100
     background #EEEEEE
+
+  .title
+    padding 5px
 </style>

@@ -1,34 +1,40 @@
 <template>
-  <transition name="slide">
-    <div class="bind-dorm">
-      <div class="box box-info">
-        <div class="box-header with-border">
-          <h3 class="box-title">绑定宿舍号</h3>
+  <div class="bind-dorm">
+    <div class="">
+      <div class="form-horizontal center">
+        <div class="box-body">
+          <div class="form-group">
+            <label class="col-xs-12 control-label">选择校区</label>
+            <div class="col-xs-12">
+              <cube-select
+                :options="['雁山校区','育才校区','王城校区']"
+                v-model="bind.campus" title="选择校区"
+                placeholder="请选择校区"
+                :disabled="bind.dorm === 1? true: false">
+              </cube-select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-xs-12 control-label">选择宿舍</label>
+            <div class="col-xs-12">
+              <button
+                class="form-control "
+                @click="selectRoom">{{bind.room == '' ? '请选择宿舍' : bind.room}}
+              </button>
+            </div>
+          </div>
         </div>
-        <div class="form-horizontal">
-          <div class="box-body">
-            <div class="form-group col-sm-10">
-              <label>选择校区</label>
-              <button class="form-control" @click="selectCampus">{{bind.campus == '' ? '请选择校区' : bind.campus}}</button>
-            </div>
-            <div class="form-group col-sm-10">
-              <label>选择宿舍</label>
-              <button class="form-control" @click="selectRoom">{{bind.room == '' ? '请选择宿舍' : bind.room}}</button>
-            </div>
-          </div>
-          <div class="box-footer col-sm-10">
-            <button class="btn btn-info btn-block" @click="_bindDorm()" v-if="!bind.dorm">绑定</button>
-            <button class="btn btn-danger btn-block" @click="showAlert()" v-else>解绑</button>
-          </div>
+        <div class="col-xs-12">
+          <button class="btn btn-info btn-block" @click="_bindDorm()" v-if="!bind.dorm">绑定</button>
+          <button class="btn btn-danger btn-block" @click="showAlert()" v-else>解绑</button>
         </div>
       </div>
     </div>
-  </transition>
+  </div>
 </template>
 
 <script type="text/ecmascript-6">
   import { mapGetters, mapMutations } from 'vuex'
-  import { empty } from 'common/js/util'
 
   export default {
     data () {
@@ -39,8 +45,6 @@
     mounted () {
       setTimeout(() => {
         this.getDorm()
-        this.campusData = [{text: '雁山校区', value: '雁山校区'}, {text: '育才校区', value: '育才校区'}, {text: '王城校区', value: '王城校区'}]
-        this.campusIndex = [0]
         this.lData = [{text: '楼号', value: '楼号'}]
         this.cData = [{text: '层数', value: '层数'}]
         this.fData = [{text: '房间号', value: '房间号'}]
@@ -68,19 +72,6 @@
       getDorm () {
         this.bind = this.binddorm
       },
-      selectCampus () {
-        this.$createPicker({
-          title: '选择您所在的校区',
-          data: [this.campusData],
-          selectedIndex: this.campusIndex,
-          onSelect: (selectedVal, selectedIndex) => {
-            this.bind.campus = selectedVal[0]
-            this.campusIndex = selectedIndex
-          },
-          onCancel: () => {
-          }
-        }, true).show()
-      },
       selectRoom () {
         this.$createPicker({
           title: '选择您所在的宿舍',
@@ -100,7 +91,7 @@
         }).show()
       },
       _bindDorm () {
-        if (this.bind.campus === '请选择校区' || empty(this.bind.campus) || empty(this.bind.room)) {
+        if (this.bind.campus === '') {
           this.$createDialog(
             {
               type: 'alert',
@@ -176,17 +167,16 @@
   .bind-dorm
     position fixed
     top 0
-    left 50%
     bottom 0
-    width 100%
-    z-index 100
-    transform translate(-50%, 0%)
+    left 0
+    right 0
     background #eeeeee
 
-  .slide-enter-active, .slide-leave-active
-    transition all 0.3s
-
-  .slide-enter, .slide-leave-to
-    transform translate3d(100%, 0, 0)
+  .center
+    position absolute
+    top 50%
+    left 0
+    right 0
+    transform translate(0, -50%)
 
 </style>
