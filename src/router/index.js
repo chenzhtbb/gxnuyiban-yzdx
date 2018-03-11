@@ -34,7 +34,7 @@ const Jzbg = () => import('app/office/type/jzbg')
 Vue.use(Router)
 
 export default new Router({
-  base: '/yzdx/',
+  base: '/test/',
   mode: 'history',
   routes: [
     {
