@@ -30,6 +30,10 @@ const Hyap = () => import('app/office/type/hyap')
 const Jwtz = () => import('app/office/type/jwtz')
 const Xyxw = () => import('app/office/type/xyxw')
 const Jzbg = () => import('app/office/type/jzbg')
+const Zzyr = () => import('app/online/zzyr')
+const Jyfw = () => import('app/online/jyfw')
+const Xgtz = () => import('app/online/xgtz')
+const Notice = () => import('app/online/notice')
 
 Vue.use(Router)
 
@@ -192,24 +196,20 @@ export default new Router({
           ]
         },
         {
-          path: 'online/xgtz',
-          component: Cj
+          path: 'online/xgtz/:type',
+          component: Xgtz
+        },
+        {
+          path: 'online/notice/:key',
+          component: Notice
         },
         {
           path: 'online/zzyr',
-          component: Cj
-        },
-        {
-          path: 'online/ybzx',
-          component: Cj
-        },
-        {
-          path: 'online/bszn',
-          component: Cj
+          component: Zzyr
         },
         {
           path: 'online/jyfw',
-          component: Cj
+          component: Jyfw
         },
         {
           path: '*',

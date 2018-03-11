@@ -1,40 +1,32 @@
 <template>
-  <toggle>
-    <div class="notice">
-      <iframe class="hide"></iframe>
-      <div class="link" v-if="item.link">
-        <iframe :src="item.link"></iframe>
-      </div>
-      <scroll style="height: 100%;" :data="item">
-        <div style="margin: 8px;">
-          <div class="top">
-            <div class="title">
-              <h3>{{item.title}}</h3>
-            </div>
-            <div class="publish">
-              <span>{{item.author}}</span>
-            </div>
-            <div class="time">
-              <span>{{item.time | formatTime}}</span>
-            </div>
+  <div class="notice">
+    <iframe class="hide"></iframe>
+    <div class="link" v-if="item.link">
+      <iframe :src="item.link"></iframe>
+    </div>
+    <scroll style="height: 100%;" :data="item">
+      <div style="margin: 8px;">
+        <div class="top">
+          <div class="title">
+            <h3>{{item.title}}</h3>
           </div>
-          <div class="content" v-if="!item.link">
-            <div class="text" v-html="item.content"></div>
+          <div class="publish">
+            <span>{{item.author}}</span>
           </div>
-          <div v-else>
-            <loading :title="title"></loading>
+          <div class="time">
+            <span>{{item.time | formatTime}}</span>
           </div>
         </div>
-      </scroll>
-    </div>
-  </toggle>
+        <div class="content" v-if="!item.link">
+          <div class="text" v-html="item.content"></div>
+        </div>
+      </div>
+    </scroll>
+  </div>
 </template>
 
 <script type="text/ecmascript-6">
-  import Toggle from 'base/toggle/toggle'
   import Scroll from 'base/scroll/scroll'
-  import Loading from 'base/loading/loading'
-  import { getXgbNotice } from 'api/xgb'
 
   export default {
     filters: {
@@ -44,9 +36,7 @@
       }
     },
     components: {
-      Toggle,
-      Scroll,
-      Loading
+      Scroll
     },
     data () {
       return {
@@ -66,7 +56,7 @@
     },
     methods: {
       getXgbNotice () {
-        getXgbNotice(this.key).then((res) => {
+        this.$http.get('/getXgbNotice', {key: this.key}).then((res) => {
           this.item = res
           this.title = `小易正在带路前往${res.title}页面`
         })

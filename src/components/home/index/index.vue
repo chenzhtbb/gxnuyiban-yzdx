@@ -42,10 +42,7 @@
             items: [
               {
                 name: '学工通知',
-                link: '/app/online/xgtz',
-                query: {
-                  notice: '9a9870f3ebbd8fde2da5d1dd615b5f54'
-                },
+                link: '/app/online/xgtz/9a9870f3ebbd8fde2da5d1dd615b5f54',
                 icon: 'iconfont icon-tongzhi bg-D81B60'
               },
               {
@@ -55,18 +52,12 @@
               },
               {
                 name: '易班在线',
-                link: '/app/online/ybzx',
-                query: {
-                  notice: '55938ef9fe8c8e8a617a093c90cf19ee'
-                },
+                link: '/app/online/xgtz/55938ef9fe8c8e8a617a093c90cf19ee',
                 icon: 'iconfont icon-yibanlogo bg-00c0ef'
               },
               {
                 name: '办事指南',
-                link: '/app/online/bszn',
-                query: {
-                  notice: 'e42c9b4c2866afef633ee98f7c49c155'
-                },
+                link: '/app/online/xgtz/e42c9b4c2866afef633ee98f7c49c155',
                 icon: 'iconfont icon-zhuyizhishi bg-ff851b'
               },
               {
