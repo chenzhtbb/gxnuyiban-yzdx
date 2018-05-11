@@ -88,7 +88,7 @@
               },
               {
                 name: '选课',
-                link: '/app/dean/xk',
+                link: '/home',
                 icon: 'iconfont icon-jingqingqidai bg-00a65a'
               },
               {
@@ -109,8 +109,8 @@
               },
               {
                 name: '失物招领',
-                link: '/app/life/swzl',
-                icon: 'iconfont icon-xingzhuang9kaobei bg-00c0ef'
+                link: '/home',
+                icon: 'iconfont icon-jingqingqidai bg-00c0ef'
               },
               {
                 name: '二手市场',
@@ -119,12 +119,12 @@
               },
               {
                 name: '资费查询',
-                link: '/app/life/zfcx',
+                link: '/home',
                 icon: 'iconfont icon-jingqingqidai bg-00a65a'
               },
               {
                 name: '宿舍用电',
-                link: '/app/life/ssyd',
+                link: '/home',
                 icon: 'iconfont icon-jingqingqidai bg-00c0ef'
               }
             ]

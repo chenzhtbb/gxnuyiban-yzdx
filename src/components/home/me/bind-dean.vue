@@ -16,10 +16,10 @@
           <div class="col-xs-12">
             <cube-input
               v-model="password"
-              :disabled="bind.dean === 1? true: false"
+              :disabled="bind === 1 ? true: false"
               placeholder="选课密码"
               type="password"
-              :clearable="true"></cube-input>
+              :clearable="false"></cube-input>
           </div>
         </div>
       </div>
@@ -70,11 +70,11 @@
             {
               content: '重置密码(Alpha)'
             },
+//            {
+//              content: '点击绑定无反应'
+//            },
             {
-              content: '点击绑定无反应'
-            },
-            {
-              content: '联系我们'
+              content: '联系我们，QQ群：496962393'
             }
           ],
           onSelect: (item, index) => {
@@ -106,7 +106,13 @@
                 }
               }).show()
             } else if (index === 1) {
-              window.location.href = 'tencent://message/?uin=693304134&Site=lalala&Menu=yes'
+
+//              this.$createDialog(
+//                {
+//                  type: 'alert',
+//                  title: '群号已复制'
+//                }
+//              ).show()
             } else if (index === 2) {
               window.location.href = 'tencent://message/?uin=693304134&Site=lalala&Menu=yes'
             }

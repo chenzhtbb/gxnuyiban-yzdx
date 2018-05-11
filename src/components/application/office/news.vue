@@ -52,7 +52,7 @@
       setTimeout(() => {
         const id = this.$route.params.id
         this.getNews(id)
-      }, 300)
+      }, 20)
     },
     deactivated () {
       this.item = []

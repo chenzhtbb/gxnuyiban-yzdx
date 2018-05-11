@@ -1686,3 +1686,349 @@ Mock.mock(/getXgbList/, (options) => {
   }
   return data
 })
+
+Mock.mock(/getTimetable/, (options) => {
+  let data = [
+    {
+      'num': 1,
+      'class': [
+        {
+          'name': '计算机系统结构',
+          'xf': 3,
+          'teacher': '陆遥',
+          'xqh': '雁山',
+          'room': '周1雁山理科一区1-406',
+          'week': 1,
+          'start': 1,
+          'end': 2,
+          'num': 2
+        },
+        {
+          'name': '编译原理',
+          'xf': 3,
+          'teacher': '闻炳海',
+          'xqh': '雁山',
+          'room': '周2雁山理科一区1-505',
+          'week': 2,
+          'start': 1,
+          'end': 2,
+          'num': 2
+        },
+        {
+          'isclass': 0
+        },
+        {
+          'name': '编译原理',
+          'xf': 3,
+          'teacher': '闻炳海',
+          'xqh': '雁山',
+          'room': '周4雁山理科二区2-501',
+          'week': 4,
+          'start': 1,
+          'end': 2,
+          'num': 2
+        },
+        {
+          'name': 'VLSI 设计基础',
+          'xf': 2,
+          'teacher': '罗辉',
+          'xqh': '雁山',
+          'room': '周5雁山理科二区2-501',
+          'week': 5,
+          'start': 1,
+          'end': 3,
+          'num': 3
+        },
+        {
+          'isclass': 0
+        },
+        {
+          'isclass': 0
+        }
+      ]
+    },
+    {
+      'num': 2,
+      'class': [
+        {
+          'isclass': 0
+        },
+        {
+          'isclass': 0
+        },
+        {
+          'isclass': 0
+        }
+      ]
+    },
+    {
+      'num': 3,
+      'class': [
+        {
+          'isclass': 0
+        },
+        {
+          'name': '专业英语',
+          'xf': 3,
+          'teacher': '黄健民',
+          'xqh': '雁山',
+          'room': '周2雁山理科一区1-505',
+          'week': 2,
+          'start': 3,
+          'end': 5,
+          'num': 3
+        },
+        {
+          'name': '计算机系统结构',
+          'xf': 3,
+          'teacher': '陆遥',
+          'xqh': '雁山',
+          'room': '周3雁山理科一区1-502',
+          'week': 3,
+          'start': 3,
+          'end': 5,
+          'num': 3
+        },
+        {
+          'isclass': 0
+        },
+        {
+          'isclass': 0
+        },
+        {
+          'isclass': 0
+        }
+      ]
+    },
+    {
+      'num': 4,
+      'class': [
+        {
+          'isclass': 0
+        },
+        {
+          'isclass': 0
+        },
+        {
+          'isclass': 0
+        },
+        {
+          'isclass': 0
+        },
+        {
+          'isclass': 0
+        }
+      ]
+    },
+    {
+      'num': 5,
+      'class': [
+        {
+          'isclass': 0
+        },
+        {
+          'isclass': 0
+        },
+        {
+          'isclass': 0
+        },
+        {
+          'isclass': 0
+        },
+        {
+          'isclass': 0
+        }
+      ]
+    },
+    {
+      'num': 6,
+      'class': [
+        {
+          'name': '手机应用软件开发技术',
+          'xf': 3,
+          'teacher': '宁凤辉',
+          'xqh': '雁山',
+          'room': '周1雁山理科二区2-501',
+          'week': 1,
+          'start': 6,
+          'end': 9,
+          'num': 4
+        },
+        {
+          'isclass': 0
+        },
+        {
+          'name': '线性代数',
+          'xf': 3,
+          'teacher': '唐胜达',
+          'xqh': '雁山',
+          'room': '周3雁山理科一区1-206',
+          'week': 3,
+          'start': 6,
+          'end': 8,
+          'num': 3
+        },
+        {
+          'isclass': 0
+        },
+        {
+          'name': '大学生就业指导',
+          'xf': 0.5,
+          'teacher': '朱伟军',
+          'xqh': '雁山',
+          'room': '周5雁山文四区202',
+          'week': 5,
+          'start': 6,
+          'end': 8,
+          'num': 3
+        },
+        {
+          'isclass': 0
+        },
+        {
+          'isclass': 0
+        }
+      ]
+    },
+    {
+      'num': 7,
+      'class': [
+        {
+          'isclass': 0
+        },
+        {
+          'isclass': 0
+        },
+        {
+          'isclass': 0
+        },
+        {
+          'isclass': 0
+        }
+      ]
+    },
+    {
+      'num': 8,
+      'class': [
+        {
+          'isclass': 0
+        },
+        {
+          'isclass': 0
+        },
+        {
+          'isclass': 0
+        },
+        {
+          'isclass': 0
+        }
+      ]
+    },
+    {
+      'num': 9,
+      'class': [
+        {
+          'isclass': 0
+        },
+        {
+          'isclass': 0
+        },
+        {
+          'isclass': 0
+        },
+        {
+          'isclass': 0
+        },
+        {
+          'isclass': 0
+        },
+        {
+          'isclass': 0
+        }
+      ]
+    },
+    {
+      'num': 10,
+      'class': [
+        {
+          'name': '软件开发实训',
+          'xf': 2,
+          'teacher': '李肖坚',
+          'xqh': '雁山',
+          'room': '周1雁山理科二区2-307',
+          'week': 1,
+          'start': 10,
+          'end': 12,
+          'num': 3
+        },
+        {
+          'isclass': 0
+        },
+        {
+          'isclass': 0
+        },
+        {
+          'isclass': 0
+        },
+        {
+          'isclass': 0
+        },
+        {
+          'isclass': 0
+        },
+        {
+          'name': '形势与政策（含大学生安全教育课）',
+          'xf': 0.5,
+          'teacher': '沈青',
+          'xqh': '雁山',
+          'room': '周7雁山文四区203',
+          'week': 7,
+          'start': 10,
+          'end': 12,
+          'num': 3
+        }
+      ]
+    },
+    {
+      'num': 11,
+      'class': [
+        {
+          'isclass': 0
+        },
+        {
+          'isclass': 0
+        },
+        {
+          'isclass': 0
+        },
+        {
+          'isclass': 0
+        },
+        {
+          'isclass': 0
+        }
+      ]
+    },
+    {
+      'num': 12,
+      'class': [
+        {
+          'isclass': 0
+        },
+        {
+          'isclass': 0
+        },
+        {
+          'isclass': 0
+        },
+        {
+          'isclass': 0
+        },
+        {
+          'isclass': 0
+        }
+      ]
+    }
+  ]
+  return data
+})

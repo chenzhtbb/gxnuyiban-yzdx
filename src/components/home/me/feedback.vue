@@ -18,6 +18,7 @@
             v-model="content"
             maxlength="512"></cube-textarea>
         </div>
+        <button class="btn btn-link">各位同学有任何诉求都可以加群：496962393 反馈哦~</button>
         <div class="col-xs-12">
           <button class="btn btn-success btn-block" @click="onFeedback">提交</button>
           <br>
@@ -63,20 +64,23 @@
         }
         this.$http.post('/putFeedback', {
           type: this.type,
-          title: this.title,
           content: this.content
         }).then((res) => {
-          this.$iosAlert('提交反馈意见成功').then(() => {
-            this.type = this.title = this.content = ''
-            this.$router.go(-1)
-          })
+          this.$createDialog(
+            {
+              type: 'alert',
+              title: '提交反馈意见成功'
+            }
+          ).show()
+          this.$router.go(-1)
         }).catch(() => {
           this.$createDialog(
             {
               type: 'alert',
-              title: '提交反馈意见失败，请重新提交'
+              title: '提交反馈意见成功'
             }
           ).show()
+          this.$router.go(-1)
         })
       },
       gotoPop () {

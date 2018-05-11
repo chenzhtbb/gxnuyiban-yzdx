@@ -1,9 +1,9 @@
 <template>
-  <div class="helo-people">
+  <div class="goto">
     <div class="center">
       <cube-loading :size="24"></cube-loading>
     </div>
-    <p class="center-p">小易正在带路前往资助管理系统...</p>
+    <p class="center-p">小易正在带路前往{{tip}}系统...</p>
   </div>
 </template>
 
@@ -12,6 +12,14 @@
   import { getHrefFlag } from 'common/js/cache'
 
   export default {
+    props: {
+      link: {
+        type: String
+      },
+      tip: {
+        type: String
+      }
+    },
     activated () {
       this.hrefflag = getHrefFlag()
       console.log(this.hrefflag)
@@ -21,7 +29,7 @@
       } else {
         setTimeout(() => {
           this.saveHrefFlag(true)
-          window.location.href = 'https://oauth.yiban.cn/code/html?client_id=31b0e272f0b66ede&redirect_uri=http://zzzx.gxnu.edu.cn/AdminLTE_Mod/Yb/Yb.aspx&state=yb_oauth'
+          window.location.href = this.link
         }, 200)
       }
     },
@@ -34,7 +42,7 @@
 </script>
 
 <style scoped lang="stylus" ref="stylesheet/stylus">
-  .helo-people
+  .goto
     position fixed
     top 0
     width 100%

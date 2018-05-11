@@ -76,8 +76,10 @@
         }
       },
       getBookList () {
-        let page = this.$route.query.id
-        this.$http.get('/getBookList', {page}).then((res) => {
+        const type = this.$route.params.type
+        this.$http.get('/getBookList', {
+          type: type
+        }).then((res) => {
           this.items = res
           this.items[0].style = ''
           this.items[0].icon = 'fa-minus'

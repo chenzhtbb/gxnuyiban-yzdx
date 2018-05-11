@@ -48,8 +48,6 @@
 </template>
 
 <script type="text/ecmascript-6">
-  import { getTimetable } from 'api/dean'
-
   export default {
     activated () {
       this._getTimetable()
@@ -61,7 +59,7 @@
     },
     methods: {
       _getTimetable () {
-        getTimetable().then((res) => {
+        this.$http.get('/getTimetable').then((res) => {
           this.items = res
         })
       }

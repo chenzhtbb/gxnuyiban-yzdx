@@ -27,12 +27,6 @@
 
 <script type="text/ecmascript-6">
   export default {
-    props: {
-      type: {
-        type: Number,
-        default: 0
-      }
-    },
     filters: {
       formatTime (val) {
         val = val.replace(/T[^]*Z/g, '')
@@ -52,17 +46,17 @@
             }
           }
         },
-        page: 1
+        page: 0
       }
     },
     activated () {
       setTimeout(() => {
-        this.key = this.$route.params.type
+        this.key = this.$route.params.key
         this.getItems()
       }, 20)
     },
     deactivated () {
-      this.page = 1
+      this.page = 0
       this.items = []
     },
     methods: {
@@ -89,6 +83,13 @@
 </script>
 
 <style scoped lang="stylus" ref="stylesheet/stylus">
+
+  .slide-enter-active, .slide-leave-active
+    transition all 0.3s
+
+  .slide-enter, .slide-leave-to
+    transform translate3d(100%, 0, 0)
+
   .notice
     background #FFFFFF
     position fixed

@@ -16,6 +16,7 @@ const Tsg = () => import('app/dean/tsg')
 // const Xk = () => import('app/dean/xk')
 const Pj = () => import('app/dean/pj')
 const PjContent = () => import('app/dean/pj-content')
+const Essc = () => import('app/life/second-hand')
 const Xcsk = () => import('app/life/xcsk')
 const Swzl = () => import('app/life/lost-and-found/tab')
 const Lost = () => import('app/life/lost-and-found/lost')
@@ -38,7 +39,7 @@ const Notice = () => import('app/online/notice')
 Vue.use(Router)
 
 export default new Router({
-  base: '/test/',
+  base: '/yzdx/',
   mode: 'history',
   routes: [
     {
@@ -147,7 +148,7 @@ export default new Router({
         },
         {
           path: 'life/essc',
-          component: Cj
+          component: Essc
         },
         {
           path: 'life/zfcx',
@@ -196,7 +197,7 @@ export default new Router({
           ]
         },
         {
-          path: 'online/xgtz/:type',
+          path: 'online/xgtz/:key',
           component: Xgtz
         },
         {

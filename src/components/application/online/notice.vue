@@ -1,32 +1,35 @@
 <template>
-  <div class="notice">
-    <iframe class="hide"></iframe>
-    <div class="link" v-if="item.link">
-      <iframe :src="item.link"></iframe>
-    </div>
-    <scroll style="height: 100%;" :data="item">
-      <div style="margin: 8px;">
-        <div class="top">
-          <div class="title">
-            <h3>{{item.title}}</h3>
-          </div>
-          <div class="publish">
-            <span>{{item.author}}</span>
-          </div>
-          <div class="time">
-            <span>{{item.time | formatTime}}</span>
-          </div>
-        </div>
-        <div class="content" v-if="!item.link">
-          <div class="text" v-html="item.content"></div>
-        </div>
+  <transition name="slide">
+    <div class="notice">
+      <iframe class="hide"></iframe>
+      <div class="link" v-if="item.link">
+        <goto :link="item.link" :tip="title"></goto>
       </div>
-    </scroll>
-  </div>
+      <scroll style="height: 100%;" :data="[]">
+        <div style="margin: 8px;">
+          <div class="top">
+            <div class="title">
+              <h3>{{item.title}}</h3>
+            </div>
+            <div class="publish">
+              <span>{{item.author}}</span>
+            </div>
+            <div class="time">
+              <span>{{item.time | formatTime}}</span>
+            </div>
+          </div>
+          <div class="content" v-if="!item.link">
+            <div class="text" v-html="item.content"></div>
+          </div>
+        </div>
+      </scroll>
+    </div>
+  </transition>
 </template>
 
 <script type="text/ecmascript-6">
   import Scroll from 'base/scroll/scroll'
+  import Goto from 'base/goto/goto'
 
   export default {
     filters: {
@@ -36,7 +39,8 @@
       }
     },
     components: {
-      Scroll
+      Scroll,
+      Goto
     },
     data () {
       return {
@@ -45,18 +49,19 @@
       }
     },
     activated () {
-      this.item = []
       setTimeout(() => {
-        this.key = this.$route.query.page
-        this.getXgbNotice()
+        const key = this.$route.params.key
+        this.getXgbNotice(key)
       }, 20)
     },
     deactivated () {
       this.item = []
     },
     methods: {
-      getXgbNotice () {
-        this.$http.get('/getXgbNotice', {key: this.key}).then((res) => {
+      getXgbNotice (key) {
+        this.$http.get('/getXgbNotice', {
+          key: key
+        }).then((res) => {
           this.item = res
           this.title = `小易正在带路前往${res.title}页面`
         })
@@ -77,16 +82,6 @@
 
   img
     width 100% !important
-
-  iframe
-    border 0
-    position fixed
-    top 0
-    bottom 0
-    left 0
-    right 0
-    width 100%
-    height 100%
 
   .link
     position fixed
@@ -130,4 +125,10 @@
           padding 6px 0
           color royalblue
           no-wrap()
+
+  .slide-enter-active, .slide-leave-active
+    transition all 0.3s
+
+  .slide-enter, .slide-leave-to
+    transform translate3d(100%, 0, 0)
 </style>
