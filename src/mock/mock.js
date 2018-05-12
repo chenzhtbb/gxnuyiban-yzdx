@@ -2032,3 +2032,163 @@ Mock.mock(/getTimetable/, (options) => {
   ]
   return data
 })
+
+Mock.mock(/getCharge/, () => {
+  let data = [
+    {
+      'ChargeYear': '2017',
+      'ItemName': '代收医疗保险费',
+      'ChargeDate': '2017-07-05',
+      'ShouldAmount': 180,
+      'ReduceAmount': 0,
+      'RealAmount': 180,
+      'BufferAmount': 0,
+      'ReturnAmount': 0,
+      'OweAmount': 0
+    },
+    {
+      'ChargeYear': '2017',
+      'ItemName': '学费',
+      'ChargeDate': '2016-01-02',
+      'ShouldAmount': 7600,
+      'ReduceAmount': 0,
+      'RealAmount': 7600,
+      'BufferAmount': 0,
+      'ReturnAmount': 0,
+      'OweAmount': 0
+    },
+    {
+      'ChargeYear': '2017',
+      'ItemName': '雁山住宿费(学校)',
+      'ChargeDate': '2016-01-02',
+      'ShouldAmount': 900,
+      'ReduceAmount': 0,
+      'RealAmount': 900,
+      'BufferAmount': 0,
+      'ReturnAmount': 0,
+      'OweAmount': 0
+    },
+    {
+      'ChargeYear': '2017',
+      'ItemName': '住宿费K',
+      'ChargeDate': '2016-01-02',
+      'ShouldAmount': 150,
+      'ReduceAmount': 0,
+      'RealAmount': 150,
+      'BufferAmount': 0,
+      'ReturnAmount': 0,
+      'OweAmount': 0
+    },
+    {
+      'ChargeYear': '2016',
+      'ItemName': '学费',
+      'ChargeDate': '2016-01-01',
+      'ShouldAmount': 7600,
+      'ReduceAmount': 0,
+      'RealAmount': 7600,
+      'BufferAmount': 0,
+      'ReturnAmount': 0,
+      'OweAmount': 0
+    },
+    {
+      'ChargeYear': '2016',
+      'ItemName': '雁山住宿费(学校)',
+      'ChargeDate': '2016-01-01',
+      'ShouldAmount': 1200,
+      'ReduceAmount': 0,
+      'RealAmount': 1200,
+      'BufferAmount': 0,
+      'ReturnAmount': 0,
+      'OweAmount': 0
+    },
+    {
+      'ChargeYear': '2016',
+      'ItemName': '住宿费K',
+      'ChargeDate': '2016-01-01',
+      'ShouldAmount': 150,
+      'ReduceAmount': 0,
+      'RealAmount': 150,
+      'BufferAmount': 0,
+      'ReturnAmount': 0,
+      'OweAmount': 0
+    },
+    {
+      'ChargeYear': '2015',
+      'ItemName': '代收教材费',
+      'ChargeDate': '2015-01-01',
+      'ShouldAmount': 600,
+      'ReduceAmount': 0,
+      'RealAmount': 600,
+      'BufferAmount': 0,
+      'ReturnAmount': 0,
+      'OweAmount': 0
+    },
+    {
+      'ChargeYear': '2015',
+      'ItemName': '代收军训服装费',
+      'ChargeDate': '2015-01-01',
+      'ShouldAmount': 60,
+      'ReduceAmount': 0,
+      'RealAmount': 60,
+      'BufferAmount': 0,
+      'ReturnAmount': 0,
+      'OweAmount': 0
+    },
+    {
+      'ChargeYear': '2015',
+      'ItemName': '代收体检费',
+      'ChargeDate': '2015-01-01',
+      'ShouldAmount': 120,
+      'ReduceAmount': 0,
+      'RealAmount': 120,
+      'BufferAmount': 0,
+      'ReturnAmount': 0,
+      'OweAmount': 0
+    },
+    {
+      'ChargeYear': '2015',
+      'ItemName': '代收医疗保险费',
+      'ChargeDate': '2015-01-01',
+      'ShouldAmount': 140,
+      'ReduceAmount': 0,
+      'RealAmount': 140,
+      'BufferAmount': 0,
+      'ReturnAmount': 0,
+      'OweAmount': 0
+    },
+    {
+      'ChargeYear': '2015',
+      'ItemName': '学费',
+      'ChargeDate': '2015-01-01',
+      'ShouldAmount': 7600,
+      'ReduceAmount': 0,
+      'RealAmount': 7600,
+      'BufferAmount': 0,
+      'ReturnAmount': 0,
+      'OweAmount': 0
+    },
+    {
+      'ChargeYear': '2015',
+      'ItemName': '雁山住宿费(学校)',
+      'ChargeDate': '2015-01-01',
+      'ShouldAmount': 1200,
+      'ReduceAmount': 0,
+      'RealAmount': 1200,
+      'BufferAmount': 0,
+      'ReturnAmount': 0,
+      'OweAmount': 0
+    },
+    {
+      'ChargeYear': '2015',
+      'ItemName': '住宿费K',
+      'ChargeDate': '2015-01-01',
+      'ShouldAmount': 100,
+      'ReduceAmount': 0,
+      'RealAmount': 100,
+      'BufferAmount': 0,
+      'ReturnAmount': 0,
+      'OweAmount': 0
+    }
+  ]
+  return data
+})

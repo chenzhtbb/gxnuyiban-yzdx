@@ -118,9 +118,9 @@
                 icon: 'iconfont icon-ershou bg-D81B60'
               },
               {
-                name: '资费查询',
-                link: '/home',
-                icon: 'iconfont icon-jingqingqidai bg-00a65a'
+                name: '学费查询',
+                link: '/app/life/zfcx',
+                icon: 'iconfont icon-zifeibiaozhun bg-00a65a'
               },
               {
                 name: '宿舍用电',

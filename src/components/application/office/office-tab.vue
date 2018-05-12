@@ -7,9 +7,9 @@
       <div class="operators">
         <router-link to="gg" tag="div" class="icon" replace>
           <p class="iconfont icon-gongwen"></p>
-          <p class="text" v-text=" 1 > 2 ? '公文公告': '校园公告'"></p>
+          <p class="text" v-text=" uinfo.yb_identity !== '学生' ? '学校公告': '校园公告'"></p>
         </router-link>
-        <router-link to="gw" tag="div" class="icon" replace v-if="1 < 2">
+        <router-link to="gw" tag="div" class="icon" replace v-if="uinfo.yb_identity !== '学生'">
           <p class="iconfont icon-gongwenchaxun"></p>
           <p class="text">学校公文</p>
         </router-link>
@@ -35,11 +35,19 @@
 </template>
 
 <script type="text/ecmascript-6">
+  import { mapGetters } from 'vuex'
+
   export default {
+    computed: {
+      ...mapGetters([
+        'uinfo'
+      ])
+    },
     mounted () {
       setTimeout(() => {
         // 请求新闻样式并挂载
 //        this.refreshRouter()
+//        yb_identity
       }, 20)
     },
     activated () {

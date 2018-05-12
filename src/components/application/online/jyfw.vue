@@ -21,7 +21,7 @@
       } else {
         setTimeout(() => {
           this.saveHrefFlag(true)
-          window.location.href = 'http://www.gxnuyiban.com/jiuye/'
+          window.location.href = 'http://yiban.gxnu.edu.cn/site/jiuye/'
         }, 200)
       }
     },
