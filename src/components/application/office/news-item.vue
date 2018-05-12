@@ -46,7 +46,7 @@
             }
           }
         },
-        page: 1
+        page: 0
       }
     },
     mounted () {
