@@ -12,14 +12,14 @@
   },
   "dependencies": {
     "admin-lte": "^2.4.2",
-    "bootstrap": "^3.3.7",
     "axios": "^0.18.0",
     "babel-runtime": "^6.26.0",
-    "cube-ui": "^1.5.0",
+    "bootstrap": "^3.3.7",
+    "cube-ui": "^1.9.3",
     "fastclick": "^1.0.6",
     "good-storage": "^1.0.1",
     "mockjs": "^1.0.1-beta3",
-    "vue": "^2.5.13",
+    "vue": "^2.5.16",
     "vue-lazyload": "^1.2.1",
     "vue-router": "^3.0.1",
     "vuex": "^2.4.1"

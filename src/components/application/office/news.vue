@@ -18,10 +18,10 @@
             <div v-html="item.content"></div>
           </div>
           <div class="news-footer" v-if="item.download != []">
-            <template v-for="file in item.download">
+            <template v-for="file in item.downloads">
               <ul ref="download">
                 <li style="list-style-type: square">
-                  <a @click="download(file)">{{file.title}}</a>
+                  <a @click="download(file)">{{file.file_name}}</a>
                 </li>
               </ul>
             </template>
@@ -65,7 +65,12 @@
           this.item = res
         })
       },
-      download (event) {
+      download (file) {
+        if (browser.versions.ios) {
+          window.location.href = file.link
+        } else if (browser.versions.android) {
+          downloadFun(file.link)
+        }
         console.log(event)
 //        return false
       },
