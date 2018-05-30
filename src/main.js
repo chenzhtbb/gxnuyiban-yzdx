@@ -9,11 +9,11 @@ import VueLazyload from 'vue-lazyload'        // 图片懒加载
 import Cube from 'cube-ui'
 import Http from './pulgin/http/index'
 import VueImg from './pulgin/v-img/index'                    // 图片图库预览
-// import VeLine from 'v-charts/lib/line'
-// import VeGauge from 'v-charts/lib/gauge'
+import VeHistogram from 'v-charts/lib/histogram'
+import VeGauge from 'v-charts/lib/gauge'
+Vue.component(VeHistogram.name, VeHistogram)
+Vue.component(VeGauge.name, VeGauge)
 Vue.use(Cube)
-// Vue.component(VeLine.name, VeLine)
-// Vue.component(VeGauge.name, VeGauge)
 const vueImgConfig = {
   altAsTitle: false,
   sourceButton: true,

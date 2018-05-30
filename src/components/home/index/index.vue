@@ -125,8 +125,8 @@
               },
               {
                 name: '宿舍用电',
-                link: '/home',
-                icon: 'iconfont icon-jingqingqidai bg-00c0ef'
+                link: '/app/life/ssyd',
+                icon: 'iconfont icon-yongdianchaxun bg-00c0ef'
               }
             ]
           },

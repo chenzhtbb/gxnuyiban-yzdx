@@ -13,27 +13,18 @@
             <li>
               <router-link tag="a" to="/app/me/dean">
                 绑定教务处
-                <!--<span class="pull-right badge bg-blue"></span>-->
               </router-link>
             </li>
             <li>
               <router-link tag="a" to="/app/me/dorm">
                 绑定宿舍号
-                <!--<span class="pull-right badge bg-blue"></span>-->
               </router-link>
             </li>
             <li>
               <router-link tag="a" to="/app/me/feedback">
                 意见反馈
-                <!--<span class="pull-right badge bg-blue"></span>-->
               </router-link>
             </li>
-            <!--<li>-->
-            <!--<router-link tag="a" to="/app/score">-->
-            <!--查询成绩-->
-            <!--&lt;!&ndash;<span class="pull-right badge bg-blue"></span>&ndash;&gt;-->
-            <!--</router-link>-->
-            <!--</li>-->
           </ul>
         </div>
       </div>

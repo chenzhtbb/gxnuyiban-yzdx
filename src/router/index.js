@@ -19,6 +19,7 @@ const PjContent = () => import('app/dean/pj-content')
 const Essc = () => import('app/life/second-hand')
 const Xcsk = () => import('app/life/xcsk')
 const Zfcx = () => import('app/life/zfcx')
+const Ssyd = () => import('app/life/ssyd')
 const Swzl = () => import('app/life/lost-and-found/tab')
 const Lost = () => import('app/life/lost-and-found/lost')
 const Found = () => import('app/life/lost-and-found/lost')
@@ -116,6 +117,10 @@ export default new Router({
         {
           path: 'life/xcsk',
           component: Xcsk
+        },
+        {
+          path: 'life/ssyd',
+          component: Ssyd
         },
         {
           path: 'life/swzl',
