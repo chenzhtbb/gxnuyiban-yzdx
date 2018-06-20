@@ -27,6 +27,7 @@
         <button class="btn btn-bind btn-block" @click="bindDean()" v-if="!bind">绑定</button>
         <button class="btn btn-danger btn-block" @click="showAlert()" v-else>解绑</button>
       </div>
+      <button class="btn btn-link">由于技术升级，研究生暂时无法绑定</button>
       <button class="btn btn-link" @click="tip">绑定遇到问题？</button>
     </div>
   </div>

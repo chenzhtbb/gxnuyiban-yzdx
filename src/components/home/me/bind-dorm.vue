@@ -51,10 +51,10 @@
         for (let i = 1; i < 100; i++) {
           this.lData.push({text: i, value: i})
         }
-        for (let i = 1; i < 7; i++) {
+        for (let i = 1; i < 20; i++) {
           this.cData.push({text: i, value: i})
         }
-        for (let i = 1; i < 30; i++) {
+        for (let i = 1; i < 100; i++) {
           this.fData.push({text: i, value: i})
         }
         this.roomIndex = [1, 1, 1]

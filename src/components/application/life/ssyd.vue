@@ -13,6 +13,7 @@
         </li>
         <router-link tag="button" to="/app/me/dorm" class="btn btn-info btn-block">快速绑定宿舍</router-link>
         <p>宿舍应形如 栋-层-房间号 的格式（例如:16-5-10）</p>
+        <p>若长时间不显示，请重新进入 宿舍用电 服务</p>
         <div>
           <div>
             <ve-gauge :data="gaugeData"></ve-gauge>

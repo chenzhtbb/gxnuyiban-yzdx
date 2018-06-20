@@ -28,7 +28,7 @@
 </template>
 
 <script type="text/ecmascript-6">
-  import { getJxpgList } from 'api/dean'
+//  import { getJxpgList } from 'api/dean'
   import Scroll from 'base/scroll/scroll'
 
   export default {
@@ -41,7 +41,7 @@
 //          this.$iosAlert('您已对该课程评教~')
 //          return
         }
-        this.$router.push({path: '/app/pjcontent', query: {kch: item.kch}})
+        this.$router.push({path: '/app/dean/pjcontent', query: {kch: item.kch}})
       }
     },
     data () {
@@ -51,7 +51,7 @@
     },
     activated () {
       setTimeout(() => {
-        getJxpgList().then((res) => {
+        this.$http.get('/getJxpgList').then((res) => {
           this.items = res
         })
       }, 20)

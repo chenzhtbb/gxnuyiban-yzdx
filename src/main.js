@@ -26,7 +26,7 @@ const vueLazyloadConfig = {
 }
 const httpConfig = {
   baseURL: process.env.API_PREFIX,
-  timeout: 2000
+  timeout: 10000
 }
 
 Vue.use(VueLazyload, vueLazyloadConfig)

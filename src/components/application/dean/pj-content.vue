@@ -43,7 +43,7 @@
 
 <script type="text/ecmascript-6">
   import Scroll from 'base/scroll/scroll'
-  import { putJxpgInfo } from 'api/dean'
+  //  import { putJxpgInfo } from 'api/dean'
 
   export default {
     components: {
@@ -93,25 +93,32 @@
     create () {
     },
     methods: {
+      showAlert (text) {
+        this.$createDialog({
+          type: 'alert',
+          content: text,
+          icon: 'cubeic-alert'
+        }).show()
+      },
       putJXPG () {
         if (this.yd.length < 5) {
-          this.$iosAlert('优点不能少于5个字！')
+          this.showAlert('优点不能少于5个字！')
           return
         } else if (this.qd.length < 5) {
-          this.$iosAlert('缺点不能少于5个字！')
+          this.showAlert('缺点不能少于5个字！')
           return
         } else if (this.yi.length < 5) {
-          this.$iosAlert('最想说的一句话不能少于5个字！')
+          this.showAlert('最想说的一句话不能少于5个字！')
           return
         }
         if (this.yd.length > 50) {
-          this.$iosAlert('优点字符已超过50，请重新输入！')
+          this.showAlert('优点字符已超过50，请重新输入！')
           return
         } else if (this.qd.length > 50) {
-          this.$iosAlert('缺点字符已超过50，请重新输入！')
+          this.showAlert('缺点字符已超过50，请重新输入！')
           return
         } else if (this.yi.length > 50) {
-          this.$iosAlert('最想说的一句话字符已超过50，请重新输入！')
+          this.showAlert('最想说的一句话字符已超过50，请重新输入！')
           return
         }
         let cj = []
@@ -121,13 +128,29 @@
           }
         }
         this.kch = this.$route.query.kch
-        putJxpgInfo(this.kch, cj[0], cj[1], cj[2], cj[3], cj[4], cj[5], cj[6], cj[7], cj[8], cj[9], this.yd, this.qd, this.yi)
-          .then((res) => {
-            console.log(res)
-            this.$iosAlert('评教成功！')
-            this.$router.go(-1)
-          })
-        console.log(cj, this.yd, this.qd, this.yi)
+        this.$http.post('/putJxpgInfo', {
+          'kch': this.kch,
+          'cj1': cj[0],
+          'cj2': cj[0],
+          'cj3': cj[0],
+          'cj4': cj[0],
+          'cj5': cj[0],
+          'cj6': cj[0],
+          'cj7': cj[0],
+          'cj8': cj[0],
+          'cj9': cj[0],
+          'cj10': cj[0],
+          'yd': this.yd,
+          'qd': this.qd,
+          'yi': this.yi
+        }).then((res) => {
+//          console.log(res)
+          this.showAlert('评教成功！')
+          this.$router.go(-1)
+        })
+//        putJxpgInfo(this.kch, cj[0], cj[1], cj[2], cj[3], cj[4], cj[5], cj[6], cj[7], cj[8], cj[9], this.yd, this.qd, this.yi)
+//
+//        console.log(cj, this.yd, this.qd, this.yi)
       }
     }
   }
