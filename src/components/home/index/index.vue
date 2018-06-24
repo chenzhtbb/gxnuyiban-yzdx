@@ -89,8 +89,8 @@
               },
               {
                 name: '选课',
-                link: '/home',
-                icon: 'iconfont icon-jingqingqidai bg-00a65a'
+                link: '/app/dean/xk',
+                icon: 'iconfont icon-xuanke bg-00a65a'
               },
               {
                 name: '评教',

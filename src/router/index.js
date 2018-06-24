@@ -13,7 +13,11 @@ const Application = () => import('app/application')
 const Cj = () => import('app/dean/cj')
 const Kcb = () => import('app/dean/kcb')
 const Tsg = () => import('app/dean/tsg')
-// const Xk = () => import('app/dean/xk')
+const Xk = () => import('app/dean/xk')
+const Mine = () => import('app/dean/xk/mineCourse')
+const Sel = () => import('app/dean/xk/selCourse')
+const SelList = () => import('app/dean/xk/list')
+const Trade = () => import('app/dean/xk/tradeCourse')
 const Pj = () => import('app/dean/pj')
 const PjContent = () => import('app/dean/pj-content')
 const Essc = () => import('app/life/second-hand')
@@ -104,7 +108,25 @@ export default new Router({
         },
         {
           path: 'dean/xk',
-          component: Cj
+          component: Xk,
+          children: [
+            {
+              path: 'sel',
+              component: Sel
+            },
+            {
+              path: 'mine',
+              component: Mine
+            },
+            {
+              path: 'trade',
+              component: Trade
+            },
+            {
+              path: 'list',
+              component: SelList
+            }
+          ]
         },
         {
           path: 'dean/pj',

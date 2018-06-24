@@ -10,7 +10,7 @@
 
   export default {
     mounted () {
-      // 电脑端给
+      // 电脑端
       if (!browser.versions.mobile) {
         setTimeout(() => {
           this.$createDialog(
