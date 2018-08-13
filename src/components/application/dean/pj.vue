@@ -13,6 +13,7 @@
                 评教须知
               </router-link>
             </li>
+            <div style="margin:10px;font-weight: 400;color: #337ab7;">若课程没有显示，请检查绑定的教务处密码是否正确。选课高峰时期该功能关闭！</div>
             <li v-for="item in items">
               <a @click="goto(item)">
                 {{item.kcmc}}

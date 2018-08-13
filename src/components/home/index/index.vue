@@ -211,8 +211,10 @@
       },
       getUserInfo () {
         this.$http.get('/getUser').then((res) => {
-          console.log(res)
           this.userInfo = res
+          if (this.userInfo.news === undefined) {
+            window.location.href = 'http://f.yiban.cn/iapp173069'
+          }
           this.sliderNews = [].concat(this.userInfo.news)
 //          this.updateNews()
           // 更改过教务处密码的提示

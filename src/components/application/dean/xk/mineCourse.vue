@@ -2,12 +2,12 @@
   <div class="mine">
     <scroll style="height: 100%;" :data="[]">
       <div>
-        <template v-for="item in items">
+        <template v-for="(item,index) in items">
           <div class="box box-warning">
             <div class="box-header with-border">
               <h3 class="box-title">{{item.kcmc}}</h3>
               <div class="box-tools pull-right">
-                <cube-button :inline="true" :outline="true" @click="del(item)">退课</cube-button>
+                <cube-button :inline="true" :outline="true" @click="del(item,index)">退课</cube-button>
               </div>
             </div>
             <div class="box-body">
@@ -54,7 +54,7 @@
       }
     },
     methods: {
-      del (item) {
+      del (item, index) {
         this.$http.get('/delCourse', {
           kcxh: item.kcxh
         }).then((res) => {
@@ -66,6 +66,7 @@
               content: item.kcmc + '退课成功',
               icon: 'cubeic-alert'
             }).show()
+            this.items.splice(index, 1)
           } else {
             this.$createDialog({
               type: 'alert',

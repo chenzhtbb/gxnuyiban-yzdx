@@ -88,12 +88,24 @@
         })
       }
     },
+    mounted () {
+      this.cache = new Map()
+    },
     activated () {
-      this.$http.get('/getCourseList', {
-        type: this.$route.query.type
-      }).then((res) => {
-        this.items = res
-      })
+      let type = this.$route.query.type
+      if (!this.cache[type]) {
+        this.$http.get('/getCourseList', {
+          type: type
+        }).then((res) => {
+          this.cache[type] = res
+          this.items = res
+        })
+      } else {
+        this.items = this.cache[type]
+      }
+    },
+    deactivated () {
+      this.items = []
     }
   }
 </script>

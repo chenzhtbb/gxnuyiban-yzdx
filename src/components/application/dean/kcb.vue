@@ -18,26 +18,27 @@
           <tbody>
           <tr v-for="item in items">
             <th>{{item.num}}</th>
-            <td v-for="class_ in item.class"
-                :rowspan="class_.num"
-                :class="class_.length > 1? 'danger'
-                  :class_.color">
-              <div v-if="class_.isclass!='0'">
-                <div v-if="!class_.length">
+            <td v-for="class_ in item.class "
+                :rowspan="class_.end - class_.start + 1"
+                :class="class_.length > 1? 'danger':class_.color"
+                class="background"
+            >
+              <template v-if="class_.isclass!='0'">
+                <template v-if="!class_.length">
                   <p>{{class_.name}}</p>
                   <p>{{class_.room}}</p>
                   <p>第{{class_.start}}~{{class_.end}}节</p>
                   <p>{{class_.teacher}}</p>
-                </div>
-                <div v-else>
-                  <div v-for="cl in class_[0]">
+                </template>
+                <template v-else>
+                  <template v-for="cl in class_[0]">
                     <p>{{cl.name}}</p>
                     <p>{{cl.room}}</p>
                     <p>第{{cl.start}}~{{cl.end}}节</p>
                     <p>{{cl.teacher}}</p>
-                  </div>
-                </div>
-              </div>
+                  </template>
+                </template>
+              </template>
             </td>
           </tr>
           </tbody>
@@ -69,6 +70,11 @@
 
 <style scoped lang="stylus" ref="stylesheet/stylus">
 
+  .background
+    border 1px solid #FFF
+    p
+      margin 1px
+
   .table-class
     width 100%
     background-color #EEEEEE
@@ -90,12 +96,14 @@
 
   th
     text-align center
-    vertical-align middle
+    vertical-align middle !important
     font-size 12px
+    border 1px solid #FFF
+    height 100%
 
   td
     text-align center
-    vertical-align middle
+    vertical-align middle !important
     padding 0
     font-size 12px
 
