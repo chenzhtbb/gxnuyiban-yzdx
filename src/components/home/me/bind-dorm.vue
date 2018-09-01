@@ -18,7 +18,7 @@
             <label class="col-xs-12 control-label">选择宿舍</label>
             <div class="col-xs-12">
               <button
-                class="form-control "
+                class="form-control"
                 @click="selectRoom">{{bind.room == '' ? '请选择宿舍' : bind.room}}
               </button>
             </div>
@@ -34,15 +34,15 @@
 </template>
 
 <script type="text/ecmascript-6">
-  import { mapGetters, mapMutations } from 'vuex'
+  import {mapGetters, mapMutations} from 'vuex'
 
   export default {
-    data () {
+    data() {
       return {
         bind: {campus: '', room: '', dorm: 0}
       }
     },
-    mounted () {
+    mounted() {
       setTimeout(() => {
         this.getDorm()
         this.lData = [{text: '楼号', value: '楼号'}]
@@ -69,10 +69,13 @@
       ...mapMutations({
         setBinddorm: 'SET_BINDDORM'
       }),
-      getDorm () {
+      getDorm() {
         this.bind = this.binddorm
       },
-      selectRoom () {
+      selectRoom() {
+        if (this.bind.dorm) {
+          return
+        }
         this.$createPicker({
           title: '选择您所在的宿舍',
           data: [this.lData, this.cData, this.fData],
@@ -90,7 +93,7 @@
           }
         }).show()
       },
-      _bindDorm () {
+      _bindDorm() {
         if (this.bind.campus === '') {
           this.$createDialog(
             {
@@ -114,7 +117,7 @@
           }
         })
       },
-      showAlert () {
+      showAlert() {
         this.$createDialog(
           {
             type: 'confirm',
@@ -141,7 +144,7 @@
           }
         ).show()
       },
-      _unbindorm () {
+      _unbindorm() {
         this.$http.get('/bindDorm', {
           type: 2,
           campus: '',

@@ -28,12 +28,12 @@
 </template>
 
 <script type="text/ecmascript-6">
-  import { mapMutations } from 'vuex'
+  import {mapMutations} from 'vuex'
   import Slider from 'base/slider/slider'
   import SliderHome from 'base/slider-home/slider-home'
 
   export default {
-    data () {
+    data() {
       return {
         sliderNews: [],
         datas: [
@@ -109,9 +109,9 @@
                 icon: 'iconfont icon-xiaochexinxi bg-ff851b'
               },
               {
-                name: '失物招领',
-                link: '/home',
-                icon: 'iconfont icon-jingqingqidai bg-00c0ef'
+                name: '新生专栏',
+                link: '/app/life/new-stu',
+                icon: 'iconfont icon-xsybd bg-00c0ef'
               },
               {
                 name: '二手市场',
@@ -168,21 +168,21 @@
       SliderHome,
       Slider
     },
-    activated () {
+    activated() {
       this.updateNews()
     },
-    mounted () {
+    mounted() {
       setTimeout(() => {
         this.getUserInfo()
       }, 20)
     },
     methods: {
-      updateNews () {
+      updateNews() {
         setTimeout(() => {
           this.$refs.slide && this.$refs.slide.refresh()
         }, 20)
       },
-      showAlert () {
+      showAlert() {
         this.$createDialog(
           {
             type: 'confirm',
@@ -209,7 +209,7 @@
           }
         ).show()
       },
-      getUserInfo () {
+      getUserInfo() {
         this.$http.get('/getUser').then((res) => {
           this.userInfo = res
           if (this.userInfo.news === undefined) {

@@ -145,6 +145,10 @@ export default new Router({
           component: Ssyd
         },
         {
+          path: 'life/new-stu',
+          component: () => import('app/life/new-stu')
+        },
+        {
           path: 'life/swzl',
           component: Swzl,
           children: [

@@ -4,7 +4,7 @@ import App from './App'
 import store from './store'                   // vuex状态管理
 import router from './router'                 // 路由
 import './permission'                          // 前端授权 加速访问
-import fastclick from 'fastclick'             // 取消移动端300ms点击延时
+// import fastclick from 'fastclick'             // 取消移动端300ms点击延时
 import VueLazyload from 'vue-lazyload'        // 图片懒加载
 import Cube from 'cube-ui'
 import Http from './pulgin/http/index'
@@ -43,7 +43,7 @@ import 'common/stylus/index.styl' // 应用全局样式
 /* eslint-disable no-unused-vars */
 // const vConsole = new VConsole()                    // 开启微信console控制台
 
-fastclick.attach(document.body)  // 注册fastclick
+// fastclick.attach(document.body)  // 注册fastclick
 
 /* eslint-disable no-new */
 new Vue({
