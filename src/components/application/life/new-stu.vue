@@ -43,6 +43,7 @@
             <a class="box-note" @click="tel(item.tel)" style="color: #0099FF;">{{item.tel}}</a>
           </div>
         </template>
+        <cube-button primary style="flex: 1;text-align: center;" @click="$router.push('/app/life/sycx')">舍友查询</cube-button>
       </div>
     </cube-scroll>
   </div>
@@ -54,7 +55,7 @@
   export default {
     name: 'new-stu',
     activated() {
-      this.getStu()
+      process.env.NODE_ENV !== 'development' && this.getStu()
     },
     methods: {
       tel(telephone) {
@@ -109,26 +110,26 @@
     data() {
       return {
         user: {
-          stu: '',
-          name: '',
-          xy: '',
-          zy: '',
-          bj: '',
-          lou: '',
-          room: '',
-          num: '',
-          fdy: '',
-          tel: ''
-          // stu: '201512300018',
-          // name: '陈震海',
-          // xy: '计算机科学与信息工程学院',
-          // zy: '计算机科学与技术',
-          // bj: '1班',
-          // lou: '雁山8栋',
-          // room: '106',
-          // num: '6',
-          // fdy: '岑洁静|杨真宝|颉晓凯',
-          // tel: '13737709529|13737704188|15577351180'
+          // stu: '',
+          // name: '',
+          // xy: '',
+          // zy: '',
+          // bj: '',
+          // lou: '',
+          // room: '',
+          // num: '',
+          // fdy: '',
+          // tel: ''
+          stu: '201512300018',
+          name: '陈震海',
+          xy: '计算机科学与信息工程学院',
+          zy: '计算机科学与技术',
+          bj: '1班',
+          lou: '雁山8栋',
+          room: '106',
+          num: '6',
+          fdy: '岑洁静|杨真宝|颉晓凯',
+          tel: '13737709529|13737704188|15577351180'
         }
       }
     }
@@ -143,6 +144,7 @@
     right 0
     bottom 0
     background #faf7f9
+    margin 5px
     .logo
       margin-bottom 48px
       text-align center
