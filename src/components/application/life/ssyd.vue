@@ -53,13 +53,13 @@
 
 <script type="text/ecmascript-6">
   import Scroll from 'base/scroll/scroll'
-  import { mapGetters } from 'vuex'
+  import {mapGetters} from 'vuex'
 
   export default {
     components: {
       Scroll
     },
-    data () {
+    data() {
       return {
         buys: [],
         bind: {},
@@ -88,7 +88,7 @@
         }
       }
     },
-    activated () {
+    activated() {
       setTimeout(() => {
         this.getDorm()
         if (this.bind.dorm === 1) {
@@ -104,12 +104,19 @@
             this.gaugeData.rows[0].a = res.day
             this.buys = res.buy
             this.count = res.count
+          }).catch(() => {
+            this.$createDialog({
+              type: 'alert',
+              title: '提示',
+              content: '电费查询服务暂时关闭',
+              icon: 'cubeic-alert'
+            }).show()
           })
         }
       }, 20)
     },
     methods: {
-      getDorm () {
+      getDorm() {
         this.bind = this.binddorm
       }
     },

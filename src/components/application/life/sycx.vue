@@ -3,24 +3,41 @@
     <p class="box-info">名字不分先后，顺序不涉及床位</p>
     <p class="box-info">宿舍：{{sy[0].lou}}{{sy[0].room}}</p>
     <p class="box-info">点击QQ或微信号即可复制</p>
-    <template v-for="item in sy">
-      <div class="box-info">
-        <div class="box-note">舍友：</div>
-        <div class="box-note">{{item.name}}({{item.stu}})</div>
+    <cube-scroll :data="sy">
+      <div>
+        <template v-for="item in sy">
+          <div class="box-info">
+            <div class="box-note">舍友：</div>
+            <div class="box-note">{{item.name}}({{item.stu}})</div>
+          </div>
+          <div class="box-info">
+            <div class="box-note">QQ或微信号：</div>
+            <a class="box-note" style="color: #0099FF;" @click="copy(item.qq)">{{item.qq ? item.qq : '未填写'}}</a>
+          </div>
+        </template>
+        <cube-button primary @click="wqq">录入QQ或微信</cube-button>
+        <div style="height: 300px;"></div>
       </div>
-      <div class="box-info">
-        <div class="box-note">QQ或微信号：</div>
-        <a class="box-note" style="color: #0099FF;" @click="copy(item.qq)">{{item.qq ? item.qq : '未填写'}}</a>
-      </div>
-    </template>
-    <cube-button primary style="flex: 1;text-align: center;" @click="wqq">录入QQ或微信</cube-button>
+    </cube-scroll>
     <input ref="contents" v-model="copytxt" style="position: absolute;top: -100%;left: -100%;"/>
   </div>
 </template>
 
 <script>
   export default {
+    activated() {
+      this.lou = this.$route.query.lou
+      this.room = this.$route.query.room
+      process.env.NODE_ENV !== 'development' && this.getSy()
+    },
     methods: {
+      getSy() {
+        this.$http.get('getStuSy', {lou: this.lou, room: this.room}).then((res) => {
+          this.sy = res.sy
+        }).catch((err) => {
+          this.showMsg(err, '获取舍友失败')
+        })
+      },
       wqq() {
         this.$createDialog({
           type: 'confirm',
@@ -35,7 +52,11 @@
             href: 'javascript:;'
           },
           onConfirm: () => {
-            console.log(this.$refs.qq)
+            let _qq = document.getElementsByClassName('my-qq')
+            const qq = _qq[0].children[0].value
+            this.$http.get('setQq', {qq: qq}).then((res) => {
+              this.getSy()
+            })
           }
         }, (createElement) => {
           return [
@@ -52,10 +73,15 @@
               }),
               createElement('p', '填写QQ或微信')
             ]),
-            createElement('cube-input', {
-              slot: 'content',
-              $ref: 'qq'
-            })
+            createElement('div', {
+              slot: 'content'
+            }, [
+              createElement('cube-input', {
+                'class': {
+                  'my-qq': true
+                }
+              })
+            ])
           ]
         }).show()
       },
@@ -81,12 +107,12 @@
         qq: '',
         copytxt: '',
         sy: [
-          {name: '廖怡晖', qq: '693304134', stu: '123', lou: '雁山14栋', room: '408'},
-          {name: '范维聪', qq: '1', stu: '123'},
-          {name: '陈颖奇', qq: '1', stu: '123'},
-          {name: '邱志良', qq: '1', stu: '123'},
-          {name: '宁绍山', qq: '1', stu: '123'},
-          {name: '卢敏', qq: '', stu: '123'}
+          {name: '', qq: '', stu: '', lou: '', room: ''},
+          {name: '', qq: '', stu: ''},
+          {name: '', qq: '', stu: ''},
+          {name: '', qq: '', stu: ''},
+          {name: '', qq: '', stu: ''},
+          {name: '', qq: '', stu: ''}
         ]
       }
     }

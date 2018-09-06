@@ -110,7 +110,7 @@
               },
               {
                 name: '新生专栏',
-                link: '/app/life/new-stu',
+                link: '/app/life/new-stu-index',
                 icon: 'iconfont icon-xsybd bg-00c0ef'
               },
               {

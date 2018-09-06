@@ -145,12 +145,24 @@ export default new Router({
           component: Ssyd
         },
         {
+          path: 'life/new-stu-index',
+          component: () => import('app/life/new-stu-index')
+        },
+        {
           path: 'life/new-stu',
           component: () => import('app/life/new-stu')
         },
         {
+          path: 'life/jp',
+          component: () => import('app/life/jp')
+        },
+        {
           path: 'life/sycx',
           component: () => import('app/life/sycx')
+        },
+        {
+          path: 'life/yyy',
+          component: () => import('app/life/yyy')
         },
         {
           path: 'life/swzl',
