@@ -11,6 +11,9 @@ import Http from './pulgin/http/index'
 import VueImg from './pulgin/v-img/index'                    // 图片图库预览
 import VeHistogram from 'v-charts/lib/histogram'
 import VeGauge from 'v-charts/lib/gauge'
+// import ElementUI from 'element-ui'
+// // import 'element-ui/lib/theme-chalk/index.css'
+// // Vue.use(ElementUI)
 Vue.component(VeHistogram.name, VeHistogram)
 Vue.component(VeGauge.name, VeGauge)
 Vue.use(Cube)
@@ -72,4 +75,11 @@ Vue.filter('formatDate', function (val) {
       return d.getSeconds() - time[2] + '秒前'
     }
   }
+})
+Vue.filter('dat', function (val) {
+  let n = ''
+  for (let i = 0; i < 10; i++) {
+    n += val[i]
+  }
+  return n
 })

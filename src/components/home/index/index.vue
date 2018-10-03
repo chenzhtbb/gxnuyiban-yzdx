@@ -12,7 +12,7 @@
                 <div class="bottom">
                   <div class="type">{{news.author}}</div>
                 </div>
-                <div class="border"></div>
+                <div class="border-i"></div>
               </a>
             </cube-slide-item>
             <div slot="dots"></div>
@@ -31,6 +31,7 @@
   import {mapMutations} from 'vuex'
   import Slider from 'base/slider/slider'
   import SliderHome from 'base/slider-home/slider-home'
+  import {setYYYFlag, getYYYFlag} from 'common/js/cache'
 
   export default {
     data() {
@@ -226,6 +227,10 @@
           this.setBinddean(this.userInfo.dean)
           this.setBinddorm(this.userInfo.dorm)
         })
+        if (getYYYFlag() === 1) {
+          setYYYFlag(0)
+          this.$router.push('/app/life/yyy')
+        }
       },
       ...mapMutations({
         setUinfo: 'SET_UINFO',
@@ -262,7 +267,7 @@
     font-size 12px
     color #AAAAAA
 
-  .border
+  .border-i
     padding-top 15px
     /*border-bottom 1px solid #000000*/
     margin-bottom 15px

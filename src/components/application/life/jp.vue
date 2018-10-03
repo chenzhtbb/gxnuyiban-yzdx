@@ -6,11 +6,12 @@
         <h3 style="text-align: center;">摇一摇中奖记录</h3>
       </div>
       <div class="col-md-3 col-sm-6 col-xs-12">
-        <div class="info-box" v-if="cj.status">
+        <div class="info-box" v-if="isJp==='1'" @click="lq">
           <span class="info-box-icon bg-red"><i class="iconfont icon-jiangpin1" style="font-size: 48px;"></i></span>
           <div class="info-box-content">
-            <span class="info-box-text">{{cj.time}}</span>
-            <span class="info-box-number">{{cj.info}}</span>
+            <span class="info-box-text">{{info.time}}</span>
+            <span class="info-box-number">{{info.prize}}</span>
+            <span class="info-box-number">{{info.yes===0?'未领取':'已领取'}}</span>
           </div>
         </div>
         <div class="info-box" v-else>
@@ -26,14 +27,59 @@
 </template>
 
 <script type="text/ecmascript-6">
+  import {mapGetters} from 'vuex'
+
   export default {
     name: 'jp',
+    activated() {
+      this.$http.get('myjp', {
+        xh: this.uinfo.yb_studentid
+      }).then((res) => {
+        this.isJp = res.isJp
+        this.info = res.info
+      })
+    },
+    computed: {
+      ...mapGetters([
+        'uinfo'
+      ])
+    },
+    methods: {
+      lq() {
+        this.$createDialog({
+          type: 'confirm',
+          title: '领取提示',
+          content: '确认要领取奖品吗？请到易班迎新点再领取哦！',
+          icon: 'cubeic-alert',
+          confirmBtn: {
+            text: '立即领取',
+            active: true,
+            disabled: false,
+            href: 'javascript:;'
+          },
+          cancelBtn: {
+            text: '点错了',
+            active: false,
+            disabled: false,
+            href: 'javascript:;'
+          },
+          onConfirm: () => {
+            this.$http.get('myjp', {xh: this.uinfo.yb_studentid, yes: 1, tip: 1}).then((res) => {
+              this.info = res.info
+            })
+          },
+          onCancel: () => {
+          }
+        }).show()
+      }
+    },
     data() {
       return {
-        cj: {
-          status: true,
-          info: '易班熊',
-          time: '2018-9-6 16:46:16'
+        isJp: '0',
+        info: {
+          'prize': null,
+          'yes': null,
+          'time': null
         }
       }
     }

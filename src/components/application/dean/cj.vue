@@ -2,7 +2,7 @@
   <div class="score">
     <scroll :data="items" class="table-responsive">
       <div>
-        <template v-if="items.length">
+        <template v-if="items.length>0">
           <div v-for="item in items">
             <div class="title" v-if="item.title">{{item.title}}</div>
             <table class="table" rules="all" v-if="item.body.length">
@@ -58,7 +58,7 @@
         }
       }
     },
-    activated () {
+    mounted () {
       this.$http.get('/getScore').then((res) => {
         this.items = res
         if (res.length === 0) {

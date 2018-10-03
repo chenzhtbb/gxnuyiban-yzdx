@@ -7,14 +7,22 @@
       <div class="bottom">
         <div class="operators">
           <router-link to="index" tag="div" class="icon" replace>
-            <p class="iconfont icon-fuwuzhongxin"></p>
+            <p class="iconfont icon-shouye"></p>
             <!--<img class="img-icon" src="~common/image/logo.jpg">-->
             <p class="">服务中心</p>
           </router-link>
-          <router-link to="book" tag="div" class="icon" replace>
-            <p class="iconfont icon-dianhua"></p>
-            <p class="">电话簿</p>
-          </router-link>
+          <!--<template v-if="false">-->
+            <router-link to="book" tag="div" class="icon" replace>
+              <p class="iconfont icon-dianhua"></p>
+              <p class="">电话簿</p>
+            </router-link>
+          <!--</template>-->
+          <!--<template v-else>-->
+            <!--<router-link to="work" tag="a" class="icon">-->
+              <!--<p class="iconfont icon-fuwuzhongxin1"></p>-->
+              <!--<p class="">办事大厅</p>-->
+            <!--</router-link>-->
+          <!--</template>-->
           <router-link to="me" tag="div" class="icon" replace>
             <p class="iconfont icon-wode"></p>
             <p class="">我的</p>

@@ -69,6 +69,53 @@ export default new Router({
           component: Book
         },
         {
+          path: 'work',
+          name: 'work',
+          component: () => import('home/work'),
+          children: [
+            {
+              path: 'leave2',
+              component: () => import('home/work/teacher/leave2'),
+              name: 'home-index-work-teacher-leave2'
+            },
+            {
+              path: 'dorm2',
+              component: () => import('home/work/teacher/dorm2'),
+              name: 'home-index-work-teacher-dorm2'
+            },
+            {
+              path: 'attend',
+              component: () => import('home/work/teacher/attend'),
+              name: 'home-index-work-teacher-attend'
+            },
+            {
+              path: 'dorm1',
+              component: () => import('home/work/teacher/dorm1'),
+              name: 'home-index-work-teacher-dorm1'
+            },
+            {
+              path: 'leave1',
+              component: () => import('home/work/teacher/leave1'),
+              name: 'home-index-work-teacher-leave1'
+            },
+            {
+              path: 'leave',
+              name: 'leave',
+              component: () => import('home/work/student/leave.vue')
+            },
+            {
+              path: 'dorm',
+              name: 'dorm',
+              component: () => import('home/work/student/dorm.vue')
+            },
+            {
+              path: 'book',
+              name: 'book',
+              component: () => import('home/work/student/book.vue')
+            }
+          ]
+        },
+        {
           path: 'me',
           component: Me
         }
