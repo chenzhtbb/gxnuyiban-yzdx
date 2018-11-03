@@ -26,3 +26,11 @@ export function setHrefFlag (flag) {
 export function getHrefFlag () {
   return storage.get(HREF_KEY)
 }
+
+export function setYYYFlag (v) {
+  storage.set('yyy', v)
+}
+
+export function getYYYFlag () {
+  return storage.get('yyy')
+}

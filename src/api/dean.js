@@ -1,55 +1,12 @@
-import axios from 'axios'
-import { prefix } from './config'
-
-export function getScore () {
-  const url = prefix + '/getscore'
-
-  const data = Object.assign({})
-
-  return axios.get(url, {
-    params: data
-  }).then((res) => {
-    return Promise.resolve(res.data)
-  })
-}
-
 export function getTimetable () {
-  const url = prefix + '/getTimetable'
-
-  const data = Object.assign({})
-
-  return axios.get(url, {
-    params: data
-  }).then((res) => {
-    return Promise.resolve(res.data)
-  })
-}
-
-export function bindDean (type = 0, password = '') {
-  const url = prefix + '/bindDean'
-  const data = Object.assign({}, {
-    type: type,
-    password: password
-  })
-  return axios.get(url, {
-    params: data
-  }).then((res) => {
-    return Promise.resolve(res.data)
-  })
+  return this.$http.get('/getTimetable')
 }
 
 export function getJxpgList () {
-  const url = prefix + '/getJxpgList'
-  const data = Object.assign({})
-  return axios.get(url, {
-    params: data
-  }).then((res) => {
-    return Promise.resolve(res.data)
-  })
+  return this.$http.get('/getJxpgList')
 }
 
 export function putJxpgInfo (kch, cj1, cj2, cj3, cj4, cj5, cj6, cj7, cj8, cj9, cj10, yd, qd, yi) {
-  const url = prefix + '/putJxpgInfo'
   let formdara = new FormData()
   formdara.append('kch', kch)
   formdara.append('cj1', cj1)
@@ -67,9 +24,7 @@ export function putJxpgInfo (kch, cj1, cj2, cj3, cj4, cj5, cj6, cj7, cj8, cj9, c
   formdara.append('yi', yi)
 
   let header = {'X-Requested-With': 'XMLHttpRequest'}
-  return axios.post(url, formdara, {
+  return this.$http.post('/putJxpgInfo', formdara, {
     headers: header
-  }).then((res) => {
-    return Promise.resolve(res.data)
   })
 }
